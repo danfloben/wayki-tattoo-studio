@@ -7,7 +7,8 @@
       "WebSearch",
       "WebFetch(domain:gangatattoo.com)",
       "WebFetch(domain:nobleart.com)",
-      "WebFetch(domain:www.gangatattoo.com)"
+      "WebFetch(domain:www.gangatattoo.com)",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\danfl\\\\Desktop\\\\wayki.tattoo.studio\\\\\" | Where-Object { $_.Name -match \"banner\" } | Select-Object Name)"
     ]
   }
 }

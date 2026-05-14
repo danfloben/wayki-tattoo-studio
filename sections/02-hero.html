@@ -2,12 +2,21 @@
   <!-- HERO                                    -->
   <!-- ═══════════════════════════════════════ -->
   <section id="inicio" class="hero-bg relative min-h-screen flex items-center justify-center">
-    <div class="hero-overlay absolute inset-0"></div>
+
+    <!-- Slideshow banners -->
+    <div id="hero-slides" style="position:absolute;inset:0;z-index:0;">
+      <div class="hero-slide active" style="background-image:url('./banner_1.jpg');"></div>
+      <div class="hero-slide" style="background-image:url('./banner_2.jpg');"></div>
+      <div class="hero-slide" style="background-image:url('./banner_3.jpg');"></div>
+      <div class="hero-slide" style="background-image:url('./banner_4.jpg');"></div>
+    </div>
+
+    <div class="hero-overlay absolute inset-0" style="z-index:1;"></div>
     <!-- Red glow at bottom -->
     <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full pointer-events-none"
-         style="background:radial-gradient(ellipse,rgba(190,0,0,0.18) 0%,transparent 70%);"></div>
+         style="background:radial-gradient(ellipse,rgba(190,0,0,0.18) 0%,transparent 70%);z-index:2;"></div>
 
-    <div class="relative z-10 flex flex-col items-center text-center px-6 max-w-5xl mx-auto pt-20">
+    <div class="relative flex flex-col items-center text-center px-6 max-w-5xl mx-auto pt-20" style="z-index:3;">
 
       <!-- Logo -->
       <img src="./logo.png" alt="Wayki Tattoo Studio Logo"
