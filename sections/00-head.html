@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO Primary -->
+  <title>Wayki Tattoo Studio | Arte en tu Piel — Arequipa, Perú</title>
+  <meta name="description" content="Estudio de tatuajes profesional en Arequipa, Perú. Realismo, color, fineline y más. Reserva tu cita por WhatsApp. Más de 10 años de experiencia." />
+  <meta name="keywords" content="tatuajes arequipa, tattoo studio peru, wayki tattoo, realismo tatuaje, piercing arequipa, sivola ink" />
+  <meta name="author" content="Wayki Tattoo Studio" />
+  <link rel="canonical" href="https://waykitattoostudio.com/" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://waykitattoostudio.com/" />
+  <meta property="og:title" content="Wayki Tattoo Studio | Arte en tu Piel" />
+  <meta property="og:description" content="Estudio de tatuajes profesional en Arequipa, Perú. Reserva tu cita hoy." />
+  <meta property="og:image" content="./475708770_1226441825765025_6711418281119883680_n.jpg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Wayki Tattoo Studio | Arte en tu Piel" />
+  <meta name="twitter:description" content="Estudio de tatuajes profesional en Arequipa, Perú." />
+  <meta name="twitter:image" content="./475708770_1226441825765025_6711418281119883680_n.jpg" />
+
+  <!-- Structured Data: LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TattooParlor",
+    "name": "Wayki Tattoo Studio",
+    "image": "./475708770_1226441825765025_6711418281119883680_n.jpg",
+    "url": "https://waykitattoostudio.com",
+    "telephone": "+51-999-999-999",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Calle Campo Redondo 100, Cercado",
+      "addressLocality": "Arequipa",
+      "addressCountry": "PE"
+    },
+    "sameAs": [
+      "https://www.instagram.com/waykitattoostudio/",
+      "https://www.facebook.com/waykitattoostudio"
+    ]
+  }
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <link rel="apple-touch-icon" href="./logo.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'brand-black':   '#0d0f0f',
+            'brand-dark':    '#121414',
+            'brand-surface': '#1a1c1c',
+            'brand-card':    '#1e2020',
+            'brand-border':  '#2a2d2d',
+            'brand-red':     '#be0000',
+            'brand-red-deep':'#930000',
+            'brand-red-glow':'rgba(190,0,0,0.35)',
+            'brand-text':    '#e2e2e2',
+            'brand-muted':   '#a0a0a0',
+            'brand-accent':  '#ffb4a8',
+          },
+          fontFamily: {
+            headline: ['Space Grotesk', 'sans-serif'],
+            body:     ['Manrope', 'sans-serif'],
+            mono:     ['JetBrains Mono', 'monospace'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ── Base ─────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { font-family: 'Manrope', sans-serif; }
+    body { background: #0d0f0f; color: #e2e2e2; overflow-x: hidden; }
+
+    /* ── Noise grain overlay ──────────────── */
+    .noise::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: 0.028; pointer-events: none; z-index: 9999;
+    }
+
+    /* ── Ink-bleed section divider ────────── */
+    .ink-divider {
+      width: 100%; height: 120px; margin-top: -60px;
+      background: radial-gradient(ellipse 80% 60% at 50% 100%, #be0000 0%, transparent 70%);
+      opacity: 0.12; pointer-events: none;
+    }
+
+    /* ── Scroll-reveal ────────────────────── */
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left  { opacity: 0; transform: translateX(-40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-right { opacity: 0; transform: translateX(40px);  transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-left.visible, .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* ── Nav ──────────────────────────────── */
+    #navbar { transition: background 0.3s, backdrop-filter 0.3s, box-shadow 0.3s; }
+    #navbar.scrolled { background: rgba(13,15,15,0.95); backdrop-filter: blur(16px); box-shadow: 0 1px 0 rgba(190,0,0,0.2); }
+
+    /* ── Hero ─────────────────────────────── */
+    .hero-bg {
+      background: url('./475708770_1226441825765025_6711418281119883680_n.jpg') center/cover no-repeat;
+    }
+    .hero-overlay {
+      background: linear-gradient(to bottom,
+        rgba(13,15,15,0.55) 0%,
+        rgba(13,15,15,0.35) 40%,
+        rgba(13,15,15,0.85) 80%,
+        rgba(13,15,15,1)    100%
+      );
+    }
+
+    /* ── CTA Buttons ──────────────────────── */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #be0000; color: #fff;
+      padding: 14px 36px;
+      font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+      font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.12);
+      transition: background 0.2s, transform 0.15s;
+      cursor: pointer; text-decoration: none;
+    }
+    .btn-primary:hover { background: #930000; transform: translateY(-1px); }
+    .btn-primary:active { transform: scale(0.97); }
+
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: #e2e2e2;
+      padding: 13px 35px;
+      font-family: 'Space Grotesk', sans-serif; font-weight: 600;
+      font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.35);
+      transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.15s;
+      cursor: pointer; text-decoration: none;
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.7); transform: translateY(-1px); }
+
+    /* ── Category circles ─────────────────── */
+    .cat-circle {
+      width: 90px; height: 90px; border-radius: 50%;
+      background: radial-gradient(circle at 40% 35%, #3a0000, #1a1c1c);
+      border: 1.5px solid #2a2d2d;
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+    .cat-circle:hover {
+      border-color: #be0000;
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(190,0,0,0.3);
+    }
+    .cat-circle svg { width: 38px; height: 38px; }
+
+    /* ── Portfolio cards ──────────────────── */
+    .port-card { overflow: hidden; border: 1px solid #2a2d2d; position: relative; cursor: pointer; }
+    .port-card img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(30%); transition: transform 0.6s ease, filter 0.6s ease; display: block; }
+    .port-card:hover img { transform: scale(1.06); filter: grayscale(0%); }
+    .port-card .port-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(190,0,0,0.6) 0%, transparent 50%);
+      opacity: 0; transition: opacity 0.4s ease;
+      display: flex; align-items: flex-end; padding: 16px;
+    }
+    .port-card:hover .port-overlay { opacity: 1; }
+    .port-label {
+      font-family: 'JetBrains Mono', monospace; font-size: 12px;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: #fff; background: rgba(0,0,0,0.6); padding: 5px 10px;
+    }
+
+    /* ── Service cards ────────────────────── */
+    .svc-card {
+      background: #1a1c1c; border: 1px solid #2a2d2d;
+      padding: 32px 28px;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    .svc-card:hover {
+      border-color: #be0000;
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(190,0,0,0.15);
+    }
+    .svc-icon {
+      width: 56px; height: 56px;
+      background: radial-gradient(circle at 40% 35%, #3a0000, #1a1c1c);
+      border: 1px solid #3a0000;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+    }
+    .svc-icon svg { width: 28px; height: 28px; fill: #be0000; }
+
+    /* ── Stats ────────────────────────────── */
+    .stat-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 48px; font-weight: 700; color: #be0000;
+      line-height: 1;
+    }
+
+    /* ── Form inputs ──────────────────────── */
+    .form-field {
+      width: 100%; background: transparent;
+      border: 0; border-bottom: 2px solid #2a2d2d;
+      padding: 12px 0; outline: none;
+      font-family: 'JetBrains Mono', monospace; font-size: 13px;
+      letter-spacing: 0.1em; color: #e2e2e2;
+      transition: border-color 0.3s;
+    }
+    .form-field::placeholder { color: #555; }
+    .form-field:focus { border-bottom-color: #be0000; }
+
+    /* ── Mobile menu ──────────────────────── */
+    #mobile-menu {
+      display: none; flex-direction: column; gap: 24px;
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(13,15,15,0.98); backdrop-filter: blur(20px);
+      align-items: center; justify-content: center;
+      z-index: 200;
+    }
+    #mobile-menu.open { display: flex; }
+
+    /* ── WhatsApp FAB ─────────────────────── */
+    .wa-fab {
+      position: fixed; bottom: 28px; right: 28px; z-index: 100;
+      width: 58px; height: 58px; border-radius: 50%;
+      background: #25d366;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.45);
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+    }
+    .wa-fab:hover { transform: scale(1.1); box-shadow: 0 10px 32px rgba(37,211,102,0.6); }
+    .wa-fab svg { width: 30px; height: 30px; fill: #fff; }
+
+    /* ── Active nav link ─────────────────── */
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 2px; background: #be0000;
+      transition: width 0.3s ease;
+    }
+    .nav-link.active { color: #e2e2e2 !important; }
+    .nav-link.active::after { width: 100%; }
+
+    /* ── Scroll to top button ─────────────── */
+    #scroll-top {
+      position: fixed; bottom: 96px; right: 28px; z-index: 100;
+      width: 44px; height: 44px;
+      background: #1a1c1c; border: 1px solid #2a2d2d;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; text-decoration: none;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s, border-color 0.2s, background 0.2s, transform 0.2s;
+    }
+    #scroll-top.visible { opacity: 1; pointer-events: auto; }
+    #scroll-top:hover { border-color: #be0000; background: #be0000; transform: translateY(-2px); }
+    #scroll-top svg { width: 18px; height: 18px; fill: #e2e2e2; }
+
+    /* ── Red accent line ─────────────────── */
+    .red-line { display: inline-block; width: 60px; height: 3px; background: #be0000; }
+
+    /* ── Section label ────────────────────── */
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: #be0000; margin-bottom: 12px; display: block;
+    }
+
+    /* ── Slash heading accent ─────────────── */
+    .slash { color: #be0000; font-weight: 900; margin-right: 8px; }
+
+    /* ── About image tilt ─────────────────── */
+    .about-img-wrap { transition: transform 0.5s ease; }
+    .about-img-wrap:hover { transform: rotate(0deg) !important; }
+
+    /* ── Footer ───────────────────────────── */
+    .footer-link { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #555; transition: color 0.2s; text-decoration: none; }
+    .footer-link:hover { color: #be0000; }
+
+    /* ── Mobile nav ───────────────────────── */
+    .mobile-nav {
+      font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 700;
+      color: #e2e2e2; text-decoration: none; letter-spacing: -0.02em;
+      transition: color 0.2s;
+    }
+    .mobile-nav:hover { color: #be0000; }
+
+    /* ── TikTok cards ─────────────────────── */
+    .tiktok-card { border-radius: 0; }
+    .tiktok-embed { background: #1a1c1c !important; }
+
+    /* Delay helpers for staggered reveals */
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+    .delay-5 { transition-delay: 0.5s; }
+    .delay-6 { transition-delay: 0.6s; }
+  </style>
+</head>
+
+<body class="noise dark">

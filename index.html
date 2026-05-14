@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO Primary -->
+  <title data-i18n="title">Wayki Tattoo Studio | Arte en tu Piel — Arequipa, Perú</title>
+  <meta name="description" content="Estudio de tatuajes profesional en Arequipa, Perú. Realismo, color, fineline y más. Reserva tu cita por WhatsApp. Más de 10 años de experiencia." />
+  <meta name="keywords" content="tatuajes arequipa, tattoo studio peru, wayki tattoo, realismo tatuaje, piercing arequipa, sivola ink" />
+  <meta name="author" content="Wayki Tattoo Studio" />
+  <link rel="canonical" href="https://waykitattoostudio.com/" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://waykitattoostudio.com/" />
+  <meta property="og:title" content="Wayki Tattoo Studio | Arte en tu Piel" />
+  <meta property="og:description" content="Estudio de tatuajes profesional en Arequipa, Perú. Reserva tu cita hoy." />
+  <meta property="og:image" content="./475708770_1226441825765025_6711418281119883680_n.jpg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Wayki Tattoo Studio | Arte en tu Piel" />
+  <meta name="twitter:description" content="Estudio de tatuajes profesional en Arequipa, Perú." />
+  <meta name="twitter:image" content="./475708770_1226441825765025_6711418281119883680_n.jpg" />
+
+  <!-- Structured Data: LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TattooParlor",
+    "name": "Wayki Tattoo Studio",
+    "image": "./475708770_1226441825765025_6711418281119883680_n.jpg",
+    "url": "https://waykitattoostudio.com",
+    "telephone": "+51-999-999-999",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Calle Campo Redondo 100, Cercado",
+      "addressLocality": "Arequipa",
+      "addressCountry": "PE"
+    },
+    "sameAs": [
+      "https://www.instagram.com/waykitattoostudio/",
+      "https://www.facebook.com/waykitattoostudio"
+    ]
+  }
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <link rel="apple-touch-icon" href="./logo.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="i18n.js" defer></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'brand-black':   '#0d0f0f',
+            'brand-dark':    '#121414',
+            'brand-surface': '#1a1c1c',
+            'brand-card':    '#1e2020',
+            'brand-border':  '#2a2d2d',
+            'brand-red':     '#be0000',
+            'brand-red-deep':'#930000',
+            'brand-red-glow':'rgba(190,0,0,0.35)',
+            'brand-text':    '#e2e2e2',
+            'brand-muted':   '#a0a0a0',
+            'brand-accent':  '#ffb4a8',
+          },
+          fontFamily: {
+            headline: ['Space Grotesk', 'sans-serif'],
+            body:     ['Manrope', 'sans-serif'],
+            mono:     ['JetBrains Mono', 'monospace'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ── Base ─────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { font-family: 'Manrope', sans-serif; }
+    body { background: #0d0f0f; color: #e2e2e2; overflow-x: hidden; }
+
+    /* ── Noise grain overlay ──────────────── */
+    .noise::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: 0.028; pointer-events: none; z-index: 9999;
+    }
+
+    /* ── Ink-bleed section divider ────────── */
+    .ink-divider {
+      width: 100%; height: 120px; margin-top: -60px;
+      background: radial-gradient(ellipse 80% 60% at 50% 100%, #be0000 0%, transparent 70%);
+      opacity: 0.12; pointer-events: none;
+    }
+
+    /* ── Scroll-reveal ────────────────────── */
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left  { opacity: 0; transform: translateX(-40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-right { opacity: 0; transform: translateX(40px);  transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-left.visible, .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* ── Nav ──────────────────────────────── */
+    #navbar { transition: background 0.3s, backdrop-filter 0.3s, box-shadow 0.3s; }
+    #navbar.scrolled { background: rgba(13,15,15,0.95); backdrop-filter: blur(16px); box-shadow: 0 1px 0 rgba(190,0,0,0.2); }
+
+    /* ── Hero ─────────────────────────────── */
+    .hero-bg {
+      background: url('./475708770_1226441825765025_6711418281119883680_n.jpg') center/cover no-repeat;
+    }
+    .hero-overlay {
+      background: linear-gradient(to bottom,
+        rgba(13,15,15,0.55) 0%,
+        rgba(13,15,15,0.35) 40%,
+        rgba(13,15,15,0.85) 80%,
+        rgba(13,15,15,1)    100%
+      );
+    }
+
+    /* ── CTA Buttons ──────────────────────── */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #be0000; color: #fff;
+      padding: 14px 36px;
+      font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+      font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.12);
+      transition: background 0.2s, transform 0.15s;
+      cursor: pointer; text-decoration: none;
+    }
+    .btn-primary:hover { background: #930000; transform: translateY(-1px); }
+    .btn-primary:active { transform: scale(0.97); }
+
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: #e2e2e2;
+      padding: 13px 35px;
+      font-family: 'Space Grotesk', sans-serif; font-weight: 600;
+      font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.35);
+      transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.15s;
+      cursor: pointer; text-decoration: none;
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.7); transform: translateY(-1px); }
+
+    /* ── Category circles ─────────────────── */
+    .cat-circle {
+      width: 90px; height: 90px; border-radius: 50%;
+      background: radial-gradient(circle at 40% 35%, #3a0000, #1a1c1c);
+      border: 1.5px solid #2a2d2d;
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+    .cat-circle:hover {
+      border-color: #be0000;
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(190,0,0,0.3);
+    }
+    .cat-circle svg { width: 38px; height: 38px; }
+
+    /* ── Portfolio cards ──────────────────── */
+    .port-card { overflow: hidden; border: 1px solid #2a2d2d; position: relative; cursor: pointer; }
+    .port-card img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(30%); transition: transform 0.6s ease, filter 0.6s ease; display: block; }
+    .port-card:hover img { transform: scale(1.06); filter: grayscale(0%); }
+    .port-card .port-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(190,0,0,0.6) 0%, transparent 50%);
+      opacity: 0; transition: opacity 0.4s ease;
+      display: flex; align-items: flex-end; padding: 16px;
+    }
+    .port-card:hover .port-overlay { opacity: 1; }
+    .port-label {
+      font-family: 'JetBrains Mono', monospace; font-size: 12px;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: #fff; background: rgba(0,0,0,0.6); padding: 5px 10px;
+    }
+
+    /* ── Service cards ────────────────────── */
+    .svc-card {
+      background: #1a1c1c; border: 1px solid #2a2d2d;
+      padding: 32px 28px;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    .svc-card:hover {
+      border-color: #be0000;
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(190,0,0,0.15);
+    }
+    .svc-icon {
+      width: 56px; height: 56px;
+      background: radial-gradient(circle at 40% 35%, #3a0000, #1a1c1c);
+      border: 1px solid #3a0000;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+    }
+    .svc-icon svg { width: 28px; height: 28px; fill: #be0000; }
+
+    /* ── Stats ────────────────────────────── */
+    .stat-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 48px; font-weight: 700; color: #be0000;
+      line-height: 1;
+    }
+
+    /* ── Form inputs ──────────────────────── */
+    .form-field {
+      width: 100%; background: transparent;
+      border: 0; border-bottom: 2px solid #2a2d2d;
+      padding: 12px 0; outline: none;
+      font-family: 'JetBrains Mono', monospace; font-size: 13px;
+      letter-spacing: 0.1em; color: #e2e2e2;
+      transition: border-color 0.3s;
+    }
+    .form-field::placeholder { color: #555; }
+    .form-field:focus { border-bottom-color: #be0000; }
+
+    /* ── Mobile menu ──────────────────────── */
+    #mobile-menu {
+      display: none; flex-direction: column; gap: 24px;
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(13,15,15,0.98); backdrop-filter: blur(20px);
+      align-items: center; justify-content: center;
+      z-index: 200;
+    }
+    #mobile-menu.open { display: flex; }
+
+    /* ── WhatsApp FAB ─────────────────────── */
+    .wa-fab {
+      position: fixed; bottom: 28px; right: 28px; z-index: 100;
+      width: 58px; height: 58px; border-radius: 50%;
+      background: #25d366;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.45);
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+    }
+    .wa-fab:hover { transform: scale(1.1); box-shadow: 0 10px 32px rgba(37,211,102,0.6); }
+    .wa-fab svg { width: 30px; height: 30px; fill: #fff; }
+
+    /* ── Active nav link ─────────────────── */
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 2px; background: #be0000;
+      transition: width 0.3s ease;
+    }
+    .nav-link.active { color: #e2e2e2 !important; }
+    .nav-link.active::after { width: 100%; }
+
+    /* ── Scroll to top button ─────────────── */
+    #scroll-top {
+      position: fixed; bottom: 96px; right: 28px; z-index: 100;
+      width: 44px; height: 44px;
+      background: #1a1c1c; border: 1px solid #2a2d2d;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; text-decoration: none;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s, border-color 0.2s, background 0.2s, transform 0.2s;
+    }
+    #scroll-top.visible { opacity: 1; pointer-events: auto; }
+    #scroll-top:hover { border-color: #be0000; background: #be0000; transform: translateY(-2px); }
+    #scroll-top svg { width: 18px; height: 18px; fill: #e2e2e2; }
+
+    /* ── Red accent line ─────────────────── */
+    .red-line { display: inline-block; width: 60px; height: 3px; background: #be0000; }
+
+    /* ── Section label ────────────────────── */
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: #be0000; margin-bottom: 12px; display: block;
+    }
+
+    /* ── Slash heading accent ─────────────── */
+    .slash { color: #be0000; font-weight: 900; margin-right: 8px; }
+
+    /* ── About image tilt ─────────────────── */
+    .about-img-wrap { transition: transform 0.5s ease; }
+    .about-img-wrap:hover { transform: rotate(0deg) !important; }
+
+    /* ── Footer ───────────────────────────── */
+    .footer-link { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #555; transition: color 0.2s; text-decoration: none; }
+    .footer-link:hover { color: #be0000; }
+
+    /* ── Mobile nav ───────────────────────── */
+    .mobile-nav {
+      font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 700;
+      color: #e2e2e2; text-decoration: none; letter-spacing: -0.02em;
+      transition: color 0.2s;
+    }
+    .mobile-nav:hover { color: #be0000; }
+
+    /* ── TikTok cards ─────────────────────── */
+    .tiktok-card { border-radius: 0; }
+    .tiktok-embed { background: #1a1c1c !important; }
+
+    /* Delay helpers for staggered reveals */
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+    .delay-5 { transition-delay: 0.5s; }
+    .delay-6 { transition-delay: 0.6s; }
+  </style>
+</head>
+
+<body class="noise dark">
+  <!-- ═══════════════════════════════════════ -->
+  <!-- NAVBAR                                  -->
+  <!-- ═══════════════════════════════════════ -->
+  <nav id="navbar" class="fixed top-0 w-full z-50">
+    <div class="max-w-[1280px] mx-auto px-6 md:px-10 h-[72px] flex items-center justify-between">
+
+      <!-- Logo -->
+      <a href="#inicio" class="flex items-center gap-3 no-underline flex-shrink-0">
+        <div style="width:40px;height:40px;border-radius:50%;background:#be0000;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <img src="./logo.png" alt="Wayki Tattoo Studio" style="width:34px;height:34px;border-radius:50%;object-fit:cover;" />
+        </div>
+        <span style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:18px; letter-spacing:-0.02em; color:#e2e2e2;">
+          WAYKI <span style="color:#be0000;">TATTOO</span>
+        </span>
+      </a>
+
+      <!-- Desktop nav — solo los más importantes -->
+      <div class="hidden lg:flex items-center gap-6">
+        <a href="#inicio"      class="nav-link" data-i18n="nav.inicio" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#a0a0a0;text-decoration:none;transition:color 0.2s;">Inicio</a>
+        <a href="#portafolio"  class="nav-link" data-i18n="nav.portafolio" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#a0a0a0;text-decoration:none;transition:color 0.2s;">Portafolio</a>
+        <a href="#merch"       class="nav-link" data-i18n="nav.merch" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#a0a0a0;text-decoration:none;transition:color 0.2s;">Merch</a>
+        <a href="#nosotros"    class="nav-link" data-i18n="nav.nosotros" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#a0a0a0;text-decoration:none;transition:color 0.2s;">Nosotros</a>
+        <a href="#testimonios" class="nav-link" data-i18n="nav.testimonios" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#a0a0a0;text-decoration:none;transition:color 0.2s;">Reseñas</a>
+        <a href="#contacto"    class="nav-link" data-i18n="nav.contacto" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#a0a0a0;text-decoration:none;transition:color 0.2s;">Contacto</a>
+            </div>
+      <select class="lang-switcher" style="position:absolute;top:1rem;right:1rem;background:none;border:none;color:#e2e2e2;cursor:pointer;">
+        <option value="es">ES</option>
+        <option value="en">EN</option>
+        <option value="pt">PT</option>
+      </select>
+
+      <!-- Desktop CTA -->
+      <a href="https://wa.me/51993054099?text=Hola%20Wayki%20Tattoo!%20Quiero%20consultar%20sobre%20una%20cita." target="_blank" class="btn-primary hidden lg:inline-flex" style="padding:10px 20px;font-size:11px;flex-shrink:0;">
+        <svg viewBox="0 0 24 24" style="width:15px;height:15px;fill:#fff;flex-shrink:0;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.558 4.114 1.534 5.836L.057 23.786a.5.5 0 0 0 .606.63l6.101-1.601A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.813 9.813 0 0 1-4.966-1.347l-.356-.211-3.695.969.987-3.604-.232-.373A9.799 9.799 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+        Reservar
+      </a>
+
+      <!-- Hamburger (visible en móvil y tablet) -->
+      <button id="menu-btn" class="lg:hidden flex flex-col gap-[5px] p-2 z-10" aria-label="Menú">
+        <span class="ham-line block w-6 h-0.5 bg-brand-text transition-all"></span>
+        <span class="ham-line block w-6 h-0.5 bg-brand-text transition-all"></span>
+        <span class="ham-line block w-5 h-0.5 bg-brand-text transition-all"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- MOBILE MENU                             -->
+  <!-- ═══════════════════════════════════════ -->
+  <div id="mobile-menu" role="dialog" aria-modal="true">
+
+    <!-- Cerrar -->
+    <button id="close-menu" aria-label="Cerrar menú"
+      style="position:absolute;top:24px;right:24px;width:40px;height:40px;border:1px solid #2a2d2d;background:transparent;color:#a0a0a0;font-size:22px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color 0.2s,color 0.2s;"
+      onmouseover="this.style.borderColor='#be0000';this.style.color='#fff';"
+      onmouseout="this.style.borderColor='#2a2d2d';this.style.color='#a0a0a0';">
+      ✕
+    </button>
+
+    <!-- Logo pequeño arriba -->
+    <div style="position:absolute;top:20px;left:24px;display:flex;align-items:center;gap:10px;">
+      <div style="width:32px;height:32px;border-radius:50%;background:#be0000;display:flex;align-items:center;justify-content:center;">
+        <img src="./logo.png" style="width:28px;height:28px;border-radius:50%;object-fit:cover;" />
+      </div>
+      <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:#555;letter-spacing:-0.01em;">WAYKI TATTOO</span>
+    </div>
+
+    <!-- Links -->
+    <nav style="display:flex;flex-direction:column;align-items:center;gap:8px;width:100%;">
+      <a href="#inicio"      class="mobile-nav" onclick="closeMobileMenu()">Inicio</a>
+      <a href="#portafolio"  class="mobile-nav" onclick="closeMobileMenu()">Portafolio</a>
+      <a href="#merch"       class="mobile-nav" onclick="closeMobileMenu()">Merch</a>
+      <a href="#nosotros"    class="mobile-nav" onclick="closeMobileMenu()">Nosotros</a>
+      <a href="#servicios"   class="mobile-nav" onclick="closeMobileMenu()">Servicios</a>
+      <a href="#tutoriales"  class="mobile-nav" onclick="closeMobileMenu()">Tutoriales</a>
+      <a href="#testimonios" class="mobile-nav" onclick="closeMobileMenu()">Reseñas</a>
+      <a href="#contacto"    class="mobile-nav" onclick="closeMobileMenu()">Contacto</a>
+    </nav>
+
+    <!-- CTA -->
+    <a href="https://wa.me/51993054099?text=Hola%20Wayki%20Tattoo!%20Quiero%20reservar%20una%20cita." target="_blank"
+       onclick="closeMobileMenu()"
+       style="margin-top:8px;display:inline-flex;align-items:center;gap:8px;background:#be0000;color:#fff;padding:14px 36px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(255,255,255,0.12);">
+      <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:#fff;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.558 4.114 1.534 5.836L.057 23.786a.5.5 0 0 0 .606.63l6.101-1.601A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.813 9.813 0 0 1-4.966-1.347l-.356-.211-3.695.969.987-3.604-.232-.373A9.799 9.799 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+      Reservar Cita
+    </a>
+
+    <!-- Redes sociales en móvil -->
+    <div style="position:absolute;bottom:32px;display:flex;gap:16px;">
+      <a href="https://www.instagram.com/waykitattoostudio/" target="_blank" aria-label="Instagram" style="color:#555;transition:color 0.2s;" onmouseover="this.style.color='#be0000'" onmouseout="this.style.color='#555'">
+        <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:currentColor;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/waykitattoostudio" target="_blank" aria-label="Facebook" style="color:#555;transition:color 0.2s;" onmouseover="this.style.color='#be0000'" onmouseout="this.style.color='#555'">
+        <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:currentColor;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@waykitattoostudio1" target="_blank" aria-label="TikTok" style="color:#555;transition:color 0.2s;" onmouseover="this.style.color='#be0000'" onmouseout="this.style.color='#555'">
+        <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:currentColor;"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.27 8.27 0 0 0 4.84 1.55V6.79a4.85 4.85 0 0 1-1.07-.1z"/></svg>
+      </a>
+      <a href="https://co.pinterest.com/waykitattoostudio/" target="_blank" aria-label="Pinterest" style="color:#555;transition:color 0.2s;" onmouseover="this.style.color='#be0000'" onmouseout="this.style.color='#555'">
+        <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:currentColor;"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+      </a>
+    </div>
+
+  </div>
+
+  <style>
+    .mobile-nav {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(28px, 6vw, 40px);
+      font-weight: 700; color: #e2e2e2;
+      text-decoration: none; letter-spacing: -0.02em;
+      transition: color 0.2s; padding: 4px 0;
+      width: 100%; text-align: center;
+    }
+    .mobile-nav:hover { color: #be0000; }
+  </style>
+  <!-- ═══════════════════════════════════════ -->
+  <!-- HERO                                    -->
+  <!-- ═══════════════════════════════════════ -->
+  <section id="inicio" class="hero-bg relative min-h-screen flex items-center justify-center">
+    <div class="hero-overlay absolute inset-0"></div>
+    <!-- Red glow at bottom -->
+    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full pointer-events-none"
+         style="background:radial-gradient(ellipse,rgba(190,0,0,0.18) 0%,transparent 70%);"></div>
+
+    <div class="relative z-10 flex flex-col items-center text-center px-6 max-w-5xl mx-auto pt-20">
+
+      <!-- Logo -->
+      <img src="./logo.png" alt="Wayki Tattoo Studio Logo"
+           class="w-28 h-28 md:w-36 md:h-36 rounded-full object-cover mb-10 reveal"
+           style="box-shadow:0 0 60px rgba(190,0,0,0.45); border:2px solid rgba(190,0,0,0.4);" />
+
+      <!-- Eyebrow -->
+      <span class="section-label reveal delay-1">Arequipa · Perú · Est. 2013</span>
+
+      <!-- Headline -->
+      <h1 class="reveal delay-2" data-i18n="hero.title"
+          style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(48px,8vw,96px); line-height:0.95; letter-spacing:-0.03em; color:#e2e2e2; margin-bottom:24px;">
+        EL ARTE<br /><span style="color:#be0000;">EN TU PIEL</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="reveal delay-3 max-w-xl" data-i18n="hero.subtitle"
+         style="font-family:'Manrope',sans-serif; font-size:17px; color:#a0a0a0; line-height:1.7; margin-bottom:48px;">
+        Transformamos tus ideas en obras maestras permanentes. Realismo, color, fineline y más — con los más altos estándares de arte e higiene.
+      </p>
+
+      <!-- CTAs -->
+      <div class="reveal delay-4 flex flex-wrap gap-4 justify-center">
+        <a href="#portafolio" class="btn-primary" data-i18n="cta.portfolio">Ver Portafolio</a>>Ver Portafolio</a>
+        <a href="#contacto"   class="btn-ghost" data-i18n="cta.contacto">Reservar Cita</a>>Reservar Cita</a>
+      </div>
+    </div>
+
+  </section>
+  <!-- ═══════════════════════════════════════ -->
+  <!-- MERCH                                   -->
+  <!-- ═══════════════════════════════════════ -->
+  <section id="merch" style="background:#0d0f0f;padding:96px 0;position:relative;overflow:hidden;">
+
+    <!-- BG watermark -->
+    <div class="absolute left-0 top-1/2 -translate-y-1/2 pointer-events-none select-none" style="opacity:0.03;">
+      <span style="font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:280px;line-height:1;color:#be0000;white-space:nowrap;">MERCH</span>
+    </div>
+
+    <div class="max-w-[1280px] mx-auto px-6 md:px-10">
+
+      <!-- Header -->
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-16 reveal">
+        <div>
+          <span class="section-label">Tienda Wayki</span>
+          <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(32px,4vw,48px);letter-spacing:-0.02em;color:#e2e2e2;">
+            <span class="slash">/</span>Merch &amp; SiVola
+          </h2>
+          <div class="red-line mt-4"></div>
+          <p style="font-family:'Manrope',sans-serif;font-size:15px;color:#a0a0a0;line-height:1.7;margin-top:16px;max-width:480px;">
+            Lleva la cultura Wayki más allá de la piel. Ropa, accesorios y nuestra línea de tintas SiVola.
+          </p>
+        </div>
+        <a href="https://wa.me/51993054099?text=Hola!%20Quiero%20consultar%20sobre%20el%20merch%20Wayki." target="_blank" class="btn-ghost mt-6 md:mt-0" style="padding:10px 24px;font-size:12px;">
+          Consultar por WhatsApp ↗
+        </a>
+      </div>
+
+      <!-- Productos grid — 4 productos -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
+
+        <!-- Producto 1 -->
+        <div class="merch-card reveal delay-1">
+          <div class="merch-img-wrap">
+            <img src="./brave_screenshot_www.kropka.cl.png" alt="SiVola Ink Set Básico — Wayki Tattoo" />
+          </div>
+          <div class="merch-info">
+            <span class="merch-tag">Tintas</span>
+            <h4 class="merch-title">SiVola Ink<br/>Set Básico</h4>
+            <p class="merch-desc">6 colores esenciales</p>
+            <div class="merch-price">S/. 120</div>
+            <a href="https://wa.me/51993054099?text=Hola!%20Me%20interesa%20el%20SiVola%20Ink%20Set%20Básico." target="_blank" class="merch-btn">Pedir ahora</a>
+          </div>
+        </div>
+
+        <!-- Producto 2 -->
+        <div class="merch-card reveal delay-2">
+          <div class="merch-img-wrap">
+            <img src="./brave_screenshot_www.kropka.cl.png" alt="SiVola Ink Set Profesional — Wayki Tattoo" />
+            <span class="merch-badge merch-badge-hot">Pro</span>
+          </div>
+          <div class="merch-info">
+            <span class="merch-tag">Tintas</span>
+            <h4 class="merch-title">SiVola Ink<br/>Set Profesional</h4>
+            <p class="merch-desc">14 colores completos</p>
+            <div class="merch-price">S/. 280</div>
+            <a href="https://wa.me/51993054099?text=Hola!%20Me%20interesa%20el%20SiVola%20Ink%20Set%20Profesional." target="_blank" class="merch-btn">Pedir ahora</a>
+          </div>
+        </div>
+
+        <!-- Producto 3 -->
+        <div class="merch-card reveal delay-3">
+          <div class="merch-img-wrap">
+            <img src="./brave_screenshot_www.kropka.cl.png" alt="Wayki Tee — Wayki Tattoo" />
+            <span class="merch-badge">Nuevo</span>
+          </div>
+          <div class="merch-info">
+            <span class="merch-tag">Ropa</span>
+            <h4 class="merch-title">Wayki Tee<br/>Edición Limitada</h4>
+            <p class="merch-desc">S / M / L / XL</p>
+            <div class="merch-price">S/. 85</div>
+            <a href="https://wa.me/51993054099?text=Hola!%20Me%20interesa%20la%20Wayki%20Tee." target="_blank" class="merch-btn">Pedir ahora</a>
+          </div>
+        </div>
+
+        <!-- Producto 4 -->
+        <div class="merch-card reveal delay-4">
+          <div class="merch-img-wrap">
+            <img src="./brave_screenshot_www.kropka.cl.png" alt="Gift Card Wayki Tattoo" />
+          </div>
+          <div class="merch-info">
+            <span class="merch-tag">Regalo</span>
+            <h4 class="merch-title">Gift Card<br/>Wayki</h4>
+            <p class="merch-desc">Para tatuaje o merch</p>
+            <div class="merch-price">desde S/. 150</div>
+            <a href="https://wa.me/51993054099?text=Hola!%20Quiero%20una%20Gift%20Card%20Wayki." target="_blank" class="merch-btn">Pedir ahora</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .merch-card {
+      background: #1a1c1c; border: 1px solid #2a2d2d;
+      display: flex; flex-direction: column;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    .merch-card:hover {
+      border-color: #be0000;
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(190,0,0,0.15);
+    }
+    .merch-img-wrap {
+      position: relative; aspect-ratio: 1/1; overflow: hidden;
+      background: #fff;
+    }
+    .merch-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.5s ease;
+      display: block;
+    }
+    .merch-card:hover .merch-img-wrap img { transform: scale(1.05); }
+    .merch-badge {
+      position: absolute; top: 10px; right: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
+      background: #1a1c1c; color: #a0a0a0;
+      padding: 4px 8px; border: 1px solid #2a2d2d;
+    }
+    .merch-badge-hot { background: #be0000 !important; color: #fff !important; border-color: #be0000 !important; }
+    .merch-info { padding: 18px 16px 20px; display: flex; flex-direction: column; flex: 1; }
+    .merch-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: #be0000;
+    }
+    .merch-title {
+      font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+      font-size: 14px; color: #e2e2e2; line-height: 1.3; margin: 6px 0 4px;
+    }
+    .merch-desc {
+      font-family: 'Manrope', sans-serif; font-size: 12px;
+      color: #555; margin-bottom: 12px;
+    }
+    .merch-price {
+      font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+      font-size: 20px; color: #be0000; margin-bottom: 14px;
+    }
+    .merch-btn {
+      display: block; text-align: center; text-decoration: none;
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 10px; border: 1px solid #2a2d2d; color: #a0a0a0;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+      margin-top: auto;
+    }
+    .merch-btn:hover { background: #be0000; border-color: #be0000; color: #fff; }
+  </style>
+  <!-- ═══════════════════════════════════════ -->
+  <!-- SERVICIOS                               -->
+  <!-- ═══════════════════════════════════════ -->
+  <section id="servicios" class="py-24 md:py-32" style="background:#121414;">
+    <div class="max-w-[1280px] mx-auto px-6 md:px-10">
+
+      <!-- Header -->
+      <div class="mb-16 reveal">
+        <span class="section-label">Lo que hacemos</span>
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(32px,4vw,48px);letter-spacing:-0.02em;color:#e2e2e2;">
+          <span class="slash">/</span>Nuestros Servicios
+        </h2>
+        <div class="red-line mt-4"></div>
+      </div>
+
+      <!-- Service Cards Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
+
+        <div class="svc-card reveal delay-1">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24"><path d="M20.71 5.63l-2.34-2.34a1 1 0 0 0-1.41 0l-3.12 3.12-1.41-1.42-1.42 1.42 1.41 1.41L3 17.25V21h3.75l9.88-9.88 1.41 1.41 1.42-1.42-1.42-1.41 3.12-3.12a1 1 0 0 0 .05-1.35zM6.92 19H5v-1.92l9.06-9.06 1.92 1.92z"/></svg>
+          </div>
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;color:#e2e2e2;margin-bottom:10px;">Tatuajes</h3>
+          <p style="font-family:'Manrope',sans-serif;font-size:14px;color:#a0a0a0;line-height:1.65;margin-bottom:16px;">Realismo, color, blackwork, fineline, tradicional y más. Cada pieza diseñada a medida para ti.</p>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#be0000;">Servicio principal</span>
+        </div>
+
+        <div class="svc-card reveal delay-2">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm0-10a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/></svg>
+          </div>
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;color:#e2e2e2;margin-bottom:10px;">Piercings</h3>
+          <p style="font-family:'Manrope',sans-serif;font-size:14px;color:#a0a0a0;line-height:1.65;margin-bottom:16px;">Piercings profesionales con materiales de primera calidad. Asesoría completa antes y después.</p>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#be0000;">Disponible</span>
+        </div>
+
+        <div class="svc-card reveal delay-3">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h3v8a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-8h3a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-7 15h-1v-8h1v8zm2 0h-1v-8h1v8zm4-10H6V5h12v3z"/></svg>
+          </div>
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;color:#e2e2e2;margin-bottom:10px;">SiVola Ink</h3>
+          <p style="font-family:'Manrope',sans-serif;font-size:14px;color:#a0a0a0;line-height:1.65;margin-bottom:16px;">Nuestra línea de tintas propias. Formuladas para resultados óptimos y longevidad en tu piel.</p>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#be0000;">Marca propia</span>
+        </div>
+
+        <div class="svc-card reveal delay-4">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24"><path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm0 10c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>
+          </div>
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;color:#e2e2e2;margin-bottom:10px;">Merch</h3>
+          <p style="font-family:'Manrope',sans-serif;font-size:14px;color:#a0a0a0;line-height:1.65;margin-bottom:16px;">Ropa y accesorios exclusivos con la esencia de Wayki. Lleva la cultura del tatuaje más allá de la piel.</p>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#be0000;">Colección disponible</span>
+        </div>
+      </div>
+
+      <!-- Categorías -->
+      <div class="reveal">
+        <span class="section-label">Descubre</span>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:22px;color:#a0a0a0;margin-bottom:32px;">Nuestro universo</h3>
+      </div>
+
+      <div class="flex flex-wrap gap-8 justify-center md:justify-start">
+
+        <div class="flex flex-col items-center gap-3 reveal delay-1">
+          <div class="cat-circle">
+            <svg viewBox="0 0 24 24" style="width:34px;height:34px;fill:#be0000;"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+          </div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#a0a0a0;text-align:center;">Eventos<br/>y Arte</span>
+        </div>
+
+        <div class="flex flex-col items-center gap-3 reveal delay-2">
+          <div class="cat-circle">
+            <svg viewBox="0 0 24 24" style="width:34px;height:34px;fill:#be0000;"><path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm0 10c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>
+          </div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#a0a0a0;text-align:center;">Merch</span>
+        </div>
+
+        <div class="flex flex-col items-center gap-3 reveal delay-3">
+          <div class="cat-circle">
+            <svg viewBox="0 0 24 24" style="width:34px;height:34px;fill:#be0000;"><path d="M4.5 11h-2V9H1v6h1.5v-2.5h2V15H6V9H4.5v2zm2.5-.5h1.5V15H10V10.5h1.5V9H7v1.5zm5.5 0H14V15h1.5v-4.5H17V9h-4.5v1.5zm7-1.5v6H21v-2.5h.5c.8 0 1.5-.7 1.5-1.5v-1c0-.8-.7-1.5-1.5-1.5H19zm2 3h-.5v-1.5H21V13z"/></svg>
+          </div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#a0a0a0;text-align:center;">Ofeluchis</span>
+        </div>
+
+        <div class="flex flex-col items-center gap-3 reveal delay-4">
+          <div class="cat-circle">
+            <svg viewBox="0 0 24 24" style="width:34px;height:34px;fill:#be0000;"><path d="M11 5.08V2c-5 .5-9 4.81-9 10s4 9.5 9 10v-3.08c-3-.48-6-3.4-6-6.92s3-6.44 6-6.92zM18.97 11H22c-.47-5-4-8.53-9-9v3.08C16 5.51 18.54 8 18.97 11zM13 18.92V22c5-.47 8.53-4 9-9h-3.03c-.43 3-2.97 5.49-5.97 5.92z"/></svg>
+          </div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#a0a0a0;text-align:center;">Waykichas</span>
+        </div>
+
+        <div class="flex flex-col items-center gap-3 reveal delay-5">
+          <div class="cat-circle">
+            <svg viewBox="0 0 24 24" style="width:34px;height:34px;fill:#be0000;"><path d="M19 8l-4 4h3c0 3.31-2.69 6-6 6-1.01 0-1.97-.25-2.8-.7l-1.46 1.46C8.97 19.54 10.43 20 12 20c4.42 0 8-3.58 8-8h3l-4-4zM6 12c0-3.31 2.69-6 6-6 1.01 0 1.97.25 2.8.7l1.46-1.46C15.03 4.46 13.57 4 12 4c-4.42 0-8 3.58-8 8H1l4 4 4-4H6z"/></svg>
+          </div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#a0a0a0;text-align:center;">Sanados!</span>
+        </div>
+
+        <div class="flex flex-col items-center gap-3 reveal delay-6">
+          <div class="cat-circle">
+            <svg viewBox="0 0 24 24" style="width:34px;height:34px;fill:#be0000;"><path d="M19 3H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h3v8a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-8h3a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-7 15h-1v-8h1v8zm2 0h-1v-8h1v8zm4-10H6V5h12v3z"/></svg>
+          </div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#a0a0a0;text-align:center;">SiVola<br/>Ink</span>
+        </div>
+
+        <div class="flex flex-col items-center gap-3 reveal" style="transition-delay:0.7s;">
+          <div class="cat-circle">
+            <svg viewBox="0 0 24 24" style="width:34px;height:34px;fill:#be0000;"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+          </div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#a0a0a0;text-align:center;">Tips</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- ═══════════════════════════════════════ -->
+  <!-- PORTAFOLIO                              -->
+  <!-- ═══════════════════════════════════════ -->
+  <section id="portafolio" style="background:#0d0f0f;padding:96px 0;">
+    <div class="max-w-[1280px] mx-auto px-6 md:px-10">
+
+      <!-- Header -->
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-10 reveal">
+        <div>
+          <span class="section-label">Nuestro trabajo</span>
+          <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(32px,4vw,48px);letter-spacing:-0.02em;color:#e2e2e2;">
+            <span class="slash">/</span>Portafolio
+          </h2>
+          <div class="red-line mt-4"></div>
+        </div>
+        <a href="https://www.instagram.com/waykitattoostudio/" target="_blank" class="btn-ghost mt-6 md:mt-0" style="padding:10px 24px;font-size:12px;">
+          Ver más en Instagram ↗
+        </a>
+      </div>
+
+      <!-- Filtros de estilo -->
+      <div class="flex flex-wrap gap-3 mb-8 reveal">
+        <button class="port-filter active" data-filter="all">Todos</button>
+        <button class="port-filter" data-filter="realismo">Realismo</button>
+        <button class="port-filter" data-filter="color">Color</button>
+      </div>
+
+      <style>
+        .port-filter {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+          padding: 8px 20px; border: 1px solid #2a2d2d;
+          background: transparent; color: #555; cursor: pointer;
+          transition: border-color 0.2s, color 0.2s, background 0.2s;
+        }
+        .port-filter:hover { border-color: #be0000; color: #e2e2e2; }
+        .port-filter.active { border-color: #be0000; background: #be0000; color: #fff; }
+        .port-item { transition: opacity 0.35s ease, transform 0.35s ease; }
+        .port-item.hidden { opacity: 0; pointer-events: none; transform: scale(0.96); display: none; }
+      </style>
+
+      <!-- Bento Grid -->
+      <div id="port-grid" class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4" style="min-height:400px;">
+
+        <div class="port-card port-item col-span-2 row-span-2 reveal" data-style="realismo" style="min-height:400px;">
+          <img src="./2.jpeg" alt="Tatuaje realismo manga espacial — Wayki Tattoo Studio" loading="lazy" />
+          <div class="port-overlay"><span class="port-label">Realismo · Manga Espacial</span></div>
+        </div>
+
+        <div class="port-card port-item col-span-1 reveal delay-1" data-style="realismo" style="min-height:190px;">
+          <img src="./WhatsApp%20Image%202026-05-14%20at%2012.32.08%20PM.jpeg" alt="Tatuaje León — Wayki Tattoo" loading="lazy" />
+          <div class="port-overlay"><span class="port-label">Realismo · León</span></div>
+        </div>
+
+        <div class="port-card port-item col-span-1 reveal delay-2" data-style="color" style="min-height:190px;">
+          <img src="./WhatsApp%20Image%202026-05-14%20at%2012.32.41%20PM.jpeg" alt="Tatuaje retrato color — Wayki Tattoo" loading="lazy" />
+          <div class="port-overlay"><span class="port-label">Color · Retrato</span></div>
+        </div>
+
+        <div class="port-card port-item col-span-1 reveal delay-3" data-style="realismo" style="min-height:190px;">
+          <img src="./1.jpeg" alt="Tatuaje realista gato — Wayki Tattoo Studio" loading="lazy" />
+          <div class="port-overlay"><span class="port-label">Realismo · Gato</span></div>
+        </div>
+
+        <!-- CTA card -->
+        <div class="port-item col-span-1 reveal delay-4 flex flex-col items-center justify-center gap-4 p-6 text-center"
+             data-style="all"
+             style="background:radial-gradient(circle at 50% 30%, #3a0000, #1a1c1c);border:1px solid #be0000;min-height:190px;">
+          <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;color:#e2e2e2;line-height:1.2;">¿Tienes una idea?</span>
+          <span style="font-family:'Manrope',sans-serif;font-size:13px;color:#a0a0a0;">Hagámosla realidad.</span>
+          <a href="#contacto" class="btn-primary" style="padding:10px 20px;font-size:11px;">Cotizar</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- ═══════════════════════════════════════ -->
+  <!-- TESTIMONIOS                             -->
+  <!-- ═══════════════════════════════════════ -->
+  <section id="testimonios" style="background:#0d0f0f;padding:96px 0;position:relative;overflow:hidden;">
+
+    <!-- BG glow -->
+    <div class="absolute left-1/2 top-0 -translate-x-1/2 pointer-events-none"
+         style="width:800px;height:2px;background:linear-gradient(to right,transparent,#be0000,transparent);opacity:0.4;"></div>
+
+    <div class="max-w-[1280px] mx-auto px-6 md:px-10">
+
+      <!-- Header -->
+      <div class="mb-16 reveal">
+        <span class="section-label">Lo que dicen de nosotros</span>
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(32px,4vw,48px);letter-spacing:-0.02em;color:#e2e2e2;">
+          <span class="slash">/</span>Reseñas Reales
+        </h2>
+        <div class="red-line mt-4"></div>
+        <!-- Google badge -->
+        <div class="flex items-center gap-2 mt-6">
+          <svg viewBox="0 0 24 24" style="width:20px;height:20px;"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#555;">5.0 · Google Reviews</span>
+        </div>
+      </div>
+
+      <!-- Reviews grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+        <!-- Card 1 -->
+        <div class="reveal delay-1" style="background:#1a1c1c;border:1px solid #2a2d2d;padding:28px;display:flex;flex-direction:column;gap:16px;transition:border-color 0.3s;" onmouseover="this.style.borderColor='#be0000'" onmouseout="this.style.borderColor='#2a2d2d'">
+          <div class="flex items-center justify-between">
+            <div>
+              <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;color:#e2e2e2;">Antonin Biret</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;color:#555;display:block;margin-top:2px;text-transform:uppercase;">Hace 10 meses</span>
+            </div>
+            <div style="display:flex;gap:2px;">
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#be0000;" class="star"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#be0000;"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#be0000;"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#be0000;"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#be0000;"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            </div>
+          </div>
+          <!-- Quote -->
+          <svg viewBox="0 0 24 24" style="width:24px;height:24px;fill:#be0000;opacity:0.4;flex-shrink:0;"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></svg>
+          <p style="font-family:'Manrope',sans-serif;font-size:14px;color:#a0a0a0;line-height:1.75;flex:1;">
+            Experiencia inolvidable, Angel y Lili son de una simpatía que pocas veces en la vida encontras. Además el trabajo está hecho con una higiene de alta calidad y un profesionalismo enorme. ¡Recomendaciones más que merecidas!
+          </p>
+          <div style="height:1px;background:#2a2d2d;"></div>
+          <div class="flex items-center gap-2">
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#555;letter-spacing:0.08em;">Google Review</span>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="reveal delay-2" style="background:#1a1c1c;border:1px solid #2a2d2d;padding:28px;display:flex;flex-direction:column;gap:16px;transition:border-color 0.3s;" onmouseover="this.style.borderColor='#be0000'" onmouseout="this.style.borderColor='#2a2d2d'">
+          <div class="flex items-center justify-between">
+            <div>
+              <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;color:#e2e2e2;">Sanpahece</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;color:#555;display:block;margin-top:2px;text-transform:uppercase;">Hace 4 años</span>
+            </div>
+            <div style="display:flex;gap:2px;">
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#be0000;"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#be0000;"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#be0000;"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#be0000;"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#be0000;"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            </div>
+          </div>
+          <svg viewBox="0 0 24 24" style="width:24px;height:24px;fill:#be0000;opacity:0.4;flex-shrink:0;"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></svg>
+          <p style="font-family:'Manrope',sans-serif;font-size:14px;color:#a0a0a0;line-height:1.75;flex:1;">
+            Son los mejores tatuadores de la ciudad. Son super cuidadosos, amables y la calidad de los tatuajes es INCREÍBLE. 100% recomendados.
+          </p>
+          <div style="height:1px;background:#2a2d2d;"></div>
+          <div class="flex items-center gap-2">
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#555;letter-spacing:0.08em;">Google Review</span>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="reveal delay-3" style="background:#1a1c1c;border:1px solid #2a2d2d;padding:28px;display:flex;flex-direction:column;gap:16px;transition:border-color 0.3s;" onmouseover="this.style.borderColor='#be0000'" onmouseout="this.style.borderColor='#2a2d2d'">
+          <div class="flex items-center justify-between">
+            <div>
+              <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;color:#e2e2e2;">Sergio Perez</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;color:#555;display:block;margin-top:2px;text-transform:uppercase;">Hace 3 años</span>
+            </div>
+            <div style="display:flex;gap:2px;">
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#be0000;"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#be0000;"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#be0000;"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#be0000;"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#be0000;"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            </div>
+          </div>
+          <svg viewBox="0 0 24 24" style="width:24px;height:24px;fill:#be0000;opacity:0.4;flex-shrink:0;"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></svg>
+          <p style="font-family:'Manrope',sans-serif;font-size:14px;color:#a0a0a0;line-height:1.75;flex:1;">
+            Me hice dos tatuajes de alta calidad y salieron exactamente como esperaba. El ambiente es cómodo y el trato es bastante agradable. Dan recomendaciones muy buenas para que el tatuaje salga lo mejor posible.
+          </p>
+          <div style="height:1px;background:#2a2d2d;"></div>
+          <div class="flex items-center gap-2">
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#555;letter-spacing:0.08em;">Google Review</span>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="reveal delay-4" style="background:#1a1c1c;border:1px solid #2a2d2d;padding:28px;display:flex;flex-direction:column;gap:16px;transition:border-color 0.3s;" onmouseover="this.style.borderColor='#be0000'" onmouseout="this.style.borderColor='#2a2d2d'">
+          <div class="flex items-center justify-between">
+            <div>
+              <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;color:#e2e2e2;">Felipe Jalsovec</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;color:#555;display:block;margin-top:2px;text-transform:uppercase;">Hace 4 años</span>
+            </div>
+            <div style="display:flex;gap:2px;">
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#be0000;"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#be0000;"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#be0000;"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#be0000;"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#be0000;"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            </div>
+          </div>
+          <svg viewBox="0 0 24 24" style="width:24px;height:24px;fill:#be0000;opacity:0.4;flex-shrink:0;"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></svg>
+          <p style="font-family:'Manrope',sans-serif;font-size:14px;color:#a0a0a0;line-height:1.75;flex:1;">
+            El ambiente es ameno, buena música, buen ambiente, el local es céntrico y acogedor. Profesional en realizar el trabajo, de buena calidad, materiales esterilizados y seguros. Si tienes en mente tatuarte, WAYKI TATTOO definitivamente es el lugar indicado.
+          </p>
+          <div style="height:1px;background:#2a2d2d;"></div>
+          <div class="flex items-center gap-2">
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#555;letter-spacing:0.08em;">Google Review</span>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="reveal delay-5" style="background:#1a1c1c;border:1px solid #2a2d2d;padding:28px;display:flex;flex-direction:column;gap:16px;transition:border-color 0.3s;" onmouseover="this.style.borderColor='#be0000'" onmouseout="this.style.borderColor='#2a2d2d'">
+          <div class="flex items-center justify-between">
+            <div>
+              <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;color:#e2e2e2;">Mauricio Martinez</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;color:#555;display:block;margin-top:2px;text-transform:uppercase;">Hace un año</span>
+            </div>
+            <div style="display:flex;gap:2px;">
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#be0000;"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#be0000;"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#be0000;"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#be0000;"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#be0000;"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            </div>
+          </div>
+          <svg viewBox="0 0 24 24" style="width:24px;height:24px;fill:#be0000;opacity:0.4;flex-shrink:0;"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></svg>
+          <p style="font-family:'Manrope',sans-serif;font-size:14px;color:#a0a0a0;line-height:1.75;flex:1;">
+            Me gustó el trato, buena calidad, precio accesible, buenos proyectos y buenas ideas del tatuador. Un estudio con mucho talento y dedicación.
+          </p>
+          <div style="height:1px;background:#2a2d2d;"></div>
+          <div class="flex items-center gap-2">
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#555;letter-spacing:0.08em;">Google Review</span>
+          </div>
+        </div>
+
+        <!-- CTA card -->
+        <div class="reveal delay-6 flex flex-col items-center justify-center gap-5 p-8 text-center"
+             style="background:radial-gradient(circle at 50% 30%, #2a0000, #121414);border:1px solid #be0000;min-height:280px;">
+          <div style="display:flex;gap:3px;">
+            <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:#be0000;"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:#be0000;"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:#be0000;"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:#be0000;"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:#be0000;"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          </div>
+          <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;color:#e2e2e2;line-height:1.2;">5.0 en Google</span>
+          <span style="font-family:'Manrope',sans-serif;font-size:13px;color:#a0a0a0;line-height:1.6;">¿Ya eres parte de nuestra familia Wayki? Déjanos tu reseña.</span>
+          <a href="https://g.page/r/waykitattoostudio/review" target="_blank" class="btn-primary" style="padding:10px 24px;font-size:11px;">
+            Dejar reseña en Google
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- ═══════════════════════════════════════ -->
+  <!-- SOBRE NOSOTROS                          -->
+  <!-- ═══════════════════════════════════════ -->
+  <section id="nosotros" style="background:#121414;padding:96px 0;position:relative;overflow:hidden;">
+
+    <!-- BG watermark -->
+    <div class="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none select-none" style="opacity:0.04;">
+      <span style="font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:320px;line-height:1;color:#be0000;white-space:nowrap;">WAYKI</span>
+    </div>
+
+    <div class="max-w-[1280px] mx-auto px-6 md:px-10 grid md:grid-cols-2 gap-16 md:gap-24 items-center">
+
+      <!-- Text -->
+      <div class="reveal-left">
+        <span class="section-label">Quiénes somos</span>
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(32px,4vw,48px);letter-spacing:-0.02em;color:#e2e2e2;margin-bottom:16px;">
+          <span class="slash">/</span>Arte y Precisión
+        </h2>
+        <div class="red-line mb-8"></div>
+        <p style="font-family:'Manrope',sans-serif;font-size:16px;color:#a0a0a0;line-height:1.8;margin-bottom:16px;">
+          Wayki Tattoo Studio no es solo un lugar para tatuarse — es un santuario para la expresión artística. Ubicados en el corazón de Arequipa, transformamos visiones en piezas maestras atemporales.
+        </p>
+        <p style="font-family:'Manrope',sans-serif;font-size:16px;color:#a0a0a0;line-height:1.8;margin-bottom:32px;">
+          Combinamos técnicas tradicionales con una visión moderna y vanguardista, usando nuestras propias tintas <strong style="color:#e2e2e2;">SiVola</strong> para garantizar resultados de larga duración.
+        </p>
+        <p style="font-family:'Manrope',sans-serif;font-size:15px;font-style:italic;color:#be0000;margin-bottom:40px;">
+          "Tu piel es el lienzo, nuestra tinta es el alma."
+        </p>
+
+        <!-- Stats -->
+        <div class="flex flex-wrap gap-10">
+          <div>
+            <div class="stat-num">10+</div>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#555;">Años</span>
+          </div>
+          <div>
+            <div class="stat-num">5k+</div>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#555;">Clientes</span>
+          </div>
+          <div>
+            <div class="stat-num">2-3</div>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#555;">Artistas</span>
+          </div>
+          <div>
+            <div class="stat-num">∞</div>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#555;">Estilos</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Image -->
+      <div class="reveal-right">
+        <div class="about-img-wrap relative" style="transform:rotate(2deg);">
+          <div style="border:1px solid #2a2d2d;padding:8px;background:#1a1c1c;">
+            <img src="./1.jpeg" alt="Trabajo artístico — Wayki Tattoo Studio Arequipa"
+                 style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block;filter:grayscale(10%);" loading="lazy" />
+          </div>
+          <!-- Red badge -->
+          <div style="position:absolute;bottom:-20px;left:-20px;background:#be0000;padding:16px 24px;border:1px solid rgba(255,255,255,0.15);">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#fff;font-weight:600;display:block;">Arte Certificado</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.1em;">Arequipa · Perú</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- ═══════════════════════════════════════ -->
+  <!-- TUTORIALES / TIKTOK                     -->
+  <!-- ═══════════════════════════════════════ -->
+  <section id="tutoriales" style="background:#121414;padding:96px 0;position:relative;overflow:hidden;">
+
+    <!-- Top accent line -->
+    <div class="absolute left-1/2 top-0 -translate-x-1/2 pointer-events-none"
+         style="width:600px;height:2px;background:linear-gradient(to right,transparent,#be0000,transparent);opacity:0.5;"></div>
+
+    <div class="max-w-[1280px] mx-auto px-6 md:px-10">
+
+      <!-- Header -->
+      <div class="text-center mb-16 reveal">
+        <div class="flex items-center justify-center gap-2 mb-4">
+          <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:#be0000;"><path d="M8 5v14l11-7z"/></svg>
+          <span class="section-label" style="margin-bottom:0;">INK MASTERY</span>
+        </div>
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(32px,5vw,56px);letter-spacing:-0.03em;color:#e2e2e2;margin-bottom:20px;">
+          Aprende el Arte del Tatuaje
+        </h2>
+        <p style="font-family:'Manrope',sans-serif;font-size:16px;color:#a0a0a0;line-height:1.75;max-width:600px;margin:0 auto 12px;">
+          En Wayki Tattoo no solo creamos arte, compartimos el oficio. Explora nuestros procesos y técnicas para entender la profundidad de cada trazo.
+        </p>
+        <a href="https://www.tiktok.com/@waykitattoostudio" target="_blank"
+           style="display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#be0000;text-decoration:none;margin-top:8px;transition:opacity 0.2s;"
+           onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
+          <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:currentColor;"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.27 8.27 0 0 0 4.84 1.55V6.79a4.85 4.85 0 0 1-1.07-.1z"/></svg>
+          Ver todos en TikTok ↗
+        </a>
+      </div>
+
+      <!-- TikTok Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Card 1: Creator embed -->
+        <div class="tiktok-card reveal delay-1" style="border:1px solid #2a2d2d;overflow:hidden;">
+          <blockquote class="tiktok-embed"
+            cite="https://www.tiktok.com/@waykitattoostudio"
+            data-unique-id="waykitattoostudio"
+            data-embed-type="creator"
+            style="max-width:100%;min-width:unset;">
+            <section>
+              <a target="_blank" href="https://www.tiktok.com/@waykitattoostudio">@waykitattoostudio</a>
+            </section>
+          </blockquote>
+        </div>
+
+        <!-- Card 2: Placeholder con overlay -->
+        <div class="tiktok-card reveal delay-2" style="display:flex;flex-direction:column;border:1px solid #2a2d2d;background:#1a1c1c;overflow:hidden;">
+          <div style="position:relative;background:#0d0f0f;aspect-ratio:9/16;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;">
+            <svg viewBox="0 0 24 24" style="width:48px;height:48px;fill:#be0000;"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.27 8.27 0 0 0 4.84 1.55V6.79a4.85 4.85 0 0 1-1.07-.1z"/></svg>
+            <div style="text-align:center;padding:0 16px;">
+              <span style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;color:#e2e2e2;display:block;margin-bottom:6px;">Proceso de Tatuaje</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#555;">Próximamente</span>
+            </div>
+            <a href="https://www.tiktok.com/@waykitattoostudio" target="_blank" class="btn-ghost" style="padding:8px 18px;font-size:10px;">Ver en TikTok</a>
+          </div>
+          <div style="padding:16px 20px;border-top:1px solid #2a2d2d;">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#be0000;">Proceso · Realismo</span>
+          </div>
+        </div>
+
+        <!-- Card 3: Imagen con play -->
+        <div class="tiktok-card reveal delay-3" style="display:flex;flex-direction:column;border:1px solid #2a2d2d;overflow:hidden;">
+          <div style="position:relative;aspect-ratio:9/16;overflow:hidden;">
+            <img src="./2.jpeg" alt="Wayki Tattoo proceso" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.4);" />
+            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px;text-align:center;">
+              <div style="width:64px;height:64px;border-radius:50%;background:rgba(190,0,0,0.9);display:flex;align-items:center;justify-content:center;box-shadow:0 0 32px rgba(190,0,0,0.5);">
+                <svg viewBox="0 0 24 24" style="width:28px;height:28px;fill:#fff;margin-left:4px;"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+              <div>
+                <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;color:#e2e2e2;display:block;margin-bottom:6px;">WAYKICHAS!</span>
+                <span style="font-family:'Manrope',sans-serif;font-size:13px;color:#a0a0a0;line-height:1.5;">La comunidad detrás del arte. Nuestros clientes, nuestra familia.</span>
+              </div>
+              <a href="https://www.tiktok.com/@waykitattoostudio" target="_blank" class="btn-primary" style="padding:10px 20px;font-size:11px;">Ver en TikTok</a>
+            </div>
+            <div style="position:absolute;top:12px;right:12px;background:rgba(0,0,0,0.8);border-radius:6px;padding:5px 8px;display:flex;align-items:center;gap:5px;">
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#e2e2e2;"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.27 8.27 0 0 0 4.84 1.55V6.79a4.85 4.85 0 0 1-1.07-.1z"/></svg>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.05em;color:#e2e2e2;">TikTok</span>
+            </div>
+          </div>
+          <div style="padding:16px 20px;background:#1a1c1c;border-top:1px solid #2a2d2d;">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#be0000;">Comunidad · Waykichas</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CTA bottom -->
+      <div class="text-center mt-14 reveal">
+        <p style="font-family:'Manrope',sans-serif;font-size:14px;color:#555;margin-bottom:16px;">¿Quieres aprender más sobre el proceso antes de tu cita?</p>
+        <a href="https://www.tiktok.com/@waykitattoostudio" target="_blank" class="btn-ghost" style="padding:12px 32px;font-size:12px;">
+          <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:currentColor;flex-shrink:0;"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.27 8.27 0 0 0 4.84 1.55V6.79a4.85 4.85 0 0 1-1.07-.1z"/></svg>
+          Seguir en TikTok @waykitattoostudio
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TikTok embed script -->
+  <script async src="https://www.tiktok.com/embed.js"></script>
+  <!-- ═══════════════════════════════════════ -->
+  <!-- CONTACTO                                -->
+  <!-- ═══════════════════════════════════════ -->
+  <section id="contacto" style="background:#0d0f0f;padding:96px 0;">
+    <div class="max-w-[1280px] mx-auto px-6 md:px-10">
+
+      <!-- Header -->
+      <div class="mb-16 reveal">
+        <span class="section-label">Hablemos</span>
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(32px,4vw,48px);letter-spacing:-0.02em;color:#e2e2e2;">
+          <span class="slash">/</span>Reserva tu Cita
+        </h2>
+        <div class="red-line mt-4"></div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-16 md:gap-24">
+
+        <!-- Form -->
+        <div class="reveal-left">
+          <p style="font-family:'Manrope',sans-serif;font-size:15px;color:#a0a0a0;line-height:1.7;margin-bottom:40px;">
+            Cuéntanos tu idea y te ayudamos a transformarla en una obra de arte. También puedes escribirnos directamente por WhatsApp.
+          </p>
+
+          <form id="contact-form" onsubmit="handleSubmit(event)" novalidate style="display:flex;flex-direction:column;gap:32px;">
+            <div>
+              <label style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#555;display:block;margin-bottom:8px;">Nombre completo</label>
+              <input type="text" name="nombre" placeholder="Tu nombre..." class="form-field" required />
+            </div>
+            <div>
+              <label style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#555;display:block;margin-bottom:8px;">WhatsApp / Teléfono</label>
+              <input type="tel" name="tel" placeholder="+51 999 999 999" class="form-field" />
+            </div>
+            <div>
+              <label style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#555;display:block;margin-bottom:8px;">País</label>
+              <input type="text" name="pais" placeholder="Ej: Perú, Argentina, Chile..." class="form-field" />
+            </div>
+            <div>
+              <label style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#555;display:block;margin-bottom:8px;">Tipo de servicio</label>
+              <select name="servicio" class="form-field" style="cursor:pointer;">
+                <option value="" style="background:#1a1c1c;">Selecciona un servicio...</option>
+                <option value="tatuaje-realismo" style="background:#1a1c1c;">Tatuaje — Realismo (B&G o Color)</option>
+                <option value="tatuaje-fineline" style="background:#1a1c1c;">Tatuaje — Fineline / Delicado</option>
+                <option value="tatuaje-blackwork" style="background:#1a1c1c;">Tatuaje — Blackwork / Ornamental</option>
+                <option value="tatuaje-tradicional" style="background:#1a1c1c;">Tatuaje — Tradicional / Neotradicional</option>
+                <option value="tatuaje-color" style="background:#1a1c1c;">Tatuaje — Color / Ilustración</option>
+                <option value="piercing" style="background:#1a1c1c;">Piercing</option>
+                <option value="sivola" style="background:#1a1c1c;">SiVola Ink — Consulta de tintas</option>
+                <option value="merch" style="background:#1a1c1c;">Merch — Productos Wayki</option>
+                <option value="otro" style="background:#1a1c1c;">Otro / No sé aún</option>
+              </select>
+            </div>
+            <div>
+              <label style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#555;display:block;margin-bottom:8px;">Describe tu idea</label>
+              <textarea name="idea" placeholder="¿Qué tienes en mente? Cuéntanos el diseño, tamaño, zona del cuerpo..." class="form-field" rows="4" style="resize:vertical;"></textarea>
+            </div>
+            <div class="flex flex-wrap gap-4">
+              <button type="submit" class="btn-primary" style="flex:1;min-width:200px;justify-content:center;">
+                Enviar por WhatsApp
+              </button>
+              <a href="mailto:waykitattoostudio@gmail.com" class="btn-ghost" style="flex:1;min-width:200px;justify-content:center;">
+                <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:currentColor;flex-shrink:0;"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                Email
+              </a>
+            </div>
+            <div id="form-success" style="display:none;font-family:'JetBrains Mono',monospace;font-size:13px;color:#be0000;padding:16px;border:1px solid #be0000;letter-spacing:0.05em;">
+              ✓ Abriendo WhatsApp... Te contactamos pronto.
+            </div>
+          </form>
+        </div>
+
+        <!-- Info + Mapa -->
+        <div class="reveal-right flex flex-col gap-8">
+
+          <!-- Datos de contacto -->
+          <div style="border:1px solid #2a2d2d;padding:28px;background:#1a1c1c;">
+            <h4 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;color:#e2e2e2;margin-bottom:20px;">Encuéntranos</h4>
+            <div class="flex flex-col gap-4">
+              <div class="flex items-start gap-3">
+                <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:#be0000;flex-shrink:0;margin-top:2px;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                <span style="font-family:'Manrope',sans-serif;font-size:14px;color:#a0a0a0;line-height:1.6;">Calle Campo Redondo 100, Cercado<br/>Arequipa — Perú</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:#be0000;flex-shrink:0;"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                <a href="https://wa.me/51993054099" target="_blank" style="font-family:'Manrope',sans-serif;font-size:14px;color:#a0a0a0;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#be0000'" onmouseout="this.style.color='#a0a0a0'">+51 993 054 099</a>
+              </div>
+              <div class="flex items-center gap-3">
+                <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:#be0000;flex-shrink:0;"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                <a href="mailto:waykitattoostudio@gmail.com" style="font-family:'Manrope',sans-serif;font-size:14px;color:#a0a0a0;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#be0000'" onmouseout="this.style.color='#a0a0a0'">waykitattoostudio@gmail.com</a>
+              </div>
+              <div class="flex items-center gap-3">
+                <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:#be0000;flex-shrink:0;"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+                <span style="font-family:'Manrope',sans-serif;font-size:14px;color:#a0a0a0;">Lun – Sáb: 10:00 am – 8:00 pm</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Google Maps -->
+          <div style="border:1px solid #2a2d2d;overflow:hidden;filter:grayscale(80%) contrast(1.1);height:200px;">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3827.3082!2d-71.5375!3d-16.4090!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91424a5b3c0f6cff%3A0x0!2sCalle%20Campo%20Redondo%20100%2C%20Arequipa!5e0!3m2!1ses!2spe!4v1"
+              width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade" title="Ubicación Wayki Tattoo Studio Arequipa">
+            </iframe>
+          </div>
+
+          <!-- Redes sociales -->
+          <div>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#555;display:block;margin-bottom:14px;">Síguenos</span>
+            <div class="grid grid-cols-2 gap-3">
+              <a href="https://www.instagram.com/waykitattoostudio/" target="_blank"
+                 style="display:flex;align-items:center;gap:10px;padding:14px 16px;border:1px solid #2a2d2d;background:#1a1c1c;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#a0a0a0;text-decoration:none;text-transform:uppercase;transition:border-color 0.2s,color 0.2s,background 0.2s;"
+                 onmouseover="this.style.borderColor='#be0000';this.style.color='#e2e2e2';this.style.background='#230000';"
+                 onmouseout="this.style.borderColor='#2a2d2d';this.style.color='#a0a0a0';this.style.background='#1a1c1c';">
+                <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:currentColor;flex-shrink:0;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                Instagram
+              </a>
+              <a href="https://www.facebook.com/waykitattoostudio" target="_blank"
+                 style="display:flex;align-items:center;gap:10px;padding:14px 16px;border:1px solid #2a2d2d;background:#1a1c1c;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#a0a0a0;text-decoration:none;text-transform:uppercase;transition:border-color 0.2s,color 0.2s,background 0.2s;"
+                 onmouseover="this.style.borderColor='#be0000';this.style.color='#e2e2e2';this.style.background='#230000';"
+                 onmouseout="this.style.borderColor='#2a2d2d';this.style.color='#a0a0a0';this.style.background='#1a1c1c';">
+                <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:currentColor;flex-shrink:0;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                Facebook
+              </a>
+              <a href="https://www.tiktok.com/@waykitattoostudio1" target="_blank"
+                 style="display:flex;align-items:center;gap:10px;padding:14px 16px;border:1px solid #2a2d2d;background:#1a1c1c;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#a0a0a0;text-decoration:none;text-transform:uppercase;transition:border-color 0.2s,color 0.2s,background 0.2s;"
+                 onmouseover="this.style.borderColor='#be0000';this.style.color='#e2e2e2';this.style.background='#230000';"
+                 onmouseout="this.style.borderColor='#2a2d2d';this.style.color='#a0a0a0';this.style.background='#1a1c1c';">
+                <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:currentColor;flex-shrink:0;"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.27 8.27 0 0 0 4.84 1.55V6.79a4.85 4.85 0 0 1-1.07-.1z"/></svg>
+                TikTok
+              </a>
+              <a href="https://co.pinterest.com/waykitattoostudio/" target="_blank"
+                 style="display:flex;align-items:center;gap:10px;padding:14px 16px;border:1px solid #2a2d2d;background:#1a1c1c;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#a0a0a0;text-decoration:none;text-transform:uppercase;transition:border-color 0.2s,color 0.2s,background 0.2s;"
+                 onmouseover="this.style.borderColor='#be0000';this.style.color='#e2e2e2';this.style.background='#230000';"
+                 onmouseout="this.style.borderColor='#2a2d2d';this.style.color='#a0a0a0';this.style.background='#1a1c1c';">
+                <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:currentColor;flex-shrink:0;"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+                Pinterest
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ═══════════════════════════════════════ -->
+  <!-- FOOTER                                  -->
+  <!-- ═══════════════════════════════════════ -->
+  <footer style="background:#0a0c0c;border-top:1px solid #1a1c1c;padding:48px 0 32px;">
+    <div class="max-w-[1280px] mx-auto px-6 md:px-10">
+
+      <!-- Top row: brand + socials -->
+      <div class="flex flex-col md:flex-row items-center md:items-start justify-between gap-10 mb-10">
+
+        <!-- Brand -->
+        <div class="flex flex-col items-center md:items-start gap-3">
+          <div class="flex items-center gap-3">
+            <img src="./logo.png" alt="Wayki Tattoo" class="w-9 h-9 rounded-full object-cover" />
+            <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;letter-spacing:-0.02em;color:#e2e2e2;">
+              WAYKI <span style="color:#be0000;">TATTOO</span> STUDIO
+            </span>
+          </div>
+          <p style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#555;text-transform:uppercase;">Arequipa · Perú · Est. 2013</p>
+          <a href="mailto:waykitattoostudio@gmail.com" style="font-family:'Manrope',sans-serif;font-size:13px;color:#555;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#be0000'" onmouseout="this.style.color='#555'">waykitattoostudio@gmail.com</a>
+          <a href="https://wa.me/51993054099" target="_blank" style="font-family:'Manrope',sans-serif;font-size:13px;color:#555;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#be0000'" onmouseout="this.style.color='#555'">+51 993 054 099</a>
+        </div>
+
+        <!-- Social icons — grande y visible -->
+        <div class="flex flex-col items-center md:items-end gap-4">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#555;">Síguenos</span>
+          <div class="flex items-center gap-4">
+            <a href="https://www.instagram.com/waykitattoostudio/" target="_blank" aria-label="Instagram"
+               style="width:44px;height:44px;border:1px solid #2a2d2d;background:#1a1c1c;display:flex;align-items:center;justify-content:center;color:#a0a0a0;text-decoration:none;transition:border-color 0.2s,color 0.2s,background 0.2s;"
+               onmouseover="this.style.borderColor='#be0000';this.style.color='#fff';this.style.background='#be0000';"
+               onmouseout="this.style.borderColor='#2a2d2d';this.style.color='#a0a0a0';this.style.background='#1a1c1c';">
+              <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:currentColor;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/waykitattoostudio" target="_blank" aria-label="Facebook"
+               style="width:44px;height:44px;border:1px solid #2a2d2d;background:#1a1c1c;display:flex;align-items:center;justify-content:center;color:#a0a0a0;text-decoration:none;transition:border-color 0.2s,color 0.2s,background 0.2s;"
+               onmouseover="this.style.borderColor='#be0000';this.style.color='#fff';this.style.background='#be0000';"
+               onmouseout="this.style.borderColor='#2a2d2d';this.style.color='#a0a0a0';this.style.background='#1a1c1c';">
+              <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:currentColor;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://www.tiktok.com/@waykitattoostudio1" target="_blank" aria-label="TikTok"
+               style="width:44px;height:44px;border:1px solid #2a2d2d;background:#1a1c1c;display:flex;align-items:center;justify-content:center;color:#a0a0a0;text-decoration:none;transition:border-color 0.2s,color 0.2s,background 0.2s;"
+               onmouseover="this.style.borderColor='#be0000';this.style.color='#fff';this.style.background='#be0000';"
+               onmouseout="this.style.borderColor='#2a2d2d';this.style.color='#a0a0a0';this.style.background='#1a1c1c';">
+              <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:currentColor;"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.27 8.27 0 0 0 4.84 1.55V6.79a4.85 4.85 0 0 1-1.07-.1z"/></svg>
+            </a>
+            <a href="https://co.pinterest.com/waykitattoostudio/" target="_blank" aria-label="Pinterest"
+               style="width:44px;height:44px;border:1px solid #2a2d2d;background:#1a1c1c;display:flex;align-items:center;justify-content:center;color:#a0a0a0;text-decoration:none;transition:border-color 0.2s,color 0.2s,background 0.2s;"
+               onmouseover="this.style.borderColor='#be0000';this.style.color='#fff';this.style.background='#be0000';"
+               onmouseout="this.style.borderColor='#2a2d2d';this.style.color='#a0a0a0';this.style.background='#1a1c1c';">
+              <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:currentColor;"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div style="height:1px;background:linear-gradient(to right,transparent,#2a2d2d,transparent);margin-bottom:24px;"></div>
+
+      <!-- Bottom row -->
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex flex-wrap gap-6 justify-center">
+          <a href="#servicios"  class="footer-link">Servicios</a>
+          <a href="#portafolio" class="footer-link">Portafolio</a>
+          <a href="#nosotros"   class="footer-link">Nosotros</a>
+          <a href="#tutoriales" class="footer-link">Tutoriales</a>
+          <a href="#contacto"   class="footer-link">Contacto</a>
+        </div>
+        <p style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#333;text-align:center;">
+          © 2026 Wayki Tattoo Studio · Arequipa, Perú
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to top -->
+  <button id="scroll-top" aria-label="Volver al inicio" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
+  </button>
+
+  <!-- WhatsApp FAB -->
+  <a href="https://wa.me/51993054099?text=Hola%20Wayki%20Tattoo!%20Quiero%20consultar%20sobre%20un%20tatuaje." target="_blank" class="wa-fab" aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.558 4.114 1.534 5.836L.057 23.786a.5.5 0 0 0 .606.63l6.101-1.601A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.813 9.813 0 0 1-4.966-1.347l-.356-.211-3.695.969.987-3.604-.232-.373A9.799 9.799 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+  </a>
+  <!-- ═══════════════════════════════════════ -->
+  <!-- JAVASCRIPT                              -->
+  <!-- ═══════════════════════════════════════ -->
+  <script>
+    // ── Navbar scroll effect ──────────────────
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // ── Active nav link on scroll ─────────────
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            const isActive = link.getAttribute('href') === '#' + entry.target.id;
+            link.classList.toggle('active', isActive);
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+    sections.forEach(s => sectionObserver.observe(s));
+
+    // ── Scroll to top button ──────────────────
+    const scrollTopBtn = document.getElementById('scroll-top');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+
+    // ── Mobile menu ───────────────────────────
+    const menuBtn    = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closeBtn   = document.getElementById('close-menu');
+
+    function openMobileMenu()  { mobileMenu.classList.add('open');    document.body.style.overflow = 'hidden'; }
+    function closeMobileMenu() { mobileMenu.classList.remove('open'); document.body.style.overflow = ''; }
+
+    menuBtn.addEventListener('click', openMobileMenu);
+    closeBtn.addEventListener('click', closeMobileMenu);
+    mobileMenu.addEventListener('click', (e) => { if (e.target === mobileMenu) closeMobileMenu(); });
+
+    // ── Scroll reveal ─────────────────────────
+    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    // ── Form submit → WhatsApp ────────────────
+    function handleSubmit(e) {
+      e.preventDefault();
+      const data   = new FormData(e.target);
+      const nombre = data.get('nombre') || '';
+      const idea   = data.get('idea')   || '';
+      const msg    = encodeURIComponent(
+        `Hola Wayki Tattoo! Soy ${nombre}. ${idea ? 'Mi idea: ' + idea : 'Quiero consultar sobre una cita.'}`
+      );
+      window.open(`https://wa.me/51993054099?text=${msg}`, '_blank');
+      document.getElementById('form-success').style.display = 'block';
+      e.target.reset();
+    }
+
+    // ── Portfolio filter ──────────────────────
+    document.querySelectorAll('.port-filter').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.port-filter').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.port-item').forEach(item => {
+          const match = filter === 'all' || item.dataset.style === filter || item.dataset.style === 'all';
+          item.classList.toggle('hidden', !match);
+        });
+      });
+    });
+
+    // ── Smooth scroll ─────────────────────────
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+  </script>
+</body>
+</html>

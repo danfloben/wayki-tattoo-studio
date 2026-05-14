@@ -1,0 +1,92 @@
+  <!-- ═══════════════════════════════════════ -->
+  <!-- JAVASCRIPT                              -->
+  <!-- ═══════════════════════════════════════ -->
+  <script>
+    // ── Navbar scroll effect ──────────────────
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // ── Active nav link on scroll ─────────────
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            const isActive = link.getAttribute('href') === '#' + entry.target.id;
+            link.classList.toggle('active', isActive);
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+    sections.forEach(s => sectionObserver.observe(s));
+
+    // ── Scroll to top button ──────────────────
+    const scrollTopBtn = document.getElementById('scroll-top');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+
+    // ── Mobile menu ───────────────────────────
+    const menuBtn    = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closeBtn   = document.getElementById('close-menu');
+
+    function openMobileMenu()  { mobileMenu.classList.add('open');    document.body.style.overflow = 'hidden'; }
+    function closeMobileMenu() { mobileMenu.classList.remove('open'); document.body.style.overflow = ''; }
+
+    menuBtn.addEventListener('click', openMobileMenu);
+    closeBtn.addEventListener('click', closeMobileMenu);
+    mobileMenu.addEventListener('click', (e) => { if (e.target === mobileMenu) closeMobileMenu(); });
+
+    // ── Scroll reveal ─────────────────────────
+    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    // ── Form submit → WhatsApp ────────────────
+    function handleSubmit(e) {
+      e.preventDefault();
+      const data   = new FormData(e.target);
+      const nombre = data.get('nombre') || '';
+      const idea   = data.get('idea')   || '';
+      const msg    = encodeURIComponent(
+        `Hola Wayki Tattoo! Soy ${nombre}. ${idea ? 'Mi idea: ' + idea : 'Quiero consultar sobre una cita.'}`
+      );
+      window.open(`https://wa.me/51993054099?text=${msg}`, '_blank');
+      document.getElementById('form-success').style.display = 'block';
+      e.target.reset();
+    }
+
+    // ── Portfolio filter ──────────────────────
+    document.querySelectorAll('.port-filter').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.port-filter').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.port-item').forEach(item => {
+          const match = filter === 'all' || item.dataset.style === filter || item.dataset.style === 'all';
+          item.classList.toggle('hidden', !match);
+        });
+      });
+    });
+
+    // ── Smooth scroll ─────────────────────────
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+  </script>
+</body>
+</html>

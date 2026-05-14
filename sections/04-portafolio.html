@@ -1,0 +1,76 @@
+  <!-- ═══════════════════════════════════════ -->
+  <!-- PORTAFOLIO                              -->
+  <!-- ═══════════════════════════════════════ -->
+  <section id="portafolio" style="background:#0d0f0f;padding:96px 0;">
+    <div class="max-w-[1280px] mx-auto px-6 md:px-10">
+
+      <!-- Header -->
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-10 reveal">
+        <div>
+          <span class="section-label">Nuestro trabajo</span>
+          <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(32px,4vw,48px);letter-spacing:-0.02em;color:#e2e2e2;">
+            <span class="slash">/</span>Portafolio
+          </h2>
+          <div class="red-line mt-4"></div>
+        </div>
+        <a href="https://www.instagram.com/waykitattoostudio/" target="_blank" class="btn-ghost mt-6 md:mt-0" style="padding:10px 24px;font-size:12px;">
+          Ver más en Instagram ↗
+        </a>
+      </div>
+
+      <!-- Filtros de estilo -->
+      <div class="flex flex-wrap gap-3 mb-8 reveal">
+        <button class="port-filter active" data-filter="all">Todos</button>
+        <button class="port-filter" data-filter="realismo">Realismo</button>
+        <button class="port-filter" data-filter="color">Color</button>
+      </div>
+
+      <style>
+        .port-filter {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+          padding: 8px 20px; border: 1px solid #2a2d2d;
+          background: transparent; color: #555; cursor: pointer;
+          transition: border-color 0.2s, color 0.2s, background 0.2s;
+        }
+        .port-filter:hover { border-color: #be0000; color: #e2e2e2; }
+        .port-filter.active { border-color: #be0000; background: #be0000; color: #fff; }
+        .port-item { transition: opacity 0.35s ease, transform 0.35s ease; }
+        .port-item.hidden { opacity: 0; pointer-events: none; transform: scale(0.96); display: none; }
+      </style>
+
+      <!-- Bento Grid -->
+      <div id="port-grid" class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4" style="min-height:400px;">
+
+        <div class="port-card port-item col-span-2 row-span-2 reveal" data-style="realismo" style="min-height:400px;">
+          <img src="./2.jpeg" alt="Tatuaje realismo manga espacial — Wayki Tattoo Studio" loading="lazy" />
+          <div class="port-overlay"><span class="port-label">Realismo · Manga Espacial</span></div>
+        </div>
+
+        <div class="port-card port-item col-span-1 reveal delay-1" data-style="realismo" style="min-height:190px;">
+          <img src="./WhatsApp%20Image%202026-05-14%20at%2012.32.08%20PM.jpeg" alt="Tatuaje León — Wayki Tattoo" loading="lazy" />
+          <div class="port-overlay"><span class="port-label">Realismo · León</span></div>
+        </div>
+
+        <div class="port-card port-item col-span-1 reveal delay-2" data-style="color" style="min-height:190px;">
+          <img src="./WhatsApp%20Image%202026-05-14%20at%2012.32.41%20PM.jpeg" alt="Tatuaje retrato color — Wayki Tattoo" loading="lazy" />
+          <div class="port-overlay"><span class="port-label">Color · Retrato</span></div>
+        </div>
+
+        <div class="port-card port-item col-span-1 reveal delay-3" data-style="realismo" style="min-height:190px;">
+          <img src="./1.jpeg" alt="Tatuaje realista gato — Wayki Tattoo Studio" loading="lazy" />
+          <div class="port-overlay"><span class="port-label">Realismo · Gato</span></div>
+        </div>
+
+        <!-- CTA card -->
+        <div class="port-item col-span-1 reveal delay-4 flex flex-col items-center justify-center gap-4 p-6 text-center"
+             data-style="all"
+             style="background:radial-gradient(circle at 50% 30%, #3a0000, #1a1c1c);border:1px solid #be0000;min-height:190px;">
+          <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;color:#e2e2e2;line-height:1.2;">¿Tienes una idea?</span>
+          <span style="font-family:'Manrope',sans-serif;font-size:13px;color:#a0a0a0;">Hagámosla realidad.</span>
+          <a href="#contacto" class="btn-primary" style="padding:10px 20px;font-size:11px;">Cotizar</a>
+        </div>
+
+      </div>
+    </div>
+  </section>

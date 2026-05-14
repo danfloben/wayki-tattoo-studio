@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(New-Item -ItemType Directory -Path \"C:\\\\Users\\\\danfl\\\\Desktop\\\\wayki.tattoo.studio\\\\sections\" -Force)",
+      "PowerShell(Set-Location \"C:\\\\Users\\\\danfl\\\\Desktop\\\\wayki.tattoo.studio\"; PowerShell -ExecutionPolicy Bypass -File .\\\\build.ps1)",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "WebSearch",
+      "WebFetch(domain:gangatattoo.com)",
+      "WebFetch(domain:nobleart.com)",
+      "WebFetch(domain:www.gangatattoo.com)"
+    ]
+  }
+}
