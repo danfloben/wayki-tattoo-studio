@@ -7,22 +7,22 @@
       <!-- Header -->
       <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-10 reveal">
         <div>
-          <span class="section-label">Nuestro trabajo</span>
+          <span class="section-label" data-i18n="port_label">Nuestro trabajo</span>
           <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(32px,4vw,48px);letter-spacing:-0.02em;color:#e2e2e2;">
-            <span class="slash">/</span>Portafolio
+            <span class="slash">/</span><span data-i18n="port_title">Portafolio</span>
           </h2>
           <div class="red-line mt-4"></div>
         </div>
-        <a href="https://www.instagram.com/waykitattoostudio/" target="_blank" class="btn-ghost mt-6 md:mt-0" style="padding:10px 24px;font-size:12px;">
+        <a href="https://www.instagram.com/waykitattoostudio/" target="_blank" class="btn-ghost mt-6 md:mt-0" data-i18n="port_ig" style="padding:10px 24px;font-size:12px;">
           Ver más en Instagram ↗
         </a>
       </div>
 
       <!-- Filtros de estilo -->
       <div class="flex flex-wrap gap-3 mb-8 reveal">
-        <button class="port-filter active" data-filter="all">Todos</button>
-        <button class="port-filter" data-filter="realismo">Realismo</button>
-        <button class="port-filter" data-filter="color">Color</button>
+        <button class="port-filter active" data-filter="all" data-i18n="port_filter_all">Todos</button>
+        <button class="port-filter" data-filter="realismo" data-i18n="port_filter_rel">Realismo</button>
+        <button class="port-filter" data-filter="color" data-i18n="port_filter_col">Color</button>
       </div>
 
       <style>
@@ -66,9 +66,9 @@
         <div class="port-item col-span-1 reveal delay-4 flex flex-col items-center justify-center gap-4 p-6 text-center"
              data-style="all"
              style="background:radial-gradient(circle at 50% 30%, #3a0000, #1a1c1c);border:1px solid #be0000;min-height:190px;">
-          <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;color:#e2e2e2;line-height:1.2;">¿Tienes una idea?</span>
-          <span style="font-family:'Manrope',sans-serif;font-size:13px;color:#a0a0a0;">Hagámosla realidad.</span>
-          <a href="#contacto" class="btn-primary" style="padding:10px 20px;font-size:11px;">Cotizar</a>
+          <span data-i18n="port_cta_q" style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;color:#e2e2e2;line-height:1.2;">¿Tienes una idea?</span>
+          <span data-i18n="port_cta_s" style="font-family:'Manrope',sans-serif;font-size:13px;color:#a0a0a0;">Hagámosla realidad.</span>
+          <a href="#contacto" class="btn-primary" data-i18n="port_cta_btn" style="padding:10px 20px;font-size:11px;">Cotizar</a>
         </div>
 
       </div>

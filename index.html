@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- SEO Primary -->
-  <title data-i18n="title">Wayki Tattoo Studio | Arte en tu Piel — Arequipa, Perú</title>
+  <title>Wayki Tattoo Studio | Arte en tu Piel — Arequipa, Perú</title>
   <meta name="description" content="Estudio de tatuajes profesional en Arequipa, Perú. Realismo, color, fineline y más. Reserva tu cita por WhatsApp. Más de 10 años de experiencia." />
   <meta name="keywords" content="tatuajes arequipa, tattoo studio peru, wayki tattoo, realismo tatuaje, piercing arequipa, sivola ink" />
   <meta name="author" content="Wayki Tattoo Studio" />
@@ -56,8 +56,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
   <!-- Tailwind -->
+  <script src="./translations.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="i18n.js" defer></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -338,23 +338,37 @@
 
       <!-- Desktop nav — solo los más importantes -->
       <div class="hidden lg:flex items-center gap-6">
-        <a href="#inicio"      class="nav-link" data-i18n="nav.inicio" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#a0a0a0;text-decoration:none;transition:color 0.2s;">Inicio</a>
-        <a href="#portafolio"  class="nav-link" data-i18n="nav.portafolio" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#a0a0a0;text-decoration:none;transition:color 0.2s;">Portafolio</a>
-        <a href="#merch"       class="nav-link" data-i18n="nav.merch" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#a0a0a0;text-decoration:none;transition:color 0.2s;">Merch</a>
-        <a href="#nosotros"    class="nav-link" data-i18n="nav.nosotros" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#a0a0a0;text-decoration:none;transition:color 0.2s;">Nosotros</a>
-        <a href="#testimonios" class="nav-link" data-i18n="nav.testimonios" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#a0a0a0;text-decoration:none;transition:color 0.2s;">Reseñas</a>
-        <a href="#contacto"    class="nav-link" data-i18n="nav.contacto" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#a0a0a0;text-decoration:none;transition:color 0.2s;">Contacto</a>
-            </div>
-      <select class="lang-switcher" style="position:absolute;top:1rem;right:1rem;background:none;border:none;color:#e2e2e2;cursor:pointer;">
-        <option value="es">ES</option>
-        <option value="en">EN</option>
-        <option value="pt">PT</option>
-      </select>
+        <a href="#inicio"      class="nav-link" data-i18n="nav_inicio"    style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#a0a0a0;text-decoration:none;transition:color 0.2s;">Inicio</a>
+        <a href="#portafolio"  class="nav-link" data-i18n="nav_portfolio" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#a0a0a0;text-decoration:none;transition:color 0.2s;">Portafolio</a>
+        <a href="#merch"       class="nav-link" data-i18n="nav_merch"     style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#a0a0a0;text-decoration:none;transition:color 0.2s;">Merch</a>
+        <a href="#nosotros"    class="nav-link" data-i18n="nav_nosotros"  style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#a0a0a0;text-decoration:none;transition:color 0.2s;">Nosotros</a>
+        <a href="#testimonios" class="nav-link" data-i18n="nav_resenas"   style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#a0a0a0;text-decoration:none;transition:color 0.2s;">Reseñas</a>
+        <a href="#contacto"    class="nav-link" data-i18n="nav_contacto"  style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#a0a0a0;text-decoration:none;transition:color 0.2s;">Contacto</a>
+      </div>
+
+      <!-- Language Switcher -->
+      <div style="position:relative;" id="lang-switcher" class="hidden lg:block">
+        <button id="lang-btn" onclick="toggleLangMenu()"
+                style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#555;background:transparent;border:1px solid #2a2d2d;padding:6px 10px;cursor:pointer;display:flex;align-items:center;gap:5px;transition:border-color 0.2s,color 0.2s;"
+                onmouseover="this.style.borderColor='#be0000';this.style.color='#e2e2e2';"
+                onmouseout="this.style.borderColor='#2a2d2d';this.style.color='#555';">
+          <svg viewBox="0 0 24 24" style="width:13px;height:13px;fill:currentColor;"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95a15.65 15.65 0 0 0-1.38-3.56A8.03 8.03 0 0 1 18.92 8zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2s.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56A7.987 7.987 0 0 1 5.08 16zm2.95-8H5.08a7.987 7.987 0 0 1 4.33-3.56A15.65 15.65 0 0 0 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2s.07-1.35.16-2h4.68c.09.65.16 1.32.16 2s-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2s-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/></svg>
+          <span id="lang-current">ES</span>
+          <svg viewBox="0 0 24 24" style="width:10px;height:10px;fill:currentColor;"><path d="M7 10l5 5 5-5z"/></svg>
+        </button>
+        <div id="lang-menu" style="display:none;position:absolute;top:calc(100% + 6px);right:0;background:#1a1c1c;border:1px solid #2a2d2d;z-index:200;min-width:72px;">
+          <button onclick="setLang('es')" data-lang="es" class="lang-opt">ES</button>
+          <button onclick="setLang('en')" data-lang="en" class="lang-opt">EN</button>
+          <button onclick="setLang('it')" data-lang="it" class="lang-opt">IT</button>
+          <button onclick="setLang('fr')" data-lang="fr" class="lang-opt">FR</button>
+          <button onclick="setLang('de')" data-lang="de" class="lang-opt">DE</button>
+        </div>
+      </div>
 
       <!-- Desktop CTA -->
       <a href="https://wa.me/51993054099?text=Hola%20Wayki%20Tattoo!%20Quiero%20consultar%20sobre%20una%20cita." target="_blank" class="btn-primary hidden lg:inline-flex" style="padding:10px 20px;font-size:11px;flex-shrink:0;">
         <svg viewBox="0 0 24 24" style="width:15px;height:15px;fill:#fff;flex-shrink:0;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.558 4.114 1.534 5.836L.057 23.786a.5.5 0 0 0 .606.63l6.101-1.601A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.813 9.813 0 0 1-4.966-1.347l-.356-.211-3.695.969.987-3.604-.232-.373A9.799 9.799 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
-        Reservar
+        <span data-i18n="nav_reservar">Reservar</span>
       </a>
 
       <!-- Hamburger (visible en móvil y tablet) -->
@@ -389,14 +403,14 @@
 
     <!-- Links -->
     <nav style="display:flex;flex-direction:column;align-items:center;gap:8px;width:100%;">
-      <a href="#inicio"      class="mobile-nav" onclick="closeMobileMenu()">Inicio</a>
-      <a href="#portafolio"  class="mobile-nav" onclick="closeMobileMenu()">Portafolio</a>
-      <a href="#merch"       class="mobile-nav" onclick="closeMobileMenu()">Merch</a>
-      <a href="#nosotros"    class="mobile-nav" onclick="closeMobileMenu()">Nosotros</a>
+      <a href="#inicio"      class="mobile-nav" data-i18n="nav_inicio"    onclick="closeMobileMenu()">Inicio</a>
+      <a href="#portafolio"  class="mobile-nav" data-i18n="nav_portfolio" onclick="closeMobileMenu()">Portafolio</a>
+      <a href="#merch"       class="mobile-nav" data-i18n="nav_merch"     onclick="closeMobileMenu()">Merch</a>
+      <a href="#nosotros"    class="mobile-nav" data-i18n="nav_nosotros"  onclick="closeMobileMenu()">Nosotros</a>
       <a href="#servicios"   class="mobile-nav" onclick="closeMobileMenu()">Servicios</a>
       <a href="#tutoriales"  class="mobile-nav" onclick="closeMobileMenu()">Tutoriales</a>
-      <a href="#testimonios" class="mobile-nav" onclick="closeMobileMenu()">Reseñas</a>
-      <a href="#contacto"    class="mobile-nav" onclick="closeMobileMenu()">Contacto</a>
+      <a href="#testimonios" class="mobile-nav" data-i18n="nav_resenas"   onclick="closeMobileMenu()">Reseñas</a>
+      <a href="#contacto"    class="mobile-nav" data-i18n="nav_contacto"  onclick="closeMobileMenu()">Contacto</a>
     </nav>
 
     <!-- CTA -->
@@ -404,8 +418,17 @@
        onclick="closeMobileMenu()"
        style="margin-top:8px;display:inline-flex;align-items:center;gap:8px;background:#be0000;color:#fff;padding:14px 36px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(255,255,255,0.12);">
       <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:#fff;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.558 4.114 1.534 5.836L.057 23.786a.5.5 0 0 0 .606.63l6.101-1.601A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.813 9.813 0 0 1-4.966-1.347l-.356-.211-3.695.969.987-3.604-.232-.373A9.799 9.799 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
-      Reservar Cita
+      <span data-i18n="nav_reservar">Reservar Cita</span>
     </a>
+
+    <!-- Mobile language switcher -->
+    <div style="display:flex;gap:6px;margin-top:6px;">
+      <button onclick="setLang('es');closeMobileMenu();" data-lang="es" class="lang-opt lang-opt-mobile">ES</button>
+      <button onclick="setLang('en');closeMobileMenu();" data-lang="en" class="lang-opt lang-opt-mobile">EN</button>
+      <button onclick="setLang('it');closeMobileMenu();" data-lang="it" class="lang-opt lang-opt-mobile">IT</button>
+      <button onclick="setLang('fr');closeMobileMenu();" data-lang="fr" class="lang-opt lang-opt-mobile">FR</button>
+      <button onclick="setLang('de');closeMobileMenu();" data-lang="de" class="lang-opt lang-opt-mobile">DE</button>
+    </div>
 
     <!-- Redes sociales en móvil -->
     <div style="position:absolute;bottom:32px;display:flex;gap:16px;">
@@ -435,6 +458,19 @@
       width: 100%; text-align: center;
     }
     .mobile-nav:hover { color: #be0000; }
+    .lang-opt {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+      background: transparent; color: #555; border: 1px solid #2a2d2d;
+      padding: 6px 12px; cursor: pointer; display: block; width: 100%;
+      text-align: center; transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+    .lang-opt:hover { color: #e2e2e2; border-color: #be0000; }
+    .lang-opt.active { color: #fff; background: #be0000; border-color: #be0000; }
+    .lang-opt-mobile {
+      flex: 1; display: inline-flex; align-items: center; justify-content: center;
+      padding: 8px 4px;
+    }
   </style>
   <!-- ═══════════════════════════════════════ -->
   <!-- HERO                                    -->
@@ -453,24 +489,24 @@
            style="box-shadow:0 0 60px rgba(190,0,0,0.45); border:2px solid rgba(190,0,0,0.4);" />
 
       <!-- Eyebrow -->
-      <span class="section-label reveal delay-1">Arequipa · Perú · Est. 2013</span>
+      <span class="section-label reveal delay-1" data-i18n="hero_eyebrow">Arequipa · Perú · Est. 2013</span>
 
       <!-- Headline -->
-      <h1 class="reveal delay-2" data-i18n="hero.title"
+      <h1 class="reveal delay-2" data-i18n="hero_title"
           style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(48px,8vw,96px); line-height:0.95; letter-spacing:-0.03em; color:#e2e2e2; margin-bottom:24px;">
         EL ARTE<br /><span style="color:#be0000;">EN TU PIEL</span>
       </h1>
 
       <!-- Subtitle -->
-      <p class="reveal delay-3 max-w-xl" data-i18n="hero.subtitle"
+      <p class="reveal delay-3 max-w-xl" data-i18n="hero_subtitle"
          style="font-family:'Manrope',sans-serif; font-size:17px; color:#a0a0a0; line-height:1.7; margin-bottom:48px;">
         Transformamos tus ideas en obras maestras permanentes. Realismo, color, fineline y más — con los más altos estándares de arte e higiene.
       </p>
 
       <!-- CTAs -->
       <div class="reveal delay-4 flex flex-wrap gap-4 justify-center">
-        <a href="#portafolio" class="btn-primary" data-i18n="cta.portfolio">Ver Portafolio</a>>Ver Portafolio</a>
-        <a href="#contacto"   class="btn-ghost" data-i18n="cta.contacto">Reservar Cita</a>>Reservar Cita</a>
+        <a href="#portafolio" class="btn-primary" data-i18n="hero_cta1">Ver Portafolio</a>
+        <a href="#contacto"   class="btn-ghost"   data-i18n="hero_cta2">Reservar Cita</a>
       </div>
     </div>
 
@@ -490,16 +526,16 @@
       <!-- Header -->
       <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-16 reveal">
         <div>
-          <span class="section-label">Tienda Wayki</span>
+          <span class="section-label" data-i18n="merch_label">Tienda Wayki</span>
           <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(32px,4vw,48px);letter-spacing:-0.02em;color:#e2e2e2;">
-            <span class="slash">/</span>Merch &amp; SiVola
+            <span class="slash">/</span><span data-i18n="merch_title">Merch &amp; SiVola</span>
           </h2>
           <div class="red-line mt-4"></div>
-          <p style="font-family:'Manrope',sans-serif;font-size:15px;color:#a0a0a0;line-height:1.7;margin-top:16px;max-width:480px;">
+          <p data-i18n="merch_desc" style="font-family:'Manrope',sans-serif;font-size:15px;color:#a0a0a0;line-height:1.7;margin-top:16px;max-width:480px;">
             Lleva la cultura Wayki más allá de la piel. Ropa, accesorios y nuestra línea de tintas SiVola.
           </p>
         </div>
-        <a href="https://wa.me/51993054099?text=Hola!%20Quiero%20consultar%20sobre%20el%20merch%20Wayki." target="_blank" class="btn-ghost mt-6 md:mt-0" style="padding:10px 24px;font-size:12px;">
+        <a href="https://wa.me/51993054099?text=Hola!%20Quiero%20consultar%20sobre%20el%20merch%20Wayki." target="_blank" class="btn-ghost mt-6 md:mt-0" data-i18n="merch_wa" style="padding:10px 24px;font-size:12px;">
           Consultar por WhatsApp ↗
         </a>
       </div>
@@ -513,11 +549,11 @@
             <img src="./brave_screenshot_www.kropka.cl.png" alt="SiVola Ink Set Básico — Wayki Tattoo" />
           </div>
           <div class="merch-info">
-            <span class="merch-tag">Tintas</span>
-            <h4 class="merch-title">SiVola Ink<br/>Set Básico</h4>
-            <p class="merch-desc">6 colores esenciales</p>
+            <span class="merch-tag" data-i18n="merch1_tag">Tintas</span>
+            <h4 class="merch-title" data-i18n="merch1_name">SiVola Ink<br/>Set Básico</h4>
+            <p class="merch-desc" data-i18n="merch1_desc">6 colores esenciales</p>
             <div class="merch-price">S/. 120</div>
-            <a href="https://wa.me/51993054099?text=Hola!%20Me%20interesa%20el%20SiVola%20Ink%20Set%20Básico." target="_blank" class="merch-btn">Pedir ahora</a>
+            <a href="https://wa.me/51993054099?text=Hola!%20Me%20interesa%20el%20SiVola%20Ink%20Set%20Básico." target="_blank" class="merch-btn" data-i18n="merch_btn">Pedir ahora</a>
           </div>
         </div>
 
@@ -528,11 +564,11 @@
             <span class="merch-badge merch-badge-hot">Pro</span>
           </div>
           <div class="merch-info">
-            <span class="merch-tag">Tintas</span>
-            <h4 class="merch-title">SiVola Ink<br/>Set Profesional</h4>
-            <p class="merch-desc">14 colores completos</p>
+            <span class="merch-tag" data-i18n="merch2_tag">Tintas</span>
+            <h4 class="merch-title" data-i18n="merch2_name">SiVola Ink<br/>Set Profesional</h4>
+            <p class="merch-desc" data-i18n="merch2_desc">14 colores completos</p>
             <div class="merch-price">S/. 280</div>
-            <a href="https://wa.me/51993054099?text=Hola!%20Me%20interesa%20el%20SiVola%20Ink%20Set%20Profesional." target="_blank" class="merch-btn">Pedir ahora</a>
+            <a href="https://wa.me/51993054099?text=Hola!%20Me%20interesa%20el%20SiVola%20Ink%20Set%20Profesional." target="_blank" class="merch-btn" data-i18n="merch_btn">Pedir ahora</a>
           </div>
         </div>
 
@@ -543,11 +579,11 @@
             <span class="merch-badge">Nuevo</span>
           </div>
           <div class="merch-info">
-            <span class="merch-tag">Ropa</span>
-            <h4 class="merch-title">Wayki Tee<br/>Edición Limitada</h4>
-            <p class="merch-desc">S / M / L / XL</p>
+            <span class="merch-tag" data-i18n="merch3_tag">Ropa</span>
+            <h4 class="merch-title" data-i18n="merch3_name">Wayki Tee<br/>Edición Limitada</h4>
+            <p class="merch-desc" data-i18n="merch3_desc">S / M / L / XL</p>
             <div class="merch-price">S/. 85</div>
-            <a href="https://wa.me/51993054099?text=Hola!%20Me%20interesa%20la%20Wayki%20Tee." target="_blank" class="merch-btn">Pedir ahora</a>
+            <a href="https://wa.me/51993054099?text=Hola!%20Me%20interesa%20la%20Wayki%20Tee." target="_blank" class="merch-btn" data-i18n="merch_btn">Pedir ahora</a>
           </div>
         </div>
 
@@ -557,11 +593,11 @@
             <img src="./brave_screenshot_www.kropka.cl.png" alt="Gift Card Wayki Tattoo" />
           </div>
           <div class="merch-info">
-            <span class="merch-tag">Regalo</span>
-            <h4 class="merch-title">Gift Card<br/>Wayki</h4>
-            <p class="merch-desc">Para tatuaje o merch</p>
+            <span class="merch-tag" data-i18n="merch4_tag">Regalo</span>
+            <h4 class="merch-title" data-i18n="merch4_name">Gift Card<br/>Wayki</h4>
+            <p class="merch-desc" data-i18n="merch4_desc">Para tatuaje o merch</p>
             <div class="merch-price">desde S/. 150</div>
-            <a href="https://wa.me/51993054099?text=Hola!%20Quiero%20una%20Gift%20Card%20Wayki." target="_blank" class="merch-btn">Pedir ahora</a>
+            <a href="https://wa.me/51993054099?text=Hola!%20Quiero%20una%20Gift%20Card%20Wayki." target="_blank" class="merch-btn" data-i18n="merch_btn">Pedir ahora</a>
           </div>
         </div>
 
@@ -633,9 +669,9 @@
 
       <!-- Header -->
       <div class="mb-16 reveal">
-        <span class="section-label">Lo que hacemos</span>
+        <span class="section-label" data-i18n="svc_label">Lo que hacemos</span>
         <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(32px,4vw,48px);letter-spacing:-0.02em;color:#e2e2e2;">
-          <span class="slash">/</span>Nuestros Servicios
+          <span class="slash">/</span><span data-i18n="svc_title">Nuestros Servicios</span>
         </h2>
         <div class="red-line mt-4"></div>
       </div>
@@ -647,18 +683,18 @@
           <div class="svc-icon">
             <svg viewBox="0 0 24 24"><path d="M20.71 5.63l-2.34-2.34a1 1 0 0 0-1.41 0l-3.12 3.12-1.41-1.42-1.42 1.42 1.41 1.41L3 17.25V21h3.75l9.88-9.88 1.41 1.41 1.42-1.42-1.42-1.41 3.12-3.12a1 1 0 0 0 .05-1.35zM6.92 19H5v-1.92l9.06-9.06 1.92 1.92z"/></svg>
           </div>
-          <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;color:#e2e2e2;margin-bottom:10px;">Tatuajes</h3>
-          <p style="font-family:'Manrope',sans-serif;font-size:14px;color:#a0a0a0;line-height:1.65;margin-bottom:16px;">Realismo, color, blackwork, fineline, tradicional y más. Cada pieza diseñada a medida para ti.</p>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#be0000;">Servicio principal</span>
+          <h3 data-i18n="svc1_name" style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;color:#e2e2e2;margin-bottom:10px;">Tatuajes</h3>
+          <p data-i18n="svc1_desc" style="font-family:'Manrope',sans-serif;font-size:14px;color:#a0a0a0;line-height:1.65;margin-bottom:16px;">Realismo, color, blackwork, fineline, tradicional y más. Cada pieza diseñada a medida para ti.</p>
+          <span data-i18n="svc1_tag" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#be0000;">Servicio principal</span>
         </div>
 
         <div class="svc-card reveal delay-2">
           <div class="svc-icon">
             <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm0-10a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/></svg>
           </div>
-          <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;color:#e2e2e2;margin-bottom:10px;">Piercings</h3>
-          <p style="font-family:'Manrope',sans-serif;font-size:14px;color:#a0a0a0;line-height:1.65;margin-bottom:16px;">Piercings profesionales con materiales de primera calidad. Asesoría completa antes y después.</p>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#be0000;">Disponible</span>
+          <h3 data-i18n="svc2_name" style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;color:#e2e2e2;margin-bottom:10px;">Piercings</h3>
+          <p data-i18n="svc2_desc" style="font-family:'Manrope',sans-serif;font-size:14px;color:#a0a0a0;line-height:1.65;margin-bottom:16px;">Piercings profesionales con materiales de primera calidad. Asesoría completa antes y después.</p>
+          <span data-i18n="svc2_tag" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#be0000;">Disponible</span>
         </div>
 
         <div class="svc-card reveal delay-3">
@@ -666,24 +702,24 @@
             <svg viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h3v8a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-8h3a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-7 15h-1v-8h1v8zm2 0h-1v-8h1v8zm4-10H6V5h12v3z"/></svg>
           </div>
           <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;color:#e2e2e2;margin-bottom:10px;">SiVola Ink</h3>
-          <p style="font-family:'Manrope',sans-serif;font-size:14px;color:#a0a0a0;line-height:1.65;margin-bottom:16px;">Nuestra línea de tintas propias. Formuladas para resultados óptimos y longevidad en tu piel.</p>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#be0000;">Marca propia</span>
+          <p data-i18n="svc3_desc" style="font-family:'Manrope',sans-serif;font-size:14px;color:#a0a0a0;line-height:1.65;margin-bottom:16px;">Nuestra línea de tintas propias. Formuladas para resultados óptimos y longevidad en tu piel.</p>
+          <span data-i18n="svc3_tag" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#be0000;">Marca propia</span>
         </div>
 
         <div class="svc-card reveal delay-4">
           <div class="svc-icon">
             <svg viewBox="0 0 24 24"><path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm0 10c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>
           </div>
-          <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;color:#e2e2e2;margin-bottom:10px;">Merch</h3>
-          <p style="font-family:'Manrope',sans-serif;font-size:14px;color:#a0a0a0;line-height:1.65;margin-bottom:16px;">Ropa y accesorios exclusivos con la esencia de Wayki. Lleva la cultura del tatuaje más allá de la piel.</p>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#be0000;">Colección disponible</span>
+          <h3 data-i18n="svc4_name" style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;color:#e2e2e2;margin-bottom:10px;">Merch</h3>
+          <p data-i18n="svc4_desc" style="font-family:'Manrope',sans-serif;font-size:14px;color:#a0a0a0;line-height:1.65;margin-bottom:16px;">Ropa y accesorios exclusivos con la esencia de Wayki. Lleva la cultura del tatuaje más allá de la piel.</p>
+          <span data-i18n="svc4_tag" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#be0000;">Colección disponible</span>
         </div>
       </div>
 
       <!-- Categorías -->
       <div class="reveal">
-        <span class="section-label">Descubre</span>
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:22px;color:#a0a0a0;margin-bottom:32px;">Nuestro universo</h3>
+        <span class="section-label" data-i18n="cat_label">Descubre</span>
+        <h3 data-i18n="cat_subtitle" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:22px;color:#a0a0a0;margin-bottom:32px;">Nuestro universo</h3>
       </div>
 
       <div class="flex flex-wrap gap-8 justify-center md:justify-start">
@@ -749,22 +785,22 @@
       <!-- Header -->
       <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-10 reveal">
         <div>
-          <span class="section-label">Nuestro trabajo</span>
+          <span class="section-label" data-i18n="port_label">Nuestro trabajo</span>
           <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(32px,4vw,48px);letter-spacing:-0.02em;color:#e2e2e2;">
-            <span class="slash">/</span>Portafolio
+            <span class="slash">/</span><span data-i18n="port_title">Portafolio</span>
           </h2>
           <div class="red-line mt-4"></div>
         </div>
-        <a href="https://www.instagram.com/waykitattoostudio/" target="_blank" class="btn-ghost mt-6 md:mt-0" style="padding:10px 24px;font-size:12px;">
+        <a href="https://www.instagram.com/waykitattoostudio/" target="_blank" class="btn-ghost mt-6 md:mt-0" data-i18n="port_ig" style="padding:10px 24px;font-size:12px;">
           Ver más en Instagram ↗
         </a>
       </div>
 
       <!-- Filtros de estilo -->
       <div class="flex flex-wrap gap-3 mb-8 reveal">
-        <button class="port-filter active" data-filter="all">Todos</button>
-        <button class="port-filter" data-filter="realismo">Realismo</button>
-        <button class="port-filter" data-filter="color">Color</button>
+        <button class="port-filter active" data-filter="all" data-i18n="port_filter_all">Todos</button>
+        <button class="port-filter" data-filter="realismo" data-i18n="port_filter_rel">Realismo</button>
+        <button class="port-filter" data-filter="color" data-i18n="port_filter_col">Color</button>
       </div>
 
       <style>
@@ -808,9 +844,9 @@
         <div class="port-item col-span-1 reveal delay-4 flex flex-col items-center justify-center gap-4 p-6 text-center"
              data-style="all"
              style="background:radial-gradient(circle at 50% 30%, #3a0000, #1a1c1c);border:1px solid #be0000;min-height:190px;">
-          <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;color:#e2e2e2;line-height:1.2;">¿Tienes una idea?</span>
-          <span style="font-family:'Manrope',sans-serif;font-size:13px;color:#a0a0a0;">Hagámosla realidad.</span>
-          <a href="#contacto" class="btn-primary" style="padding:10px 20px;font-size:11px;">Cotizar</a>
+          <span data-i18n="port_cta_q" style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;color:#e2e2e2;line-height:1.2;">¿Tienes una idea?</span>
+          <span data-i18n="port_cta_s" style="font-family:'Manrope',sans-serif;font-size:13px;color:#a0a0a0;">Hagámosla realidad.</span>
+          <a href="#contacto" class="btn-primary" data-i18n="port_cta_btn" style="padding:10px 20px;font-size:11px;">Cotizar</a>
         </div>
 
       </div>
@@ -829,15 +865,15 @@
 
       <!-- Header -->
       <div class="mb-16 reveal">
-        <span class="section-label">Lo que dicen de nosotros</span>
+        <span class="section-label" data-i18n="test_label">Lo que dicen de nosotros</span>
         <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(32px,4vw,48px);letter-spacing:-0.02em;color:#e2e2e2;">
-          <span class="slash">/</span>Reseñas Reales
+          <span class="slash">/</span><span data-i18n="test_title">Reseñas Reales</span>
         </h2>
         <div class="red-line mt-4"></div>
         <!-- Google badge -->
         <div class="flex items-center gap-2 mt-6">
           <svg viewBox="0 0 24 24" style="width:20px;height:20px;"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#555;">5.0 · Google Reviews</span>
+          <span data-i18n="test_google" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#555;">5.0 · Google Reviews</span>
         </div>
       </div>
 
@@ -985,9 +1021,9 @@
             <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:#be0000;"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
             <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:#be0000;"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
           </div>
-          <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;color:#e2e2e2;line-height:1.2;">5.0 en Google</span>
-          <span style="font-family:'Manrope',sans-serif;font-size:13px;color:#a0a0a0;line-height:1.6;">¿Ya eres parte de nuestra familia Wayki? Déjanos tu reseña.</span>
-          <a href="https://g.page/r/waykitattoostudio/review" target="_blank" class="btn-primary" style="padding:10px 24px;font-size:11px;">
+          <span data-i18n="test_cta_score" style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;color:#e2e2e2;line-height:1.2;">5.0 en Google</span>
+          <span data-i18n="test_cta_desc" style="font-family:'Manrope',sans-serif;font-size:13px;color:#a0a0a0;line-height:1.6;">¿Ya eres parte de nuestra familia Wayki? Déjanos tu reseña.</span>
+          <a href="https://g.page/r/waykitattoostudio/review" target="_blank" class="btn-primary" data-i18n="test_cta_btn" style="padding:10px 24px;font-size:11px;">
             Dejar reseña en Google
           </a>
         </div>
@@ -1009,18 +1045,18 @@
 
       <!-- Text -->
       <div class="reveal-left">
-        <span class="section-label">Quiénes somos</span>
+        <span class="section-label" data-i18n="about_label">Quiénes somos</span>
         <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(32px,4vw,48px);letter-spacing:-0.02em;color:#e2e2e2;margin-bottom:16px;">
-          <span class="slash">/</span>Arte y Precisión
+          <span class="slash">/</span><span data-i18n="about_title">Arte y Precisión</span>
         </h2>
         <div class="red-line mb-8"></div>
-        <p style="font-family:'Manrope',sans-serif;font-size:16px;color:#a0a0a0;line-height:1.8;margin-bottom:16px;">
+        <p data-i18n="about_p1" style="font-family:'Manrope',sans-serif;font-size:16px;color:#a0a0a0;line-height:1.8;margin-bottom:16px;">
           Wayki Tattoo Studio no es solo un lugar para tatuarse — es un santuario para la expresión artística. Ubicados en el corazón de Arequipa, transformamos visiones en piezas maestras atemporales.
         </p>
-        <p style="font-family:'Manrope',sans-serif;font-size:16px;color:#a0a0a0;line-height:1.8;margin-bottom:32px;">
+        <p data-i18n="about_p2" style="font-family:'Manrope',sans-serif;font-size:16px;color:#a0a0a0;line-height:1.8;margin-bottom:32px;">
           Combinamos técnicas tradicionales con una visión moderna y vanguardista, usando nuestras propias tintas <strong style="color:#e2e2e2;">SiVola</strong> para garantizar resultados de larga duración.
         </p>
-        <p style="font-family:'Manrope',sans-serif;font-size:15px;font-style:italic;color:#be0000;margin-bottom:40px;">
+        <p data-i18n="about_quote" style="font-family:'Manrope',sans-serif;font-size:15px;font-style:italic;color:#be0000;margin-bottom:40px;">
           "Tu piel es el lienzo, nuestra tinta es el alma."
         </p>
 
@@ -1028,19 +1064,19 @@
         <div class="flex flex-wrap gap-10">
           <div>
             <div class="stat-num">10+</div>
-            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#555;">Años</span>
+            <span data-i18n="about_years" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#555;">Años</span>
           </div>
           <div>
             <div class="stat-num">5k+</div>
-            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#555;">Clientes</span>
+            <span data-i18n="about_clients" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#555;">Clientes</span>
           </div>
           <div>
             <div class="stat-num">2-3</div>
-            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#555;">Artistas</span>
+            <span data-i18n="about_artists" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#555;">Artistas</span>
           </div>
           <div>
             <div class="stat-num">∞</div>
-            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#555;">Estilos</span>
+            <span data-i18n="about_styles" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#555;">Estilos</span>
           </div>
         </div>
       </div>
@@ -1054,7 +1090,7 @@
           </div>
           <!-- Red badge -->
           <div style="position:absolute;bottom:-20px;left:-20px;background:#be0000;padding:16px 24px;border:1px solid rgba(255,255,255,0.15);">
-            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#fff;font-weight:600;display:block;">Arte Certificado</span>
+            <span data-i18n="about_badge" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#fff;font-weight:600;display:block;">Arte Certificado</span>
             <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.1em;">Arequipa · Perú</span>
           </div>
         </div>
@@ -1172,9 +1208,9 @@
 
       <!-- Header -->
       <div class="mb-16 reveal">
-        <span class="section-label">Hablemos</span>
+        <span class="section-label" data-i18n="contact_label">Hablemos</span>
         <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(32px,4vw,48px);letter-spacing:-0.02em;color:#e2e2e2;">
-          <span class="slash">/</span>Reserva tu Cita
+          <span class="slash">/</span><span data-i18n="contact_title">Reserva tu Cita</span>
         </h2>
         <div class="red-line mt-4"></div>
       </div>
@@ -1183,27 +1219,27 @@
 
         <!-- Form -->
         <div class="reveal-left">
-          <p style="font-family:'Manrope',sans-serif;font-size:15px;color:#a0a0a0;line-height:1.7;margin-bottom:40px;">
+          <p data-i18n="contact_intro" style="font-family:'Manrope',sans-serif;font-size:15px;color:#a0a0a0;line-height:1.7;margin-bottom:40px;">
             Cuéntanos tu idea y te ayudamos a transformarla en una obra de arte. También puedes escribirnos directamente por WhatsApp.
           </p>
 
           <form id="contact-form" onsubmit="handleSubmit(event)" novalidate style="display:flex;flex-direction:column;gap:32px;">
             <div>
-              <label style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#555;display:block;margin-bottom:8px;">Nombre completo</label>
-              <input type="text" name="nombre" placeholder="Tu nombre..." class="form-field" required />
+              <label data-i18n="form_name" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#555;display:block;margin-bottom:8px;">Nombre completo</label>
+              <input type="text" name="nombre" placeholder="Tu nombre..." data-i18n-ph="form_name_ph" class="form-field" required />
             </div>
             <div>
-              <label style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#555;display:block;margin-bottom:8px;">WhatsApp / Teléfono</label>
-              <input type="tel" name="tel" placeholder="+51 999 999 999" class="form-field" />
+              <label data-i18n="form_phone" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#555;display:block;margin-bottom:8px;">WhatsApp / Teléfono</label>
+              <input type="tel" name="tel" placeholder="+51 999 999 999" data-i18n-ph="form_phone_ph" class="form-field" />
             </div>
             <div>
-              <label style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#555;display:block;margin-bottom:8px;">País</label>
-              <input type="text" name="pais" placeholder="Ej: Perú, Argentina, Chile..." class="form-field" />
+              <label data-i18n="form_country" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#555;display:block;margin-bottom:8px;">País</label>
+              <input type="text" name="pais" placeholder="Ej: Perú, Argentina, Chile..." data-i18n-ph="form_country_ph" class="form-field" />
             </div>
             <div>
-              <label style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#555;display:block;margin-bottom:8px;">Tipo de servicio</label>
+              <label data-i18n="form_service" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#555;display:block;margin-bottom:8px;">Tipo de servicio</label>
               <select name="servicio" class="form-field" style="cursor:pointer;">
-                <option value="" style="background:#1a1c1c;">Selecciona un servicio...</option>
+                <option value="" style="background:#1a1c1c;" data-i18n="form_svc_ph">Selecciona un servicio...</option>
                 <option value="tatuaje-realismo" style="background:#1a1c1c;">Tatuaje — Realismo (B&G o Color)</option>
                 <option value="tatuaje-fineline" style="background:#1a1c1c;">Tatuaje — Fineline / Delicado</option>
                 <option value="tatuaje-blackwork" style="background:#1a1c1c;">Tatuaje — Blackwork / Ornamental</option>
@@ -1216,19 +1252,19 @@
               </select>
             </div>
             <div>
-              <label style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#555;display:block;margin-bottom:8px;">Describe tu idea</label>
-              <textarea name="idea" placeholder="¿Qué tienes en mente? Cuéntanos el diseño, tamaño, zona del cuerpo..." class="form-field" rows="4" style="resize:vertical;"></textarea>
+              <label data-i18n="form_idea" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#555;display:block;margin-bottom:8px;">Describe tu idea</label>
+              <textarea name="idea" placeholder="¿Qué tienes en mente? Cuéntanos el diseño, tamaño, zona del cuerpo..." data-i18n-ph="form_idea_ph" class="form-field" rows="4" style="resize:vertical;"></textarea>
             </div>
             <div class="flex flex-wrap gap-4">
-              <button type="submit" class="btn-primary" style="flex:1;min-width:200px;justify-content:center;">
+              <button type="submit" data-i18n="form_send" class="btn-primary" style="flex:1;min-width:200px;justify-content:center;">
                 Enviar por WhatsApp
               </button>
               <a href="mailto:waykitattoostudio@gmail.com" class="btn-ghost" style="flex:1;min-width:200px;justify-content:center;">
                 <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:currentColor;flex-shrink:0;"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                Email
+                <span data-i18n="form_email_btn">Email</span>
               </a>
             </div>
-            <div id="form-success" style="display:none;font-family:'JetBrains Mono',monospace;font-size:13px;color:#be0000;padding:16px;border:1px solid #be0000;letter-spacing:0.05em;">
+            <div id="form-success" data-i18n="form_success" style="display:none;font-family:'JetBrains Mono',monospace;font-size:13px;color:#be0000;padding:16px;border:1px solid #be0000;letter-spacing:0.05em;">
               ✓ Abriendo WhatsApp... Te contactamos pronto.
             </div>
           </form>
@@ -1239,7 +1275,7 @@
 
           <!-- Datos de contacto -->
           <div style="border:1px solid #2a2d2d;padding:28px;background:#1a1c1c;">
-            <h4 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;color:#e2e2e2;margin-bottom:20px;">Encuéntranos</h4>
+            <h4 data-i18n="contact_find" style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;color:#e2e2e2;margin-bottom:20px;">Encuéntranos</h4>
             <div class="flex flex-col gap-4">
               <div class="flex items-start gap-3">
                 <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:#be0000;flex-shrink:0;margin-top:2px;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
@@ -1255,7 +1291,7 @@
               </div>
               <div class="flex items-center gap-3">
                 <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:#be0000;flex-shrink:0;"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
-                <span style="font-family:'Manrope',sans-serif;font-size:14px;color:#a0a0a0;">Lun – Sáb: 10:00 am – 8:00 pm</span>
+                <span data-i18n="contact_hours" style="font-family:'Manrope',sans-serif;font-size:14px;color:#a0a0a0;">Lun – Sáb: 10:00 am – 8:00 pm</span>
               </div>
             </div>
           </div>
@@ -1271,7 +1307,7 @@
 
           <!-- Redes sociales -->
           <div>
-            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#555;display:block;margin-bottom:14px;">Síguenos</span>
+            <span data-i18n="contact_follow" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#555;display:block;margin-bottom:14px;">Síguenos</span>
             <div class="grid grid-cols-2 gap-3">
               <a href="https://www.instagram.com/waykitattoostudio/" target="_blank"
                  style="display:flex;align-items:center;gap:10px;padding:14px 16px;border:1px solid #2a2d2d;background:#1a1c1c;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#a0a0a0;text-decoration:none;text-transform:uppercase;transition:border-color 0.2s,color 0.2s,background 0.2s;"
@@ -1332,7 +1368,7 @@
 
         <!-- Social icons — grande y visible -->
         <div class="flex flex-col items-center md:items-end gap-4">
-          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#555;">Síguenos</span>
+          <span data-i18n="contact_follow" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#555;">Síguenos</span>
           <div class="flex items-center gap-4">
             <a href="https://www.instagram.com/waykitattoostudio/" target="_blank" aria-label="Instagram"
                style="width:44px;height:44px;border:1px solid #2a2d2d;background:#1a1c1c;display:flex;align-items:center;justify-content:center;color:#a0a0a0;text-decoration:none;transition:border-color 0.2s,color 0.2s,background 0.2s;"
@@ -1374,7 +1410,7 @@
           <a href="#tutoriales" class="footer-link">Tutoriales</a>
           <a href="#contacto"   class="footer-link">Contacto</a>
         </div>
-        <p style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#333;text-align:center;">
+        <p data-i18n="footer_copy" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#333;text-align:center;">
           © 2026 Wayki Tattoo Studio · Arequipa, Perú
         </p>
       </div>
@@ -1479,6 +1515,67 @@
         if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
       });
     });
+
+    // ── i18n engine ───────────────────────────
+    let currentLang = localStorage.getItem('wayki-lang') || 'es';
+
+    function applyLang() {
+      const t = (typeof i18n !== 'undefined' && i18n[currentLang]) ? i18n[currentLang] : null;
+      if (!t) return;
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (t[key] === undefined) return;
+        // Title values include a leading '/' meant for the styled slash span — strip it here
+        // since the slash lives in its own <span class="slash"> in the HTML
+        let val = t[key];
+        if (val.startsWith('/')) val = val.slice(1);
+        el.innerHTML = val;
+      });
+
+      document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+        const key = el.dataset.i18nPh;
+        if (t[key] !== undefined) el.placeholder = t[key];
+      });
+
+      document.documentElement.lang = currentLang;
+
+      // Sync all lang buttons active state
+      document.querySelectorAll('.lang-opt').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === currentLang);
+      });
+
+      // Sync lang display label
+      const label = document.getElementById('lang-current');
+      if (label) label.textContent = currentLang.toUpperCase();
+    }
+
+    function setLang(lang) {
+      currentLang = lang;
+      localStorage.setItem('wayki-lang', lang);
+      applyLang();
+      // Close desktop dropdown
+      const menu = document.getElementById('lang-menu');
+      if (menu) menu.style.display = 'none';
+    }
+
+    function toggleLangMenu() {
+      const menu = document.getElementById('lang-menu');
+      if (!menu) return;
+      menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+    }
+
+    // Close lang dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      const switcher = document.getElementById('lang-switcher');
+      const menu = document.getElementById('lang-menu');
+      if (menu && switcher && !switcher.contains(e.target)) {
+        menu.style.display = 'none';
+      }
+    });
+
+    // Apply saved language on load
+    applyLang();
   </script>
 </body>
 </html>

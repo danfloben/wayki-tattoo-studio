@@ -6,9 +6,9 @@
 
       <!-- Header -->
       <div class="mb-16 reveal">
-        <span class="section-label">Hablemos</span>
+        <span class="section-label" data-i18n="contact_label">Hablemos</span>
         <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(32px,4vw,48px);letter-spacing:-0.02em;color:#e2e2e2;">
-          <span class="slash">/</span>Reserva tu Cita
+          <span class="slash">/</span><span data-i18n="contact_title">Reserva tu Cita</span>
         </h2>
         <div class="red-line mt-4"></div>
       </div>
@@ -17,27 +17,27 @@
 
         <!-- Form -->
         <div class="reveal-left">
-          <p style="font-family:'Manrope',sans-serif;font-size:15px;color:#a0a0a0;line-height:1.7;margin-bottom:40px;">
+          <p data-i18n="contact_intro" style="font-family:'Manrope',sans-serif;font-size:15px;color:#a0a0a0;line-height:1.7;margin-bottom:40px;">
             Cuéntanos tu idea y te ayudamos a transformarla en una obra de arte. También puedes escribirnos directamente por WhatsApp.
           </p>
 
           <form id="contact-form" onsubmit="handleSubmit(event)" novalidate style="display:flex;flex-direction:column;gap:32px;">
             <div>
-              <label style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#555;display:block;margin-bottom:8px;">Nombre completo</label>
-              <input type="text" name="nombre" placeholder="Tu nombre..." class="form-field" required />
+              <label data-i18n="form_name" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#555;display:block;margin-bottom:8px;">Nombre completo</label>
+              <input type="text" name="nombre" placeholder="Tu nombre..." data-i18n-ph="form_name_ph" class="form-field" required />
             </div>
             <div>
-              <label style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#555;display:block;margin-bottom:8px;">WhatsApp / Teléfono</label>
-              <input type="tel" name="tel" placeholder="+51 999 999 999" class="form-field" />
+              <label data-i18n="form_phone" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#555;display:block;margin-bottom:8px;">WhatsApp / Teléfono</label>
+              <input type="tel" name="tel" placeholder="+51 999 999 999" data-i18n-ph="form_phone_ph" class="form-field" />
             </div>
             <div>
-              <label style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#555;display:block;margin-bottom:8px;">País</label>
-              <input type="text" name="pais" placeholder="Ej: Perú, Argentina, Chile..." class="form-field" />
+              <label data-i18n="form_country" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#555;display:block;margin-bottom:8px;">País</label>
+              <input type="text" name="pais" placeholder="Ej: Perú, Argentina, Chile..." data-i18n-ph="form_country_ph" class="form-field" />
             </div>
             <div>
-              <label style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#555;display:block;margin-bottom:8px;">Tipo de servicio</label>
+              <label data-i18n="form_service" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#555;display:block;margin-bottom:8px;">Tipo de servicio</label>
               <select name="servicio" class="form-field" style="cursor:pointer;">
-                <option value="" style="background:#1a1c1c;">Selecciona un servicio...</option>
+                <option value="" style="background:#1a1c1c;" data-i18n="form_svc_ph">Selecciona un servicio...</option>
                 <option value="tatuaje-realismo" style="background:#1a1c1c;">Tatuaje — Realismo (B&G o Color)</option>
                 <option value="tatuaje-fineline" style="background:#1a1c1c;">Tatuaje — Fineline / Delicado</option>
                 <option value="tatuaje-blackwork" style="background:#1a1c1c;">Tatuaje — Blackwork / Ornamental</option>
@@ -50,19 +50,19 @@
               </select>
             </div>
             <div>
-              <label style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#555;display:block;margin-bottom:8px;">Describe tu idea</label>
-              <textarea name="idea" placeholder="¿Qué tienes en mente? Cuéntanos el diseño, tamaño, zona del cuerpo..." class="form-field" rows="4" style="resize:vertical;"></textarea>
+              <label data-i18n="form_idea" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#555;display:block;margin-bottom:8px;">Describe tu idea</label>
+              <textarea name="idea" placeholder="¿Qué tienes en mente? Cuéntanos el diseño, tamaño, zona del cuerpo..." data-i18n-ph="form_idea_ph" class="form-field" rows="4" style="resize:vertical;"></textarea>
             </div>
             <div class="flex flex-wrap gap-4">
-              <button type="submit" class="btn-primary" style="flex:1;min-width:200px;justify-content:center;">
+              <button type="submit" data-i18n="form_send" class="btn-primary" style="flex:1;min-width:200px;justify-content:center;">
                 Enviar por WhatsApp
               </button>
               <a href="mailto:waykitattoostudio@gmail.com" class="btn-ghost" style="flex:1;min-width:200px;justify-content:center;">
                 <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:currentColor;flex-shrink:0;"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                Email
+                <span data-i18n="form_email_btn">Email</span>
               </a>
             </div>
-            <div id="form-success" style="display:none;font-family:'JetBrains Mono',monospace;font-size:13px;color:#be0000;padding:16px;border:1px solid #be0000;letter-spacing:0.05em;">
+            <div id="form-success" data-i18n="form_success" style="display:none;font-family:'JetBrains Mono',monospace;font-size:13px;color:#be0000;padding:16px;border:1px solid #be0000;letter-spacing:0.05em;">
               ✓ Abriendo WhatsApp... Te contactamos pronto.
             </div>
           </form>
@@ -73,7 +73,7 @@
 
           <!-- Datos de contacto -->
           <div style="border:1px solid #2a2d2d;padding:28px;background:#1a1c1c;">
-            <h4 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;color:#e2e2e2;margin-bottom:20px;">Encuéntranos</h4>
+            <h4 data-i18n="contact_find" style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;color:#e2e2e2;margin-bottom:20px;">Encuéntranos</h4>
             <div class="flex flex-col gap-4">
               <div class="flex items-start gap-3">
                 <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:#be0000;flex-shrink:0;margin-top:2px;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
@@ -89,7 +89,7 @@
               </div>
               <div class="flex items-center gap-3">
                 <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:#be0000;flex-shrink:0;"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
-                <span style="font-family:'Manrope',sans-serif;font-size:14px;color:#a0a0a0;">Lun – Sáb: 10:00 am – 8:00 pm</span>
+                <span data-i18n="contact_hours" style="font-family:'Manrope',sans-serif;font-size:14px;color:#a0a0a0;">Lun – Sáb: 10:00 am – 8:00 pm</span>
               </div>
             </div>
           </div>
@@ -105,7 +105,7 @@
 
           <!-- Redes sociales -->
           <div>
-            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#555;display:block;margin-bottom:14px;">Síguenos</span>
+            <span data-i18n="contact_follow" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#555;display:block;margin-bottom:14px;">Síguenos</span>
             <div class="grid grid-cols-2 gap-3">
               <a href="https://www.instagram.com/waykitattoostudio/" target="_blank"
                  style="display:flex;align-items:center;gap:10px;padding:14px 16px;border:1px solid #2a2d2d;background:#1a1c1c;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#a0a0a0;text-decoration:none;text-transform:uppercase;transition:border-color 0.2s,color 0.2s,background 0.2s;"

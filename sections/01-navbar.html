@@ -16,18 +16,37 @@
 
       <!-- Desktop nav — solo los más importantes -->
       <div class="hidden lg:flex items-center gap-6">
-        <a href="#inicio"      class="nav-link" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#a0a0a0;text-decoration:none;transition:color 0.2s;">Inicio</a>
-        <a href="#portafolio"  class="nav-link" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#a0a0a0;text-decoration:none;transition:color 0.2s;">Portafolio</a>
-        <a href="#merch"       class="nav-link" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#a0a0a0;text-decoration:none;transition:color 0.2s;">Merch</a>
-        <a href="#nosotros"    class="nav-link" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#a0a0a0;text-decoration:none;transition:color 0.2s;">Nosotros</a>
-        <a href="#testimonios" class="nav-link" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#a0a0a0;text-decoration:none;transition:color 0.2s;">Reseñas</a>
-        <a href="#contacto"    class="nav-link" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#a0a0a0;text-decoration:none;transition:color 0.2s;">Contacto</a>
+        <a href="#inicio"      class="nav-link" data-i18n="nav_inicio"    style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#a0a0a0;text-decoration:none;transition:color 0.2s;">Inicio</a>
+        <a href="#portafolio"  class="nav-link" data-i18n="nav_portfolio" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#a0a0a0;text-decoration:none;transition:color 0.2s;">Portafolio</a>
+        <a href="#merch"       class="nav-link" data-i18n="nav_merch"     style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#a0a0a0;text-decoration:none;transition:color 0.2s;">Merch</a>
+        <a href="#nosotros"    class="nav-link" data-i18n="nav_nosotros"  style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#a0a0a0;text-decoration:none;transition:color 0.2s;">Nosotros</a>
+        <a href="#testimonios" class="nav-link" data-i18n="nav_resenas"   style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#a0a0a0;text-decoration:none;transition:color 0.2s;">Reseñas</a>
+        <a href="#contacto"    class="nav-link" data-i18n="nav_contacto"  style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#a0a0a0;text-decoration:none;transition:color 0.2s;">Contacto</a>
+      </div>
+
+      <!-- Language Switcher -->
+      <div style="position:relative;" id="lang-switcher" class="hidden lg:block">
+        <button id="lang-btn" onclick="toggleLangMenu()"
+                style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#555;background:transparent;border:1px solid #2a2d2d;padding:6px 10px;cursor:pointer;display:flex;align-items:center;gap:5px;transition:border-color 0.2s,color 0.2s;"
+                onmouseover="this.style.borderColor='#be0000';this.style.color='#e2e2e2';"
+                onmouseout="this.style.borderColor='#2a2d2d';this.style.color='#555';">
+          <svg viewBox="0 0 24 24" style="width:13px;height:13px;fill:currentColor;"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95a15.65 15.65 0 0 0-1.38-3.56A8.03 8.03 0 0 1 18.92 8zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2s.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56A7.987 7.987 0 0 1 5.08 16zm2.95-8H5.08a7.987 7.987 0 0 1 4.33-3.56A15.65 15.65 0 0 0 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2s.07-1.35.16-2h4.68c.09.65.16 1.32.16 2s-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2s-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/></svg>
+          <span id="lang-current">ES</span>
+          <svg viewBox="0 0 24 24" style="width:10px;height:10px;fill:currentColor;"><path d="M7 10l5 5 5-5z"/></svg>
+        </button>
+        <div id="lang-menu" style="display:none;position:absolute;top:calc(100% + 6px);right:0;background:#1a1c1c;border:1px solid #2a2d2d;z-index:200;min-width:72px;">
+          <button onclick="setLang('es')" data-lang="es" class="lang-opt">ES</button>
+          <button onclick="setLang('en')" data-lang="en" class="lang-opt">EN</button>
+          <button onclick="setLang('it')" data-lang="it" class="lang-opt">IT</button>
+          <button onclick="setLang('fr')" data-lang="fr" class="lang-opt">FR</button>
+          <button onclick="setLang('de')" data-lang="de" class="lang-opt">DE</button>
+        </div>
       </div>
 
       <!-- Desktop CTA -->
       <a href="https://wa.me/51993054099?text=Hola%20Wayki%20Tattoo!%20Quiero%20consultar%20sobre%20una%20cita." target="_blank" class="btn-primary hidden lg:inline-flex" style="padding:10px 20px;font-size:11px;flex-shrink:0;">
         <svg viewBox="0 0 24 24" style="width:15px;height:15px;fill:#fff;flex-shrink:0;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.558 4.114 1.534 5.836L.057 23.786a.5.5 0 0 0 .606.63l6.101-1.601A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.813 9.813 0 0 1-4.966-1.347l-.356-.211-3.695.969.987-3.604-.232-.373A9.799 9.799 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
-        Reservar
+        <span data-i18n="nav_reservar">Reservar</span>
       </a>
 
       <!-- Hamburger (visible en móvil y tablet) -->
@@ -62,14 +81,14 @@
 
     <!-- Links -->
     <nav style="display:flex;flex-direction:column;align-items:center;gap:8px;width:100%;">
-      <a href="#inicio"      class="mobile-nav" onclick="closeMobileMenu()">Inicio</a>
-      <a href="#portafolio"  class="mobile-nav" onclick="closeMobileMenu()">Portafolio</a>
-      <a href="#merch"       class="mobile-nav" onclick="closeMobileMenu()">Merch</a>
-      <a href="#nosotros"    class="mobile-nav" onclick="closeMobileMenu()">Nosotros</a>
+      <a href="#inicio"      class="mobile-nav" data-i18n="nav_inicio"    onclick="closeMobileMenu()">Inicio</a>
+      <a href="#portafolio"  class="mobile-nav" data-i18n="nav_portfolio" onclick="closeMobileMenu()">Portafolio</a>
+      <a href="#merch"       class="mobile-nav" data-i18n="nav_merch"     onclick="closeMobileMenu()">Merch</a>
+      <a href="#nosotros"    class="mobile-nav" data-i18n="nav_nosotros"  onclick="closeMobileMenu()">Nosotros</a>
       <a href="#servicios"   class="mobile-nav" onclick="closeMobileMenu()">Servicios</a>
       <a href="#tutoriales"  class="mobile-nav" onclick="closeMobileMenu()">Tutoriales</a>
-      <a href="#testimonios" class="mobile-nav" onclick="closeMobileMenu()">Reseñas</a>
-      <a href="#contacto"    class="mobile-nav" onclick="closeMobileMenu()">Contacto</a>
+      <a href="#testimonios" class="mobile-nav" data-i18n="nav_resenas"   onclick="closeMobileMenu()">Reseñas</a>
+      <a href="#contacto"    class="mobile-nav" data-i18n="nav_contacto"  onclick="closeMobileMenu()">Contacto</a>
     </nav>
 
     <!-- CTA -->
@@ -77,8 +96,17 @@
        onclick="closeMobileMenu()"
        style="margin-top:8px;display:inline-flex;align-items:center;gap:8px;background:#be0000;color:#fff;padding:14px 36px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(255,255,255,0.12);">
       <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:#fff;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.558 4.114 1.534 5.836L.057 23.786a.5.5 0 0 0 .606.63l6.101-1.601A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.813 9.813 0 0 1-4.966-1.347l-.356-.211-3.695.969.987-3.604-.232-.373A9.799 9.799 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
-      Reservar Cita
+      <span data-i18n="nav_reservar">Reservar Cita</span>
     </a>
+
+    <!-- Mobile language switcher -->
+    <div style="display:flex;gap:6px;margin-top:6px;">
+      <button onclick="setLang('es');closeMobileMenu();" data-lang="es" class="lang-opt lang-opt-mobile">ES</button>
+      <button onclick="setLang('en');closeMobileMenu();" data-lang="en" class="lang-opt lang-opt-mobile">EN</button>
+      <button onclick="setLang('it');closeMobileMenu();" data-lang="it" class="lang-opt lang-opt-mobile">IT</button>
+      <button onclick="setLang('fr');closeMobileMenu();" data-lang="fr" class="lang-opt lang-opt-mobile">FR</button>
+      <button onclick="setLang('de');closeMobileMenu();" data-lang="de" class="lang-opt lang-opt-mobile">DE</button>
+    </div>
 
     <!-- Redes sociales en móvil -->
     <div style="position:absolute;bottom:32px;display:flex;gap:16px;">
@@ -108,4 +136,17 @@
       width: 100%; text-align: center;
     }
     .mobile-nav:hover { color: #be0000; }
+    .lang-opt {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+      background: transparent; color: #555; border: 1px solid #2a2d2d;
+      padding: 6px 12px; cursor: pointer; display: block; width: 100%;
+      text-align: center; transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+    .lang-opt:hover { color: #e2e2e2; border-color: #be0000; }
+    .lang-opt.active { color: #fff; background: #be0000; border-color: #be0000; }
+    .lang-opt-mobile {
+      flex: 1; display: inline-flex; align-items: center; justify-content: center;
+      padding: 8px 4px;
+    }
   </style>
