@@ -5,5 +5,5 @@ export default defineCliConfig({
     projectId: '6gep4uhw',
     dataset: 'production',
   },
-  studioHost: 'wayki-tattoo',
+  studioHost: 'wayki-tattoo-studio',
 })
