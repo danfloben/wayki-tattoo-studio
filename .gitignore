@@ -1,3 +1,16 @@
 node_modules/
 .DS_Store
 Thumbs.db
+
+# Sanity Studio
+studio/node_modules/
+studio/.sanity/
+studio/dist/
+
+# Build script
+scripts/node_modules/
+
+# Env secrets (nunca subir al repo)
+.env
+.env.local
+

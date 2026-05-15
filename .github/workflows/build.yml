@@ -1,0 +1,59 @@
+name: 🏗️ Build & Deploy — Wayki Tattoo Studio
+
+# Disparadores:
+# 1. Push manual al repo (cambios en código/sections)
+# 2. Webhook desde Sanity (cliente guarda contenido)
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'sections/**'
+      - 'scripts/**'
+      - 'translations.js'
+      - '*.png'
+      - '*.webp'
+      - '*.jpg'
+      - 'galeria/**'
+  repository_dispatch:
+    types: [sanity-update]
+
+jobs:
+  build:
+    name: Generar páginas HTML
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout del repositorio
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # 2. Configurar Node.js
+      - name: ⚙️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: scripts/package-lock.json
+
+      # 3. Instalar dependencias del build script
+      - name: 📦 Instalar dependencias
+        run: npm install
+        working-directory: scripts
+
+      # 4. Ejecutar el build (lee de Sanity → genera HTML)
+      - name: 🔨 Build
+        env:
+          SANITY_PROJECT_ID: ${{ secrets.SANITY_PROJECT_ID }}
+          SANITY_TOKEN: ${{ secrets.SANITY_TOKEN }}
+        run: node scripts/build.js
+
+      # 5. Commit y push de los HTML generados
+      - name: 📤 Commit & Push
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add *.html
+          git diff --staged --quiet || git commit -m "chore: rebuild desde Sanity [skip ci]"
+          git push
