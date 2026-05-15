@@ -7,7 +7,7 @@ export default defineConfig({
   name: 'wayki-tattoo',
   title: 'Wayki Tattoo Studio — Admin',
 
-  projectId: 'REEMPLAZAR_CON_PROJECT_ID',
+  projectId: '6gep4uhw',
   dataset: 'production',
 
   plugins: [
