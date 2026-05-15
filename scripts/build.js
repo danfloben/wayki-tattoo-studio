@@ -643,7 +643,7 @@ async function main() {
     ? imgUrl(settings.studioPhoto, 1200)
     : `${BASE_URL}/studio.webp`
 
-  const ogDefault = `${BASE_URL}/logo.png`
+  const ogDefault = `${BASE_URL}/studio.webp`
 
   console.log('📄  Generando páginas...\n')
 
