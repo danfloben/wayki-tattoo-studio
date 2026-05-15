@@ -47,7 +47,7 @@
   </script>
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <link rel="icon" type="image/x-icon" href="./wayki.ico" />
   <link rel="apple-touch-icon" href="./logo.png" />
 
   <!-- Fonts -->
@@ -238,15 +238,7 @@
     .form-field::placeholder { color: #555; }
     .form-field:focus { border-bottom-color: #be0000; }
 
-    /* ── Mobile menu ──────────────────────── */
-    #mobile-menu {
-      display: none; flex-direction: column; gap: 24px;
-      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(13,15,15,0.98); backdrop-filter: blur(20px);
-      align-items: center; justify-content: center;
-      z-index: 200;
-    }
-    #mobile-menu.open { display: flex; }
+    /* ── Mobile menu — owned by 01-navbar.html ── */
 
     /* ── WhatsApp FAB ─────────────────────── */
     .wa-fab {

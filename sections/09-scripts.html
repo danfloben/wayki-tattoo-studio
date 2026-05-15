@@ -42,16 +42,16 @@
     }, { passive: true });
 
     // ── Mobile menu ───────────────────────────
-    const menuBtn    = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const closeBtn   = document.getElementById('close-menu');
+    const mobileMenu = document.getElementById('mob-menu');
 
-    function openMobileMenu()  { mobileMenu.classList.add('open');    document.body.style.overflow = 'hidden'; }
-    function closeMobileMenu() { mobileMenu.classList.remove('open'); document.body.style.overflow = ''; }
-
-    menuBtn.addEventListener('click', openMobileMenu);
-    closeBtn.addEventListener('click', closeMobileMenu);
-    mobileMenu.addEventListener('click', (e) => { if (e.target === mobileMenu) closeMobileMenu(); });
+    function openMobileMenu() {
+      mobileMenu.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    }
 
     // ── Scroll reveal ─────────────────────────
     const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
@@ -129,18 +129,21 @@
         btn.classList.toggle('active', btn.dataset.lang === currentLang);
       });
 
-      // Sync lang display label
+      // Sync lang display labels (desktop + móvil)
       const label = document.getElementById('lang-current');
       if (label) label.textContent = currentLang.toUpperCase();
+      const labelMobile = document.getElementById('lang-mobile-current');
+      if (labelMobile) labelMobile.textContent = currentLang.toUpperCase();
     }
 
     function setLang(lang) {
       currentLang = lang;
       localStorage.setItem('wayki-lang', lang);
       applyLang();
-      // Close desktop dropdown
-      const menu = document.getElementById('lang-menu');
-      if (menu) menu.style.display = 'none';
+      const menu    = document.getElementById('lang-menu');
+      const mobMenu = document.getElementById('mob-lang-menu');
+      if (menu)    menu.style.display    = 'none';
+      if (mobMenu) mobMenu.style.display = 'none';
     }
 
     function toggleLangMenu() {
@@ -149,14 +152,36 @@
       menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
     }
 
-    // Close lang dropdown when clicking outside
+    function toggleMobLangMenu() {
+      const menu = document.getElementById('mob-lang-menu');
+      if (!menu) return;
+      menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+    }
+
+    // Cicla idiomas en el botón móvil (ES→EN→IT→FR→DE→ES)
+    const langOrder = ['es', 'en', 'it', 'fr', 'de'];
+    function cycleLang() {
+      const next = langOrder[(langOrder.indexOf(currentLang) + 1) % langOrder.length];
+      setLang(next);
+    }
+
+    // Close lang dropdowns when clicking outside
     document.addEventListener('click', (e) => {
-      const switcher = document.getElementById('lang-switcher');
-      const menu = document.getElementById('lang-menu');
+      const switcher = document.getElementById('nb-lang-wrap');
+      const menu     = document.getElementById('lang-menu');
       if (menu && switcher && !switcher.contains(e.target)) {
         menu.style.display = 'none';
       }
+      const mobBtn  = document.getElementById('nb-lang-mob');
+      const mobMenu = document.getElementById('mob-lang-menu');
+      if (mobMenu && mobBtn && !mobBtn.closest('div').contains(e.target)) {
+        mobMenu.style.display = 'none';
+      }
     });
+
+    // Sync botón móvil al cargar
+    const mobileLangLabel = document.getElementById('lang-mobile-current');
+    if (mobileLangLabel) mobileLangLabel.textContent = currentLang.toUpperCase();
 
     // Apply saved language on load
     applyLang();
