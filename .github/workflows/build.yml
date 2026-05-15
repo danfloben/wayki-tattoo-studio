@@ -52,9 +52,12 @@ jobs:
 
       # 5. Commit y push de los HTML generados
       - name: 📤 Commit & Push
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git remote set-url origin https://x-access-token:${GH_PAT}@github.com/danfloben/wayki-tattoo-studio.git
           git add *.html
           git diff --staged --quiet || git commit -m "chore: rebuild desde Sanity [skip ci]"
-          git push
+          git push origin main
