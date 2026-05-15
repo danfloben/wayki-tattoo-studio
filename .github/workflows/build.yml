@@ -1,17 +1,10 @@
-name: 🏗️ Build & Deploy — Wayki Tattoo Studio
+name: Build & Deploy — Wayki Tattoo Studio
 
 on:
-  workflow_dispatch:
   push:
     branches: [main]
-    paths:
-      - 'sections/**'
-      - 'scripts/**'
-      - 'translations.js'
-      - '*.png'
-      - '*.webp'
-      - '*.jpg'
-      - 'galeria/**'
+    paths-ignore:
+      - 'studio/**'
   repository_dispatch:
     types: [sanity-update]
 
@@ -26,31 +19,31 @@ concurrency:
 
 jobs:
   build:
-    name: Generar páginas HTML
+    name: Generar paginas HTML
     runs-on: ubuntu-latest
     steps:
-      - name: 📥 Checkout
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: ⚙️ Setup Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: 📦 Instalar dependencias
+      - name: Instalar dependencias
         run: npm install
         working-directory: scripts
 
-      - name: 🔨 Build desde Sanity
+      - name: Build desde Sanity
         env:
           SANITY_PROJECT_ID: ${{ secrets.SANITY_PROJECT_ID }}
           SANITY_TOKEN: ${{ secrets.SANITY_TOKEN }}
         run: node scripts/build.js
 
-      - name: ⚙️ Configurar GitHub Pages
+      - name: Configurar GitHub Pages
         uses: actions/configure-pages@v4
 
-      - name: 📦 Subir artefacto
+      - name: Subir artefacto
         uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
@@ -63,6 +56,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: 🚀 Deploy
+      - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
