@@ -1,7 +1,10 @@
 name: Deploy Sanity Studio
 
 on:
-  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'studio/**'
 
 jobs:
   deploy:
