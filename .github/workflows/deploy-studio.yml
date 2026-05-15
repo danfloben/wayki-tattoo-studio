@@ -1,0 +1,27 @@
+name: Deploy Sanity Studio
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy wayki-tattoo.sanity.studio
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Instalar dependencias
+        run: npm install
+        working-directory: studio
+
+      - name: Deploy Studio
+        run: npx sanity deploy --yes
+        working-directory: studio
+        env:
+          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_TOKEN }}
