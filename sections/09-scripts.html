@@ -17,21 +17,11 @@
     });
 
     // ── Active nav link (URL-based) ───────────
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const currentPath = '/' + (window.location.pathname.split('/').filter(Boolean)[0] || '');
     document.querySelectorAll('.nb-link').forEach(link => {
-      if (link.getAttribute('href') === currentPage) link.classList.add('active');
+      const href = link.getAttribute('href');
+      if (href === currentPath || (currentPath === '/' && href === '/')) link.classList.add('active');
     });
-
-    // ── Page title per page ───────────────────
-    const pageTitles = {
-      'portafolio.html': 'Portafolio | Wayki Tattoo Studio',
-      'artistas.html':   'Artistas | Wayki Tattoo Studio',
-      'nosotros.html':   'Nosotros | Wayki Tattoo Studio',
-      'resenas.html':    'Reseñas | Wayki Tattoo Studio',
-      'merch.html':      'Merch & Supply | Wayki Tattoo Studio',
-      'contacto.html':   'Contacto | Wayki Tattoo Studio',
-    };
-    if (pageTitles[currentPage]) document.title = pageTitles[currentPage];
 
     // ── Hero slideshow ────────────────────────
     (function () {
