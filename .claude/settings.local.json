@@ -8,7 +8,10 @@
       "WebFetch(domain:gangatattoo.com)",
       "WebFetch(domain:nobleart.com)",
       "WebFetch(domain:www.gangatattoo.com)",
-      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\danfl\\\\Desktop\\\\wayki.tattoo.studio\\\\\" | Where-Object { $_.Name -match \"banner\" } | Select-Object Name)"
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\danfl\\\\Desktop\\\\wayki.tattoo.studio\\\\\" | Where-Object { $_.Name -match \"banner\" } | Select-Object Name)",
+      "Bash(awk '{print $9, $5}')",
+      "Bash(git add *)",
+      "Bash(git commit -m 'feat: auditoria, SEO por pagina y optimizacion general *)"
     ]
   }
 }
