@@ -77,16 +77,16 @@ function genHero(hero, s) {
   return `  <!-- HERO -->
   <section id="inicio" class="hero-bg relative min-h-screen flex items-center justify-center">
     <div id="hero-slides" style="position:absolute;inset:0;z-index:0;">
-${slides || `      <div class="hero-slide active" style="background-image:url('./banner_1.jpg');"></div>
-      <div class="hero-slide" style="background-image:url('./banner_2.jpg');"></div>
-      <div class="hero-slide" style="background-image:url('./banner_3.jpg');"></div>
-      <div class="hero-slide" style="background-image:url('./banner_4.jpg');"></div>`}
+${slides || `      <div class="hero-slide active" style="background-image:url('/banner_1.jpg');"></div>
+      <div class="hero-slide" style="background-image:url('/banner_2.jpg');"></div>
+      <div class="hero-slide" style="background-image:url('/banner_3.jpg');"></div>
+      <div class="hero-slide" style="background-image:url('/banner_4.jpg');"></div>`}
     </div>
     <div class="hero-overlay absolute inset-0" style="z-index:1;"></div>
     <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[300px] rounded-full pointer-events-none"
          style="background:radial-gradient(ellipse,rgba(190,0,0,0.18) 0%,transparent 70%);z-index:2;"></div>
     <div class="relative flex flex-col items-center text-center px-6 max-w-5xl mx-auto pt-20" style="z-index:3;">
-      <img src="./logo.png" alt="Wayki Tattoo Studio Logo"
+      <img src="/logo.png" alt="Wayki Tattoo Studio Logo"
            class="w-28 h-28 md:w-36 md:h-36 rounded-full object-cover mb-10 reveal"
            style="box-shadow:0 0 60px rgba(190,0,0,0.45);border:2px solid rgba(190,0,0,0.4);" />
       <span class="section-label reveal delay-1">${hero?.eyebrow || 'Arequipa · Perú · Est. 2013'}</span>
@@ -193,7 +193,7 @@ function genPortafolio(items) {
 }
 
 function genNosotros(s) {
-  const photo = s?.studioPhoto ? imgUrl(s.studioPhoto, 800) : './studio.webp'
+  const photo = s?.studioPhoto ? imgUrl(s.studioPhoto, 800) : '/studio.webp'
   const wa    = s?.whatsapp || WA_NUM
 
   return `  <!-- NOSOTROS -->
@@ -256,7 +256,7 @@ function genArtistas(artistas, s) {
   const wa = s?.whatsapp || WA_NUM
 
   const cards = artistas.map((a, i) => {
-    const foto = a.foto ? imgUrl(a.foto, 700) : './artista_1.webp'
+    const foto = a.foto ? imgUrl(a.foto, 700) : '/artista_1.webp'
     const waMsg = a.whatsappMsg || `Hola! Quiero una cita con ${a.nombre}.`
     const igUrl = a.instagram || s?.instagram || '#'
     const igHandle = a.instagramHandle || s?.instagramHandle || '@waykitattoostudio'
@@ -332,7 +332,7 @@ function genMerch(productos, s) {
   const wa = s?.whatsapp || WA_NUM
 
   const cards = productos.map((p, i) => {
-    const foto    = p.imagen ? imgUrlSq(p.imagen, 600) : `./galeria/IMG20260208185421.webp`
+    const foto    = p.imagen ? imgUrlSq(p.imagen, 600) : `/galeria/IMG20260208185421.webp`
     const badgeHtml = p.badge
       ? `<span class="merch-badge${p.badgeHot ? ' merch-badge-hot' : ''}">${p.badge}</span>`
       : ''
@@ -468,7 +468,7 @@ function genContacto(s) {
   const city    = s?.city || 'Arequipa — Perú'
   const hours   = s?.hours || 'Lun – Sáb: 10:00 am – 8:00 pm'
   const mapsUrl = s?.googleMapsUrl || 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3827.3082!2d-71.5375!3d-16.4090!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91424a5b3c0f6cff%3A0x0!2sCalle%20Campo%20Redondo%20100%2C%20Arequipa!5e0!3m2!1ses!2spe!4v1'
-  const photo   = s?.studioPhoto ? imgUrl(s.studioPhoto, 900) : './studio.webp'
+  const photo   = s?.studioPhoto ? imgUrl(s.studioPhoto, 900) : '/studio.webp'
   const ig      = s?.instagram || 'https://www.instagram.com/waykitattoostudio/'
   const fb      = s?.facebook  || 'https://www.facebook.com/waykitattoostudio'
   const tt      = s?.tiktok    || 'https://www.tiktok.com/@waykitattoostudio1'
