@@ -1,5 +1,6 @@
 'use strict'
 
+// build v1.0.1
 // ─────────────────────────────────────────────────────────────────────────────
 //  Wayki Tattoo Studio — Build Script
 //  Lee contenido de Sanity CMS y genera los archivos HTML estáticos.
@@ -14,8 +15,7 @@ const path             = require('path')
 // ── Paths ─────────────────────────────────────────────────────────────────────
 const ROOT     = path.join(__dirname, '..')
 const SECTIONS = path.join(ROOT, 'sections')
-const BASE_URL = 'https://danfloben.github.io/wayki-tattoo-studio'
-const RAW_BASE = 'https://raw.githubusercontent.com/danfloben/wayki-tattoo-studio/main'
+const BASE_URL = 'https://waykitattoostudio.pe'
 const WA_NUM   = process.env.WA_NUMBER || '51993054099'
 
 // ── Sanity client ─────────────────────────────────────────────────────────────
@@ -99,8 +99,8 @@ ${slides || `      <div class="hero-slide active" style="background-image:url('.
         ${hero?.subtitle || 'Transformamos tus ideas en obras maestras permanentes. Realismo, color, fineline y más — con los más altos estándares de arte e higiene.'}
       </p>
       <div class="reveal delay-4 flex flex-wrap gap-4 justify-center">
-        <a href="portafolio.html" class="btn-primary" data-i18n="hero_cta1">${hero?.ctaPrimary || 'Ver Portafolio'}</a>
-        <a href="contacto.html"  class="btn-ghost"   data-i18n="hero_cta2">${hero?.ctaSecondary || 'Reservar Cita'}</a>
+        <a href="/portafolio" class="btn-primary" data-i18n="hero_cta1">${hero?.ctaPrimary || 'Ver Portafolio'}</a>
+        <a href="/contacto"  class="btn-ghost"   data-i18n="hero_cta2">${hero?.ctaSecondary || 'Reservar Cita'}</a>
       </div>
     </div>
   </section>`
@@ -595,18 +595,21 @@ function genContacto(s) {
 //  ENSAMBLADO DE PÁGINAS
 // ─────────────────────────────────────────────────────────────────────────────
 
-function buildPage({ out, body, title, desc, url, image }) {
+function buildPage({ out, body, title, desc, pageUrl, image }) {
   const head    = sec('00-head.html')
     .replace(/%%PAGE_TITLE%%/g,  title)
     .replace(/%%PAGE_DESC%%/g,   desc)
-    .replace(/%%PAGE_URL%%/g,    `${BASE_URL}/${url}`)
+    .replace(/%%PAGE_URL%%/g,    pageUrl)
     .replace(/%%PAGE_IMAGE%%/g,  image)
   const nav     = sec('01-navbar.html')
   const footer  = sec('08-footer.html')
   const scripts = sec('09-scripts.html')
 
   const html = [head, nav, body, footer, scripts].join('\n')
-  fs.writeFileSync(path.join(ROOT, out), html, 'utf-8')
+  const outPath = path.join(ROOT, out)
+  const outDir  = path.dirname(outPath)
+  if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true })
+  fs.writeFileSync(outPath, html, 'utf-8')
   console.log(`  ✓ ${out}`)
 }
 
@@ -638,73 +641,73 @@ async function main() {
 
   const studioImg = settings?.studioPhoto
     ? imgUrl(settings.studioPhoto, 1200)
-    : `${RAW_BASE}/studio.webp`
+    : `${BASE_URL}/studio.webp`
 
-  const ogDefault = `${RAW_BASE}/studio.webp`
+  const ogDefault = `${BASE_URL}/logo.png`
 
   console.log('📄  Generando páginas...\n')
 
   buildPage({
-    out:   'index.html',
-    body:  [genHero(hero, settings), genServicios(servicios)].join('\n'),
-    title: 'Wayki Tattoo Studio | Arte en tu Piel — Arequipa, Perú',
-    desc:  'Estudio de tatuajes profesional en Arequipa, Perú. Realismo, color, fineline y más con tintas SiVola. Más de 10 años de experiencia.',
-    url:   'index.html',
-    image: ogDefault,
+    out:      'index.html',
+    body:     [genHero(hero, settings), genServicios(servicios)].join('\n'),
+    title:    'Wayki Tattoo Studio | Arte en tu Piel — Arequipa, Perú',
+    desc:     'Estudio de tatuajes profesional en Arequipa, Perú. Realismo, color, fineline y más con tintas SiVola. Más de 10 años de experiencia.',
+    pageUrl:  `${BASE_URL}/`,
+    image:    ogDefault,
   })
 
   buildPage({
-    out:   'portafolio.html',
-    body:  genPortafolio(portfolio),
-    title: 'Portafolio | Wayki Tattoo Studio — Arequipa, Perú',
-    desc:  'Galería de tatuajes: realismo, blackwork, color, fineline y más. Cada obra diseñada a medida.',
-    url:   'portafolio.html',
-    image: portfolio[0]?.imagen ? imgUrl(portfolio[0].imagen, 1200) : ogDefault,
+    out:      'portafolio/index.html',
+    body:     genPortafolio(portfolio),
+    title:    'Portafolio | Wayki Tattoo Studio — Arequipa, Perú',
+    desc:     'Galería de tatuajes: realismo, blackwork, color, fineline y más. Cada obra diseñada a medida.',
+    pageUrl:  `${BASE_URL}/portafolio`,
+    image:    portfolio[0]?.imagen ? imgUrl(portfolio[0].imagen, 1200) : ogDefault,
   })
 
   buildPage({
-    out:   'artistas.html',
-    body:  genArtistas(artistas, settings),
-    title: 'Artistas | Wayki Tattoo Studio — Arequipa, Perú',
-    desc:  'Conoce a los artistas de Wayki Tattoo Studio. Especialistas en realismo, color, blackwork y fineline.',
-    url:   'artistas.html',
-    image: artistas[0]?.foto ? imgUrl(artistas[0].foto, 1200) : ogDefault,
+    out:      'artistas/index.html',
+    body:     genArtistas(artistas, settings),
+    title:    'Artistas | Wayki Tattoo Studio — Arequipa, Perú',
+    desc:     'Conoce a los artistas de Wayki Tattoo Studio. Especialistas en realismo, color, blackwork y fineline.',
+    pageUrl:  `${BASE_URL}/artistas`,
+    image:    artistas[0]?.foto ? imgUrl(artistas[0].foto, 1200) : ogDefault,
   })
 
   buildPage({
-    out:   'nosotros.html',
-    body:  genNosotros(settings),
-    title: 'Nosotros | Wayki Tattoo Studio — Arequipa, Perú',
-    desc:  'Más de 10 años transformando ideas en arte permanente. Somos el estudio de tatuajes de referencia en Arequipa.',
-    url:   'nosotros.html',
-    image: studioImg,
+    out:      'nosotros/index.html',
+    body:     genNosotros(settings),
+    title:    'Nosotros | Wayki Tattoo Studio — Arequipa, Perú',
+    desc:     'Más de 10 años transformando ideas en arte permanente. Somos el estudio de tatuajes de referencia en Arequipa.',
+    pageUrl:  `${BASE_URL}/nosotros`,
+    image:    studioImg,
   })
 
   buildPage({
-    out:   'resenas.html',
-    body:  genTestimonios(testimonios, settings),
-    title: 'Reseñas | Wayki Tattoo Studio — Arequipa, Perú',
-    desc:  'Más de 5.000 clientes satisfechos. Lee las reseñas de Wayki Tattoo Studio en Google.',
-    url:   'resenas.html',
-    image: ogDefault,
+    out:      'resenas/index.html',
+    body:     genTestimonios(testimonios, settings),
+    title:    'Reseñas | Wayki Tattoo Studio — Arequipa, Perú',
+    desc:     'Más de 5.000 clientes satisfechos. Lee las reseñas de Wayki Tattoo Studio en Google.',
+    pageUrl:  `${BASE_URL}/resenas`,
+    image:    ogDefault,
   })
 
   buildPage({
-    out:   'merch.html',
-    body:  genMerch(merch, settings),
-    title: 'Merch & Supply | Wayki Tattoo Studio — Arequipa, Perú',
-    desc:  'Tintas SiVola, ropa y accesorios Wayki. Lleva la cultura del tatuaje más allá de la piel.',
-    url:   'merch.html',
-    image: merch[0]?.imagen ? imgUrl(merch[0].imagen, 1200) : ogDefault,
+    out:      'merch/index.html',
+    body:     genMerch(merch, settings),
+    title:    'Merch & Supply | Wayki Tattoo Studio — Arequipa, Perú',
+    desc:     'Tintas SiVola, ropa y accesorios Wayki. Lleva la cultura del tatuaje más allá de la piel.',
+    pageUrl:  `${BASE_URL}/merch`,
+    image:    merch[0]?.imagen ? imgUrl(merch[0].imagen, 1200) : ogDefault,
   })
 
   buildPage({
-    out:   'contacto.html',
-    body:  genContacto(settings),
-    title: 'Contacto | Wayki Tattoo Studio — Arequipa, Perú',
-    desc:  'Reserva tu cita en Wayki Tattoo Studio. Calle Campo Redondo 100, Cercado, Arequipa. Lun–Sáb 10am–8pm.',
-    url:   'contacto.html',
-    image: studioImg,
+    out:      'contacto/index.html',
+    body:     genContacto(settings),
+    title:    'Contacto | Wayki Tattoo Studio — Arequipa, Perú',
+    desc:     'Reserva tu cita en Wayki Tattoo Studio. Calle Campo Redondo 100, Cercado, Arequipa. Lun–Sáb 10am–8pm.',
+    pageUrl:  `${BASE_URL}/contacto`,
+    image:    studioImg,
   })
 
   console.log('\n✅  Build completado!\n')
