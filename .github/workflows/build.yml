@@ -4,6 +4,7 @@ name: 🏗️ Build & Deploy — Wayki Tattoo Studio
 # 1. Push manual al repo (cambios en código/sections)
 # 2. Webhook desde Sanity (cliente guarda contenido)
 on:
+  workflow_dispatch:        # ← disparo manual desde GitHub UI
   push:
     branches: [main]
     paths:
@@ -15,7 +16,7 @@ on:
       - '*.jpg'
       - 'galeria/**'
   repository_dispatch:
-    types: [sanity-update]
+    types: [sanity-update]  # ← webhook desde Sanity
 
 jobs:
   build:
