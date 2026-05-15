@@ -22,6 +22,8 @@ jobs:
   build:
     name: Generar páginas HTML
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       # 1. Checkout del repositorio
