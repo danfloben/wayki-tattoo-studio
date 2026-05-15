@@ -710,6 +710,36 @@ async function main() {
     image:    studioImg,
   })
 
+  // ── Sitemap ──────────────────────────────────────────────────────────────────
+  const today = new Date().toISOString().split('T')[0]
+  const pages = [
+    { url: `${BASE_URL}/`,           priority: '1.00', freq: 'weekly'  },
+    { url: `${BASE_URL}/portafolio`, priority: '0.90', freq: 'weekly'  },
+    { url: `${BASE_URL}/artistas`,   priority: '0.85', freq: 'monthly' },
+    { url: `${BASE_URL}/nosotros`,   priority: '0.80', freq: 'monthly' },
+    { url: `${BASE_URL}/resenas`,    priority: '0.75', freq: 'monthly' },
+    { url: `${BASE_URL}/merch`,      priority: '0.70', freq: 'monthly' },
+    { url: `${BASE_URL}/contacto`,   priority: '0.80', freq: 'monthly' },
+  ]
+
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${pages.map(p => `  <url>
+    <loc>${p.url}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>${p.freq}</changefreq>
+    <priority>${p.priority}</priority>
+  </url>`).join('\n')}
+</urlset>`
+
+  fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), sitemap, 'utf-8')
+  console.log('  ✓ sitemap.xml')
+
+  // ── robots.txt ───────────────────────────────────────────────────────────────
+  const robots = `User-agent: *\nAllow: /\nSitemap: ${BASE_URL}/sitemap.xml\n`
+  fs.writeFileSync(path.join(ROOT, 'robots.txt'), robots, 'utf-8')
+  console.log('  ✓ robots.txt')
+
   console.log('\n✅  Build completado!\n')
 }
 
