@@ -2,6 +2,37 @@
   <!-- JAVASCRIPT                              -->
   <!-- ═══════════════════════════════════════ -->
   <script>
+    // ── Page transitions ──────────────────────
+    // Intercept internal page links for smooth fade
+    document.querySelectorAll('a[href]').forEach(a => {
+      const href = a.getAttribute('href');
+      if (href && !href.startsWith('http') && !href.startsWith('#')
+               && !href.startsWith('mailto') && !href.startsWith('tel')) {
+        a.addEventListener('click', e => {
+          e.preventDefault();
+          document.body.classList.add('page-leaving');
+          setTimeout(() => { window.location.href = href; }, 260);
+        });
+      }
+    });
+
+    // ── Active nav link (URL-based) ───────────
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nb-link').forEach(link => {
+      if (link.getAttribute('href') === currentPage) link.classList.add('active');
+    });
+
+    // ── Page title per page ───────────────────
+    const pageTitles = {
+      'portafolio.html': 'Portafolio | Wayki Tattoo Studio',
+      'artistas.html':   'Artistas | Wayki Tattoo Studio',
+      'nosotros.html':   'Nosotros | Wayki Tattoo Studio',
+      'resenas.html':    'Reseñas | Wayki Tattoo Studio',
+      'merch.html':      'Merch & Supply | Wayki Tattoo Studio',
+      'contacto.html':   'Contacto | Wayki Tattoo Studio',
+    };
+    if (pageTitles[currentPage]) document.title = pageTitles[currentPage];
+
     // ── Hero slideshow ────────────────────────
     (function () {
       const slides = document.querySelectorAll('.hero-slide');
@@ -14,26 +45,11 @@
       }, 5000);
     })();
 
-    // ── Navbar scroll effect ──────────────────
+    // ── Navbar scroll (sticky) ────────────────
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
       navbar.classList.toggle('scrolled', window.scrollY > 40);
     }, { passive: true });
-
-    // ── Active nav link on scroll ─────────────
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const sectionObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          navLinks.forEach(link => {
-            const isActive = link.getAttribute('href') === '#' + entry.target.id;
-            link.classList.toggle('active', isActive);
-          });
-        }
-      });
-    }, { threshold: 0.4 });
-    sections.forEach(s => sectionObserver.observe(s));
 
     // ── Scroll to top button ──────────────────
     const scrollTopBtn = document.getElementById('scroll-top');
@@ -92,14 +108,6 @@
       });
     });
 
-    // ── Smooth scroll ─────────────────────────
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', (e) => {
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-      });
-    });
-
     // ── i18n engine ───────────────────────────
     let currentLang = localStorage.getItem('wayki-lang') || 'es';
 
@@ -110,8 +118,6 @@
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.dataset.i18n;
         if (t[key] === undefined) return;
-        // Title values include a leading '/' meant for the styled slash span — strip it here
-        // since the slash lives in its own <span class="slash"> in the HTML
         let val = t[key];
         if (val.startsWith('/')) val = val.slice(1);
         el.innerHTML = val;
@@ -124,12 +130,10 @@
 
       document.documentElement.lang = currentLang;
 
-      // Sync all lang buttons active state
       document.querySelectorAll('.lang-opt').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.lang === currentLang);
       });
 
-      // Sync lang display labels (desktop + móvil)
       const label = document.getElementById('lang-current');
       if (label) label.textContent = currentLang.toUpperCase();
       const labelMobile = document.getElementById('lang-mobile-current');
@@ -158,32 +162,26 @@
       menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
     }
 
-    // Cicla idiomas en el botón móvil (ES→EN→IT→FR→DE→ES)
     const langOrder = ['es', 'en', 'it', 'fr', 'de'];
     function cycleLang() {
       const next = langOrder[(langOrder.indexOf(currentLang) + 1) % langOrder.length];
       setLang(next);
     }
 
-    // Close lang dropdowns when clicking outside
+    // Cierra dropdowns al hacer clic afuera
     document.addEventListener('click', (e) => {
-      const switcher = document.getElementById('nb-lang-wrap');
-      const menu     = document.getElementById('lang-menu');
-      if (menu && switcher && !switcher.contains(e.target)) {
-        menu.style.display = 'none';
-      }
+      const wrap    = document.getElementById('nb-lang-wrap');
+      const menu    = document.getElementById('lang-menu');
+      if (menu && wrap && !wrap.contains(e.target)) menu.style.display = 'none';
+
       const mobBtn  = document.getElementById('nb-lang-mob');
       const mobMenu = document.getElementById('mob-lang-menu');
-      if (mobMenu && mobBtn && !mobBtn.closest('div').contains(e.target)) {
-        mobMenu.style.display = 'none';
-      }
+      if (mobMenu && mobBtn && !mobBtn.closest('div').contains(e.target)) mobMenu.style.display = 'none';
     });
 
-    // Sync botón móvil al cargar
     const mobileLangLabel = document.getElementById('lang-mobile-current');
     if (mobileLangLabel) mobileLangLabel.textContent = currentLang.toUpperCase();
 
-    // Apply saved language on load
     applyLang();
   </script>
 </body>
