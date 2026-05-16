@@ -19,7 +19,7 @@ concurrency:
 
 jobs:
   build:
-    name: Generar paginas HTML
+    name: Build con Astro
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -29,16 +29,17 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: 'npm'
 
       - name: Instalar dependencias
         run: npm install
-        working-directory: scripts
 
-      - name: Build desde Sanity
+      - name: Build con Astro
         env:
           SANITY_PROJECT_ID: ${{ secrets.SANITY_PROJECT_ID }}
+          SANITY_DATASET: production
           SANITY_TOKEN: ${{ secrets.SANITY_TOKEN }}
-        run: node scripts/build.js
+        run: npm run build
 
       - name: Configurar GitHub Pages
         uses: actions/configure-pages@v4
@@ -46,7 +47,7 @@ jobs:
       - name: Subir artefacto
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: './dist'
 
   deploy:
     name: Deploy a GitHub Pages

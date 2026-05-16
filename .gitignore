@@ -2,12 +2,16 @@ node_modules/
 .DS_Store
 Thumbs.db
 
+# Astro build output
+dist/
+.astro/
+
 # Sanity Studio
 studio/node_modules/
 studio/.sanity/
 studio/dist/
 
-# Build script
+# Build script (legacy)
 scripts/node_modules/
 
 # Env secrets (nunca subir al repo)

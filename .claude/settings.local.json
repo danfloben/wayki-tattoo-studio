@@ -13,7 +13,28 @@
       "Bash(git add *)",
       "Bash(git commit -m 'feat: auditoria, SEO por pagina y optimizacion general *)",
       "Bash(git push *)",
-      "Bash(git commit *)"
+      "Bash(git commit *)",
+      "Bash(Select-Object Name)",
+      "Bash(npm install *)",
+      "Bash(npx sanity *)",
+      "Bash(git stash *)",
+      "Bash(git pull *)",
+      "Bash(git -C \"C:/Users/danfl/Desktop/wayki.tattoo.studio\" log --oneline --all -- .github/workflows/deploy-studio.yml)",
+      "Bash(git rm *)",
+      "Bash(cp galeria/* public/images/galeria/)",
+      "Bash(echo \"Gallery copied: $?\")",
+      "Bash(npm run *)",
+      "Bash(mv \"IMG20240208134607\\(1\\).webp\" \"IMG20240208134607b.webp\")",
+      "Bash(mv \"IMG20250918133615 \\(1\\).webp\" \"IMG20250918133615.webp\")",
+      "Bash(mv \"IMG20251128230055 \\(1\\).webp\" \"IMG20251128230055.webp\")",
+      "Bash(mv \"WhatsApp Image 2026-05-14 at 12.32.08 PM.webp\" \"IMG20260514120208.webp\")",
+      "Bash(mv \"WhatsApp Image 2026-05-14 at 12.32.41 PM.webp\" \"IMG20260514120241.webp\")",
+      "Bash(rm -rf galeria/ scripts/ sections/ index.html build.ps1)",
+      "Bash(rm -f CNAME favicon.svg translations.js logo.png w.png)",
+      "Bash(python -c ' *)",
+      "Bash(npx astro *)",
+      "Bash(find \"/mnt/c/Users/danfl/Desktop/wayki.tattoo.studio/public/images\" -type d | sort)",
+      "Bash(node -e ' *)"
     ]
   }
 }

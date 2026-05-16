@@ -1,0 +1,55 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getTestimonios } from '../lib/sanity';
+
+const testimonios = await getTestimonios();
+
+const testimoniosStatic = [
+  { nombre: 'Antonin Biret',    fecha: 'Hace 10 meses', texto: 'Experiencia inolvidable, Angel y Lili son de una simpatía que pocas veces en la vida encontras. Además el trabajo está hecho con una higiene de alta calidad y un profesionalismo enorme. ¡Recomendaciones más que merecidas!' },
+  { nombre: 'Sanpahece',        fecha: 'Hace 4 años',   texto: 'Son los mejores tatuadores de la ciudad. Son super cuidadosos, amables y la calidad de los tatuajes es INCREÍBLE. 100% recomendados.' },
+  { nombre: 'Sergio Perez',     fecha: 'Hace 3 años',   texto: 'Me hice dos tatuajes de alta calidad y salieron exactamente como esperaba. El ambiente es cómodo y el trato es bastante agradable. Dan recomendaciones muy buenas para que el tatuaje salga lo mejor posible.' },
+  { nombre: 'Felipe Jalsovec',  fecha: 'Hace 4 años',   texto: 'El ambiente es ameno, buena música, buen ambiente, el local es céntrico y acogedor. Profesional en realizar el trabajo, de buena calidad, materiales esterilizados y seguros. Si tienes en mente tatuarte, WAYKI TATTOO definitivamente es el lugar indicado.' },
+  { nombre: 'Mauricio Martinez',fecha: 'Hace un año',   texto: 'Me gustó el trato, buena calidad, precio accesible, buenos proyectos y buenas ideas del tatuador. Un estudio con mucho talento y dedicación.' },
+];
+
+const display = testimonios.length ? testimonios : testimoniosStatic;
+---
+
+<Layout
+  title="Reseñas — Wayki Tattoo Studio | Lo que dicen nuestros clientes"
+  description="Lee lo que dicen nuestros clientes sobre Wayki Tattoo Studio. El estudio de tatuajes de referencia en Arequipa, Perú. Calidad, higiene y arte garantizados."
+  url="https://waykitattoostudio.pe/resenas"
+  image="https://waykitattoostudio.pe/images/studio.webp"
+>
+  <!-- Header -->
+  <div style="background:#121414;padding:120px 0 60px;">
+    <div class="max-w-[1280px] mx-auto px-6 md:px-10">
+      <span class="section-label" data-i18n="test_label">Lo que dicen de nosotros</span>
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(40px,6vw,72px);letter-spacing:-0.03em;color:#e2e2e2;">
+        <span class="slash">/</span><span data-i18n="test_title">Reseñas</span>
+      </h1>
+      <div class="red-line mt-4"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- TESTIMONIOS                             -->
+  <!-- ═══════════════════════════════════════ -->
+  <section style="background:#0d0f0f;padding:48px 0 96px;position:relative;overflow:hidden;">
+    <div class="absolute left-1/2 top-0 -translate-x-1/2 pointer-events-none" style="width:800px;height:2px;background:linear-gradient(to right,transparent,#be0000,transparent);opacity:0.4;"></div>
+    <div class="max-w-[1280px] mx-auto px-6 md:px-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {display.map((t: any, i: number) => (
+          <div class={`reveal delay-${Math.min(i + 1, 6)}`} style="background:#1a1c1c;border:1px solid #2a2d2d;padding:28px;display:flex;flex-direction:column;gap:16px;transition:border-color 0.3s;" onmouseover="this.style.borderColor='#be0000'" onmouseout="this.style.borderColor='#2a2d2d'">
+            <div>
+              <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;color:#e2e2e2;">{t.nombre || t.name}</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;color:#555;display:block;margin-top:2px;text-transform:uppercase;">{t.fecha || t.date}</span>
+            </div>
+            <svg viewBox="0 0 24 24" style="width:24px;height:24px;fill:#be0000;opacity:0.4;flex-shrink:0;"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></svg>
+            <p style="font-family:'Manrope',sans-serif;font-size:14px;color:#a0a0a0;line-height:1.75;flex:1;">{t.texto || t.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,291 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { readdirSync, statSync } from 'fs';
+import { join } from 'path';
+
+// ── Configuración de estilos ──────────────────────────────
+const STYLE_LABELS: Record<string, string> = {
+  'blackwork':              'Blackwork',
+  'floral':                 'Floral',
+  'minimalista':            'Minimalista',
+  'neo-tradicional':        'Neo Tradicional',
+  'propuesta':              'Propuesta',
+  'puntillismo-arrastre':   'Puntillismo',
+  'realismo':               'Realismo',
+  'tradicional':            'Tradicional',
+};
+const STYLE_I18N: Record<string, string> = {
+  'blackwork':              'port_style_blackwork',
+  'floral':                 'port_style_floral',
+  'minimalista':            'port_style_minimalista',
+  'neo-tradicional':        'port_style_neo_tradicional',
+  'propuesta':              'port_style_propuesta',
+  'puntillismo-arrastre':   'port_style_puntillismo',
+  'realismo':               'port_style_realismo',
+  'tradicional':            'port_style_tradicional',
+};
+const IMAGE_EXTS = ['.webp', '.jpg', '.jpeg', '.png'];
+const BASE = 'public/images/galeria';
+
+// ── Leer galería dinámica ─────────────────────────────────
+const galeriaItems: { src: string; style: string; label: string }[] = [];
+const stylesFound: string[] = [];
+
+for (const [folder, label] of Object.entries(STYLE_LABELS)) {
+  const dir = join(BASE, folder);
+  try {
+    const files = readdirSync(dir)
+      .filter(f => IMAGE_EXTS.some(ext => f.toLowerCase().endsWith(ext)))
+      .sort();
+    if (files.length) {
+      stylesFound.push(folder);
+      files.forEach(f => galeriaItems.push({
+        src:   `/images/galeria/${folder}/${f}`,
+        style: folder,
+        label,
+      }));
+    }
+  } catch { /* carpeta vacía o inexistente */ }
+}
+
+// ── Leer proyectos Cover-Up ───────────────────────────────
+const COVER_DIR = join(BASE, 'cover-up');
+interface CoverProyecto { id: string; titulo: string; imagenes: string[] }
+const coverProyectos: CoverProyecto[] = [];
+
+try {
+  const entries = readdirSync(COVER_DIR);
+
+  // Imágenes sueltas en la raíz → Proyecto 1
+  const rootImgs = entries
+    .filter(e => {
+      try { return statSync(join(COVER_DIR, e)).isFile() && IMAGE_EXTS.some(x => e.toLowerCase().endsWith(x)); }
+      catch { return false; }
+    })
+    .sort()
+    .map(f => `/images/galeria/cover-up/${f}`);
+  if (rootImgs.length) coverProyectos.push({ id: 'proyecto-1', titulo: 'Proyecto 1', imagenes: rootImgs });
+
+  // Subcarpetas → cada una es un proyecto
+  entries
+    .filter(e => { try { return statSync(join(COVER_DIR, e)).isDirectory(); } catch { return false; } })
+    .sort()
+    .forEach(sub => {
+      const imgs = readdirSync(join(COVER_DIR, sub))
+        .filter(f => IMAGE_EXTS.some(x => f.toLowerCase().endsWith(x)))
+        .sort()
+        .map(f => `/images/galeria/cover-up/${sub}/${f}`);
+      if (imgs.length) coverProyectos.push({
+        id: sub,
+        titulo: sub.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()),
+        imagenes: imgs,
+      });
+    });
+} catch { /* sin cover-ups */ }
+
+const totalGaleria   = galeriaItems.length;
+const totalCoverImgs = coverProyectos.reduce((acc, p) => acc + p.imagenes.length, 0);
+const totalAll       = totalGaleria + totalCoverImgs;
+---
+
+<Layout
+  title="Portafolio — Wayki Tattoo Studio | Tatuajes en Arequipa, Perú"
+  description="Explora el portafolio de Wayki Tattoo Studio: realismo, blackwork, floral, cover up y más. Más de 10 años creando arte permanente en Arequipa, Perú."
+  url="https://waykitattoostudio.pe/portafolio"
+  image="https://waykitattoostudio.pe/images/studio.webp"
+>
+
+  <!-- Header -->
+  <div style="background:#121414;padding:120px 0 56px;">
+    <div class="max-w-[1280px] mx-auto px-6 md:px-10">
+      <span class="section-label" data-i18n="port_label">Nuestro trabajo</span>
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(40px,6vw,72px);letter-spacing:-0.03em;color:#e2e2e2;">
+        <span class="slash">/</span><span data-i18n="port_title">Portafolio</span>
+      </h1>
+      <div style="width:60px;height:3px;background:#be0000;margin-top:16px;"></div>
+      <p style="font-family:'Manrope',sans-serif;font-size:14px;color:#555;margin-top:16px;">
+        <span id="port-count">{totalAll}</span> <span data-i18n="port_obras">obras</span>
+      </p>
+    </div>
+  </div>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+
+  <section style="background:#0d0f0f;padding:40px 0 96px;overflow:hidden;">
+    <div class="max-w-[1280px] mx-auto px-6 md:px-10">
+
+      <!-- ── Filtros ── -->
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-10">
+        <div class="flex flex-wrap gap-3">
+          <button class="port-filter active" data-filter="all" data-i18n="port_filter_all">Todos</button>
+          {stylesFound.map(folder => (
+            <button class="port-filter" data-filter={folder} data-i18n={STYLE_I18N[folder]}>
+              {STYLE_LABELS[folder]}
+            </button>
+          ))}
+          {coverProyectos.length > 0 && (
+            <button class="port-filter" data-filter="cover-up" data-i18n="port_coverup">Cover Up</button>
+          )}
+        </div>
+        <a href="https://www.instagram.com/waykitattoostudio/" target="_blank"
+           class="btn-ghost" style="padding:10px 24px;font-size:12px;" data-i18n="port_ig">
+          Ver más en Instagram ↗
+        </a>
+      </div>
+
+      <!-- ── Galería masonry (todos los estilos excepto cover-up) ── -->
+      <div id="port-grid" style="columns:3;column-gap:10px;">
+        {galeriaItems.map(item => (
+          <div class="port-item" data-style={item.style}
+               style="break-inside:avoid;margin-bottom:10px;position:relative;overflow:hidden;border:1px solid #1e2020;">
+            <a href={item.src} class="glightbox" data-gallery="port"
+               data-description={item.label} data-title="Wayki Tattoo Studio"
+               style="display:block;position:relative;overflow:hidden;text-decoration:none;">
+              <img src={item.src} alt={`${item.label} — Wayki Tattoo Studio`} loading="lazy"
+                   style="width:100%;height:auto;display:block;filter:grayscale(15%);transition:transform 0.55s ease,filter 0.5s ease;" />
+              <div style="position:absolute;bottom:0;left:0;right:0;padding:32px 12px 10px;background:linear-gradient(to top,rgba(13,15,15,0.88) 0%,transparent 100%);pointer-events:none;">
+                <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#fff;opacity:0.85;">{item.label}</span>
+              </div>
+              <div class="port-hover-overlay" style="position:absolute;inset:0;background:rgba(190,0,0,0.12);opacity:0;transition:opacity 0.35s;pointer-events:none;"></div>
+            </a>
+          </div>
+        ))}
+      </div>
+
+      <!-- ── Cover Up — proyectos ── -->
+      <div id="coverup-section" style="display:none;">
+        {coverProyectos.map(proyecto => (
+          <div style="margin-bottom:52px;">
+            <!-- Cabecera proyecto -->
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid #1e2020;">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;background:#be0000;color:#fff;padding:3px 8px;" data-i18n="port_coverup">Cover Up</span>
+              <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;color:#e2e2e2;">{proyecto.titulo}</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#555;">{proyecto.imagenes.length} <span data-i18n="port_imgs_proc">imágenes · proceso</span></span>
+            </div>
+            <!-- Grid del proyecto -->
+            <div style={`display:grid;grid-template-columns:repeat(${Math.min(proyecto.imagenes.length, 3)},1fr);gap:10px;`}>
+              {proyecto.imagenes.map((imgSrc, i) => {
+                const badge    = i === 0 ? 'Antes'
+                               : i === proyecto.imagenes.length - 1 ? 'Después'
+                               : 'Proceso';
+                const badgeKey = i === 0 ? 'port_antes'
+                               : i === proyecto.imagenes.length - 1 ? 'port_despues'
+                               : 'port_proceso';
+                const badgeBg  = i === 0 ? '#555'
+                               : i === proyecto.imagenes.length - 1 ? '#be0000'
+                               : '#2a2d2d';
+                return (
+                  <div style="position:relative;overflow:hidden;border:1px solid #1e2020;">
+                    <a href={imgSrc} class="glightbox-coverup"
+                       data-gallery={proyecto.id}
+                       data-title="Wayki Tattoo Studio"
+                       data-description={`Cover Up · ${proyecto.titulo} · ${badge}`}
+                       style="display:block;position:relative;overflow:hidden;text-decoration:none;">
+                      <img src={imgSrc} alt={`Cover Up ${proyecto.titulo} — Wayki Tattoo Studio`} loading="lazy"
+                           style="width:100%;height:auto;display:block;filter:grayscale(15%);transition:transform 0.55s ease,filter 0.5s ease;" />
+                      <div style={`position:absolute;top:10px;left:10px;pointer-events:none;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;padding:3px 8px;background:${badgeBg};color:#fff;`}
+                           data-i18n={badgeKey}>
+                        {badge}
+                      </div>
+                      <div style="position:absolute;bottom:0;left:0;right:0;padding:28px 12px 10px;background:linear-gradient(to top,rgba(13,15,15,0.88) 0%,transparent 100%);pointer-events:none;">
+                        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#fff;opacity:0.85;" data-i18n="port_coverup">Cover Up</span>
+                      </div>
+                      <div class="port-hover-overlay" style="position:absolute;inset:0;background:rgba(190,0,0,0.12);opacity:0;transition:opacity 0.35s;pointer-events:none;"></div>
+                    </a>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- CTA -->
+      <div class="flex flex-col items-center text-center mt-16 gap-5">
+        <p style="font-family:'Space Grotesk',sans-serif;font-size:clamp(20px,3vw,28px);font-weight:700;color:#e2e2e2;">
+          <span data-i18n="port_cta_q">¿Tienes una idea?</span>
+          <span style="color:#be0000;"> <span data-i18n="port_cta_s">Hagámosla realidad.</span></span>
+        </p>
+        <a href="/contacto" class="btn-primary" data-i18n="port_cta_btn" style="padding:14px 40px;">Cotizar</a>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  <script is:inline>
+    var portLightbox, coverLightbox;
+
+    function initLightbox() {
+      if (portLightbox) portLightbox.destroy();
+      portLightbox = GLightbox({
+        selector: '#port-grid .port-item:not([style*="display:none"]) .glightbox',
+        touchNavigation: true, loop: true, zoomable: false,
+        openEffect: 'fade', closeEffect: 'fade',
+      });
+    }
+
+    function initCoverLightbox() {
+      if (coverLightbox) coverLightbox.destroy();
+      coverLightbox = GLightbox({
+        selector: '#coverup-section .glightbox-coverup',
+        touchNavigation: true, loop: false, zoomable: false,
+        openEffect: 'fade', closeEffect: 'fade',
+      });
+    }
+
+    function bindHover(el) {
+      el.querySelectorAll('a').forEach(function(a) {
+        var ov  = a.querySelector('.port-hover-overlay');
+        var img = a.querySelector('img');
+        if (!ov || !img) return;
+        a.addEventListener('mouseenter', function() { ov.style.opacity='1'; img.style.transform='scale(1.05)'; img.style.filter='grayscale(0%)'; });
+        a.addEventListener('mouseleave', function() { ov.style.opacity='0'; img.style.transform='scale(1)';    img.style.filter='grayscale(15%)'; });
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(initLightbox, 100);
+      bindHover(document.getElementById('port-grid'));
+      bindHover(document.getElementById('coverup-section'));
+
+      var filters      = document.querySelectorAll('.port-filter');
+      var items        = document.querySelectorAll('#port-grid .port-item');
+      var portGrid     = document.getElementById('port-grid');
+      var coverSection = document.getElementById('coverup-section');
+      var counter      = document.getElementById('port-count');
+
+      filters.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          filters.forEach(function(b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          var f = btn.dataset.filter;
+
+          if (f === 'cover-up') {
+            portGrid.style.display     = 'none';
+            coverSection.style.display = 'block';
+            var n = coverSection.querySelectorAll('.glightbox-coverup').length;
+            if (counter) counter.textContent = n;
+            setTimeout(initCoverLightbox, 60);
+          } else {
+            portGrid.style.display     = '';
+            coverSection.style.display = 'none';
+            var visible = 0;
+            items.forEach(function(item) {
+              var show = f === 'all' || item.dataset.style === f;
+              item.style.display = show ? '' : 'none';
+              if (show) visible++;
+            });
+            if (counter) counter.textContent = visible;
+            setTimeout(initLightbox, 60);
+          }
+        });
+      });
+    });
+  </script>
+
+  <style>
+    @media (max-width: 900px) { #port-grid { columns: 2 !important; } }
+    @media (max-width: 480px) { #port-grid { columns: 1 !important; } }
+    @media (max-width: 640px) { #coverup-section [style*="grid-template-columns"] { grid-template-columns: 1fr !important; } }
+  </style>
+</Layout>

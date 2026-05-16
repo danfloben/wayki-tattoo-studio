@@ -1,0 +1,675 @@
+---
+export interface Props {
+  title:       string;
+  description: string;
+  url:         string;
+  image?:      string;
+}
+
+const {
+  title,
+  description,
+  url,
+  image = 'https://waykitattoostudio.pe/images/studio.webp',
+} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO Primary -->
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="keywords" content="tatuajes arequipa, tattoo studio peru, wayki tattoo, realismo tatuaje, piercing arequipa, sivola ink" />
+  <meta name="author" content="Wayki Tattoo Studio" />
+  <link rel="canonical" href={url} />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content={url} />
+  <meta property="og:title"       content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image"       content={image} />
+  <meta property="og:image:width"  content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale"      content="es_PE" />
+  <meta property="og:site_name"   content="Wayki Tattoo Studio" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:url"         content={url} />
+  <meta name="twitter:title"       content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image"       content={image} />
+
+  <!-- Robots -->
+  <meta name="robots" content="index, follow" />
+
+  <!-- Structured Data: LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TattooParlor",
+    "name": "Wayki Tattoo Studio",
+    "image": "https://waykitattoostudio.pe/images/studio.webp",
+    "url": "https://waykitattoostudio.pe",
+    "telephone": "+51-993-054-099",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Calle Campo Redondo 100, Cercado",
+      "addressLocality": "Arequipa",
+      "addressCountry": "PE"
+    },
+    "sameAs": [
+      "https://www.instagram.com/waykitattoostudio/",
+      "https://www.facebook.com/waykitattoostudio"
+    ]
+  }
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3" />
+  <link rel="apple-touch-icon" href="/logo.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Translations & Tailwind -->
+  <script is:inline src="/translations.js"></script>
+  <script is:inline src="https://cdn.tailwindcss.com"></script>
+  <script is:inline>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'brand-black':   '#0d0f0f',
+            'brand-dark':    '#121414',
+            'brand-surface': '#1a1c1c',
+            'brand-card':    '#1e2020',
+            'brand-border':  '#2a2d2d',
+            'brand-red':     '#be0000',
+            'brand-red-deep':'#930000',
+            'brand-red-glow':'rgba(190,0,0,0.35)',
+            'brand-text':    '#e2e2e2',
+            'brand-muted':   '#a0a0a0',
+            'brand-accent':  '#ffb4a8',
+          },
+          fontFamily: {
+            headline: ['Space Grotesk', 'sans-serif'],
+            body:     ['Manrope', 'sans-serif'],
+            mono:     ['JetBrains Mono', 'monospace'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style is:global>
+    /* ── Base ─────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { font-family: 'Manrope', sans-serif; }
+    body { background: #0d0f0f; color: #e2e2e2; overflow-x: hidden; }
+
+    /* ── Noise grain overlay ──────────────── */
+    .noise::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: 0.028; pointer-events: none; z-index: 9999;
+    }
+
+    /* ── Ink-bleed section divider ────────── */
+    .ink-divider {
+      width: 100%; height: 120px; margin-top: -60px;
+      background: radial-gradient(ellipse 80% 60% at 50% 100%, #be0000 0%, transparent 70%);
+      opacity: 0.12; pointer-events: none;
+    }
+
+    /* ── Scroll-reveal ────────────────────── */
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left  { opacity: 0; transform: translateX(-40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-right { opacity: 0; transform: translateX(40px);  transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-left.visible, .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* ── Page transitions ─────────────────── */
+    @keyframes pageIn { from { opacity: 0; } to { opacity: 1; } }
+    body { animation: pageIn 0.35s ease forwards; }
+    body.page-leaving { opacity: 0; transition: opacity 0.26s ease; }
+
+    /* ── Nav ──────────────────────────────── */
+    #navbar { transition: transform 0.3s ease, background 0.3s, backdrop-filter 0.3s, box-shadow 0.3s; }
+    #navbar.scrolled { background: rgba(13,15,15,0.95); backdrop-filter: blur(16px); box-shadow: 0 1px 0 rgba(190,0,0,0.2); }
+
+    /* ── Hero ─────────────────────────────── */
+    .hero-bg { background: #0d0f0f; }
+
+    /* ── CTA Buttons ──────────────────────── */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #be0000; color: #fff; padding: 14px 36px;
+      font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+      font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
+      border: none;
+      transition: background 0.2s, transform 0.15s;
+      cursor: pointer; text-decoration: none;
+    }
+    .btn-primary:hover { background: #930000; transform: translateY(-1px); }
+    .btn-primary:active { transform: scale(0.97); }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #111313; color: #fff; padding: 14px 36px;
+      font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+      font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
+      border: none;
+      transition: background 0.2s, transform 0.15s;
+      cursor: pointer; text-decoration: none;
+    }
+    .btn-ghost:hover { background: #1e2020; transform: translateY(-1px); }
+    .btn-ghost:active { transform: scale(0.97); }
+
+    /* ── Category circles ─────────────────── */
+    .cat-circle {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: radial-gradient(circle at 40% 35%, #3a0000, #1a1c1c);
+      border: 1.5px solid #2a2d2d;
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s; cursor: pointer;
+    }
+    .cat-circle:hover { border-color: #be0000; transform: translateY(-4px); box-shadow: 0 8px 24px rgba(190,0,0,0.3); }
+    .cat-circle svg { width: 26px; height: 26px; }
+
+    /* ── Portfolio cards ──────────────────── */
+    .port-card { overflow: hidden; border: 1px solid #2a2d2d; position: relative; cursor: pointer; }
+    .port-card img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(30%); transition: transform 0.6s ease, filter 0.6s ease; display: block; }
+    .port-card:hover img { transform: scale(1.06); filter: grayscale(0%); }
+    .port-card .port-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(190,0,0,0.6) 0%, transparent 50%);
+      opacity: 0; transition: opacity 0.4s ease;
+      display: flex; align-items: flex-end; padding: 16px;
+    }
+    .port-card:hover .port-overlay { opacity: 1; }
+    .port-label { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; background: rgba(0,0,0,0.6); padding: 5px 10px; }
+
+    /* ── Service cards ────────────────────── */
+    .svc-card { background: #1a1c1c; border: 1px solid #2a2d2d; padding: 28px 24px; transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s; }
+    .svc-card:hover { border-color: #be0000; transform: translateY(-4px); box-shadow: 0 12px 32px rgba(190,0,0,0.15); }
+    .svc-icon { width: 32px; height: 32px; background: radial-gradient(circle at 40% 35%, #3a0000, #1a1c1c); border: 1px solid #3a0000; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+    .svc-icon svg { width: 15px; height: 15px; fill: #be0000; }
+
+    /* ── Stats ────────────────────────────── */
+    .stat-num { font-family: 'Space Grotesk', sans-serif; font-size: 48px; font-weight: 700; color: #be0000; line-height: 1; }
+
+    /* ── Form inputs ──────────────────────── */
+    .form-field { width: 100%; background: transparent; border: 0; border-bottom: 2px solid #2a2d2d; padding: 12px 0; outline: none; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.1em; color: #e2e2e2; transition: border-color 0.3s; }
+    .form-field::placeholder { color: #555; }
+    .form-field:focus { border-bottom-color: #be0000; }
+
+    /* ── WhatsApp FAB ─────────────────────── */
+    .wa-fab { position: fixed; bottom: 28px; right: 28px; z-index: 100; width: 58px; height: 58px; border-radius: 50%; background: #25d366; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 24px rgba(37,211,102,0.45); transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; }
+    .wa-fab:hover { transform: scale(1.1); box-shadow: 0 10px 32px rgba(37,211,102,0.6); }
+    .wa-fab svg { width: 30px; height: 30px; fill: #fff; }
+
+    /* ── Active nav link ─────────────────── */
+    .nav-link { position: relative; }
+    .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: #be0000; transition: width 0.3s ease; }
+    .nav-link.active { color: #e2e2e2 !important; }
+    .nav-link.active::after { width: 100%; }
+
+    /* ── Scroll to top button ─────────────── */
+    #scroll-top { position: fixed; bottom: 96px; right: 28px; z-index: 100; width: 44px; height: 44px; background: #1a1c1c; border: 1px solid #2a2d2d; display: flex; align-items: center; justify-content: center; cursor: pointer; text-decoration: none; opacity: 0; pointer-events: none; transition: opacity 0.3s, border-color 0.2s, background 0.2s, transform 0.2s; }
+    #scroll-top.visible { opacity: 1; pointer-events: auto; }
+    #scroll-top:hover { border-color: #be0000; background: #be0000; transform: translateY(-2px); }
+    #scroll-top svg { width: 18px; height: 18px; fill: #e2e2e2; }
+
+    /* ── Accent elements ─────────────────── */
+    .red-line { display: inline-block; width: 60px; height: 3px; background: #be0000; }
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #be0000;
+      margin-bottom: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-label::before {
+      content: '';
+      display: inline-block;
+      width: 28px;
+      height: 2px;
+      background: #be0000;
+      flex-shrink: 0;
+    }
+    .slash { color: #be0000; font-weight: 900; margin-right: 8px; }
+    .about-img-wrap { transition: transform 0.5s ease; }
+    .about-img-wrap:hover { transform: rotate(0deg) !important; }
+
+    /* ── Footer ───────────────────────────── */
+    .footer-link { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #555; transition: color 0.2s; text-decoration: none; }
+    .footer-link:hover { color: #be0000; }
+
+    /* ── Mobile nav ───────────────────────── */
+    .mobile-nav { font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 700; color: #e2e2e2; text-decoration: none; letter-spacing: -0.02em; transition: color 0.2s; }
+    .mobile-nav:hover { color: #be0000; }
+
+    /* ── Navbar styles ──────────────────── */
+    .nb-desk-links   { display: none; }
+    .nb-desk-actions { display: none; }
+    .nb-mob-actions  { display: flex; align-items: center; gap: 8px; }
+    @media (min-width: 1024px) {
+      .nb-desk-links   { display: flex; align-items: center; gap: 28px; }
+      .nb-desk-actions { display: flex; align-items: center; gap: 10px; }
+      .nb-mob-actions  { display: none; }
+    }
+    #mob-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 10000; background: #0d0f0f; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; }
+    #mob-menu.open { display: flex; }
+    #mob-menu * { color: inherit; }
+    .nb-link { font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #a0a0a0; text-decoration: none; transition: color 0.2s; }
+    .nb-link:hover { color: #e2e2e2; }
+    #nb-lang-btn { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #e2e2e2; background: transparent; border: 1px solid #2a2d2d; padding: 6px 10px; cursor: pointer; display: flex; align-items: center; gap: 5px; transition: border-color 0.2s, color 0.2s; }
+    #nb-lang-btn:hover { border-color: #be0000; color: #fff; }
+    #nb-hamburger { background: transparent; border: none; cursor: pointer; padding: 6px; display: flex; flex-direction: column; gap: 5px; }
+    #nb-hamburger span { display: block; height: 2px; background: #e2e2e2; }
+    .mob-link { font-family: 'Space Grotesk', sans-serif; font-size: clamp(24px, 7vw, 40px); font-weight: 700; color: #e2e2e2 !important; text-decoration: none; letter-spacing: -0.02em; padding: 7px 0; text-align: center; transition: color 0.2s; display: block; width: 100%; }
+    .mob-link:hover { color: #be0000 !important; }
+    .lang-opt { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; background: transparent; color: #555; border: 1px solid #2a2d2d; padding: 6px 12px; cursor: pointer; text-align: center; transition: color 0.2s, border-color 0.2s, background 0.2s; }
+    .lang-opt:hover { color: #e2e2e2; border-color: #be0000; }
+    .lang-opt.active { color: #fff; background: #be0000; border-color: #be0000; }
+
+    /* ── Masonry grid ─────────────────────── */
+    .masonry-grid { columns: 3; column-gap: 12px; }
+    @media (max-width: 900px) { .masonry-grid { columns: 2; } }
+    @media (max-width: 500px) { .masonry-grid { columns: 1; } }
+    .masonry-item { break-inside: avoid; margin-bottom: 12px; }
+    .masonry-item.hidden { display: none; }
+    .masonry-grid .port-card { display: block; text-decoration: none; position: relative; overflow: hidden; }
+    .masonry-grid .port-card img { width: 100%; height: auto; display: block; transition: transform 0.45s ease; }
+    .masonry-grid .port-card:hover img { transform: scale(1.04); }
+    .port-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 28px 14px 12px; background: linear-gradient(to top, rgba(13,15,15,0.85), transparent); opacity: 0; transition: opacity 0.3s ease; }
+    .masonry-grid .port-card:hover .port-overlay { opacity: 1; }
+
+    /* ── Port filters ────────────────────── */
+    .port-filter { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; padding: 10px 24px; border: 1px solid rgba(255,255,255,0.2); background: transparent; color: #a0a0a0; cursor: pointer; transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.15s; }
+    .port-filter:hover  { border-color: #be0000; color: #fff; transform: translateY(-1px); }
+    .port-filter.active { border-color: #be0000; background: #be0000; color: #fff; box-shadow: 0 4px 16px rgba(190,0,0,0.35); }
+
+    /* ── Merch cards ─────────────────────── */
+    .merch-card { background: #1a1c1c; border: 1px solid #2a2d2d; display: flex; flex-direction: column; transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s; }
+    .merch-card:hover { border-color: #be0000; transform: translateY(-4px); box-shadow: 0 12px 32px rgba(190,0,0,0.15); }
+    .merch-img-wrap { position: relative; aspect-ratio: 1/1; overflow: hidden; background: #fff; }
+    .merch-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; display: block; }
+    .merch-card:hover .merch-img-wrap img { transform: scale(1.05); }
+    .merch-badge { position: absolute; top: 10px; right: 10px; font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; background: #1a1c1c; color: #a0a0a0; padding: 4px 8px; border: 1px solid #2a2d2d; }
+    .merch-badge-hot { background: #be0000 !important; color: #fff !important; border-color: #be0000 !important; }
+    .merch-info { padding: 18px 16px 20px; display: flex; flex-direction: column; flex: 1; }
+    .merch-tag { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: #be0000; }
+    .merch-title { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 14px; color: #e2e2e2; line-height: 1.3; margin: 6px 0 4px; }
+    .merch-desc { font-family: 'Manrope', sans-serif; font-size: 12px; color: #555; margin-bottom: 12px; }
+    .merch-price { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 20px; color: #be0000; margin-bottom: 14px; }
+    .merch-btn { display: block; text-align: center; text-decoration: none; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; padding: 10px; border: 1px solid #2a2d2d; color: #a0a0a0; transition: background 0.2s, border-color 0.2s, color 0.2s; margin-top: auto; }
+    .merch-btn:hover { background: #be0000; border-color: #be0000; color: #fff; }
+
+    /* ── Portfolio 3-col grid ────────────── */
+    .port-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    @media (max-width: 900px) { .port-grid-3 { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 500px) { .port-grid-3 { grid-template-columns: 1fr; } }
+    .port-grid-3 .port-item { overflow: hidden; aspect-ratio: 3/4; }
+    .port-grid-3 .port-item.hidden { display: none; }
+    .port-grid-3 .port-card { display: block; height: 100%; text-decoration: none; }
+    .port-grid-3 .port-card img { width: 100%; height: 100%; object-fit: cover; object-position: center; filter: grayscale(20%); transition: transform 0.55s ease, filter 0.55s ease; }
+    .port-grid-3 .port-card:hover img { transform: scale(1.07); filter: grayscale(0); }
+    .port-grid-3 .port-card .port-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(190,0,0,0.65) 0%, transparent 55%); opacity: 0; transition: opacity 0.35s ease; display: flex; align-items: flex-end; padding: 18px 14px; }
+    .port-grid-3 .port-card:hover .port-overlay { opacity: 1; }
+    .port-grid-3 .port-item { position: relative; }
+
+    /* ── GLightbox custom ─────────────────── */
+    .glightbox-clean .gslide-description { background: rgba(13,15,15,0.95); }
+    .glightbox-clean .gdesc-inner { padding: 14px 20px; }
+    .glightbox-clean .gslide-title { font-family: 'Space Grotesk',sans-serif; font-size: 14px; color: #e2e2e2; margin: 0 0 4px; }
+    .glightbox-clean .gslide-desc  { font-family: 'JetBrains Mono',monospace; font-size: 11px; letter-spacing: 0.1em; color: #be0000; text-transform: uppercase; }
+    .gnext, .gprev { background: rgba(190,0,0,0.8) !important; border-radius: 0 !important; }
+
+    /* Delay helpers */
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+    .delay-5 { transition-delay: 0.5s; }
+    .delay-6 { transition-delay: 0.6s; }
+  </style>
+</head>
+
+<body class="noise dark">
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- NAVBAR                                  -->
+  <!-- ═══════════════════════════════════════ -->
+  <nav id="navbar" style="position:fixed;top:0;width:100%;z-index:400;background:rgba(13,15,15,0.92);backdrop-filter:blur(12px);box-shadow:0 1px 0 rgba(190,0,0,0.15);">
+    <div style="max-width:1280px;margin:0 auto;padding:0 24px;height:72px;display:flex;align-items:center;justify-content:space-between;">
+
+      <!-- Logo -->
+      <a href="/" style="display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0;">
+        <div style="width:40px;height:40px;border-radius:50%;border:2px solid #be0000;overflow:hidden;flex-shrink:0;">
+          <img src="/w.png" alt="W" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;letter-spacing:-0.02em;color:#e2e2e2;">
+          WAYKI <span style="color:#be0000;">TATTOO</span>
+        </span>
+      </a>
+
+      <!-- Desktop links -->
+      <div class="nb-desk-links">
+        <a href="/"           class="nb-link nav-link" data-i18n="nav_inicio">Inicio</a>
+        <a href="/portafolio" class="nb-link nav-link" data-i18n="nav_portfolio">Portafolio</a>
+        <a href="/artistas"   class="nb-link nav-link" data-i18n="nav_artistas">Artistas</a>
+        <a href="/nosotros"   class="nb-link nav-link" data-i18n="nav_nosotros">Nosotros</a>
+        <a href="/resenas"    class="nb-link nav-link" data-i18n="nav_resenas">Reseñas</a>
+        <a href="/tienda"     class="nb-link nav-link" data-i18n="nav_merch">Tienda</a>
+        <a href="/contacto"   class="nb-link nav-link" data-i18n="nav_contacto">Contacto</a>
+      </div>
+
+      <!-- Desktop actions -->
+      <div class="nb-desk-actions">
+        <div style="position:relative;" id="nb-lang-wrap">
+          <button id="nb-lang-btn" onclick="toggleLangMenu()">
+            <svg viewBox="0 0 24 24" style="width:13px;height:13px;fill:currentColor;"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95a15.65 15.65 0 0 0-1.38-3.56A8.03 8.03 0 0 1 18.92 8zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2s.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56A7.987 7.987 0 0 1 5.08 16zm2.95-8H5.08a7.987 7.987 0 0 1 4.33-3.56A15.65 15.65 0 0 0 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2s.07-1.35.16-2h4.68c.09.65.16 1.32.16 2s-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2s-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/></svg>
+            <span id="lang-current">ES</span>
+            <svg viewBox="0 0 24 24" style="width:10px;height:10px;fill:currentColor;"><path d="M7 10l5 5 5-5z"/></svg>
+          </button>
+          <div id="lang-menu" style="display:none;position:absolute;top:calc(100% + 6px);right:0;background:#1a1c1c;border:1px solid #2a2d2d;z-index:600;min-width:72px;">
+            <button onclick="setLang('es')" data-lang="es" class="lang-opt" style="display:block;width:100%;">ES</button>
+            <button onclick="setLang('en')" data-lang="en" class="lang-opt" style="display:block;width:100%;">EN</button>
+            <button onclick="setLang('it')" data-lang="it" class="lang-opt" style="display:block;width:100%;">IT</button>
+            <button onclick="setLang('fr')" data-lang="fr" class="lang-opt" style="display:block;width:100%;">FR</button>
+            <button onclick="setLang('de')" data-lang="de" class="lang-opt" style="display:block;width:100%;">DE</button>
+          </div>
+        </div>
+        <a href="https://wa.me/51993054099?text=Hola%20Wayki%20Tattoo!%20Quiero%20consultar%20sobre%20una%20cita." target="_blank"
+           data-wa-msg="wa_cita"
+           style="display:inline-flex;align-items:center;gap:8px;background:#be0000;color:#fff;padding:10px 20px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;transition:background 0.2s;"
+           onmouseover="this.style.background='#930000'" onmouseout="this.style.background='#be0000'">
+          <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#fff;flex-shrink:0;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.558 4.114 1.534 5.836L.057 23.786a.5.5 0 0 0 .606.63l6.101-1.601A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.813 9.813 0 0 1-4.966-1.347l-.356-.211-3.695.969.987-3.604-.232-.373A9.799 9.799 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+          <span data-i18n="nav_reservar">Reservar</span>
+        </a>
+      </div>
+
+      <!-- Mobile actions -->
+      <div class="nb-mob-actions">
+        <div style="position:relative;">
+          <button id="nb-lang-mob" onclick="toggleMobLangMenu()"
+                  style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;color:#e2e2e2;background:transparent;border:1px solid #2a2d2d;padding:5px 9px;cursor:pointer;line-height:1;display:flex;align-items:center;gap:4px;">
+            <span id="lang-mobile-current">ES</span>
+            <svg viewBox="0 0 24 24" style="width:10px;height:10px;fill:currentColor;"><path d="M7 10l5 5 5-5z"/></svg>
+          </button>
+          <div id="mob-lang-menu" style="display:none;position:absolute;top:calc(100% + 6px);right:0;background:#1a1c1c;border:1px solid #2a2d2d;z-index:600;min-width:60px;">
+            <button onclick="setLang('es')" data-lang="es" class="lang-opt" style="display:block;width:100%;">ES</button>
+            <button onclick="setLang('en')" data-lang="en" class="lang-opt" style="display:block;width:100%;">EN</button>
+            <button onclick="setLang('it')" data-lang="it" class="lang-opt" style="display:block;width:100%;">IT</button>
+            <button onclick="setLang('fr')" data-lang="fr" class="lang-opt" style="display:block;width:100%;">FR</button>
+            <button onclick="setLang('de')" data-lang="de" class="lang-opt" style="display:block;width:100%;">DE</button>
+          </div>
+        </div>
+        <button id="nb-hamburger" onclick="openMobileMenu()" aria-label="Menú">
+          <span style="width:22px;"></span>
+          <span style="width:22px;"></span>
+          <span style="width:14px;"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div id="mob-menu">
+    <div style="position:absolute;top:0;left:0;right:0;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;">
+      <a href="/" onclick="closeMobileMenu()" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+        <div style="width:32px;height:32px;border-radius:50%;border:2px solid #be0000;overflow:hidden;flex-shrink:0;">
+          <img src="/w.png" alt="W" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;color:#e2e2e2;">WAYKI <span style="color:#be0000;">TATTOO</span></span>
+      </a>
+      <button onclick="closeMobileMenu()" style="width:40px;height:40px;border:1px solid #2a2d2d;background:transparent;color:#a0a0a0;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;">&#x2715;</button>
+    </div>
+    <nav style="display:flex;flex-direction:column;align-items:center;width:100%;color:#e2e2e2;">
+      <a href="/"           onclick="closeMobileMenu()" data-i18n="nav_inicio"    class="mob-link">Inicio</a>
+      <a href="/portafolio" onclick="closeMobileMenu()" data-i18n="nav_portfolio" class="mob-link">Portafolio</a>
+      <a href="/artistas"   onclick="closeMobileMenu()" data-i18n="nav_artistas"  class="mob-link">Artistas</a>
+      <a href="/nosotros"   onclick="closeMobileMenu()" data-i18n="nav_nosotros"  class="mob-link">Nosotros</a>
+      <a href="/resenas"    onclick="closeMobileMenu()" data-i18n="nav_resenas"   class="mob-link">Reseñas</a>
+      <a href="/tienda"     onclick="closeMobileMenu()" data-i18n="nav_merch"     class="mob-link">Tienda</a>
+      <a href="/contacto"   onclick="closeMobileMenu()" data-i18n="nav_contacto"  class="mob-link">Contacto</a>
+    </nav>
+    <div style="position:absolute;bottom:32px;left:0;right:0;padding:0 24px;display:flex;flex-direction:column;align-items:center;gap:16px;">
+      <a href="https://wa.me/51993054099?text=Hola%20Wayki%20Tattoo!%20Quiero%20reservar." target="_blank" onclick="closeMobileMenu()" data-wa-msg="wa_cita"
+         style="display:inline-flex;align-items:center;gap:8px;background:#be0000;color:#fff;padding:12px 32px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;">
+        <svg viewBox="0 0 24 24" style="width:15px;height:15px;fill:#fff;flex-shrink:0;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.558 4.114 1.534 5.836L.057 23.786a.5.5 0 0 0 .606.63l6.101-1.601A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.813 9.813 0 0 1-4.966-1.347l-.356-.211-3.695.969.987-3.604-.232-.373A9.799 9.799 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+        <span data-i18n="nav_reservar">Reservar Cita</span>
+      </a>
+      <div style="display:flex;gap:6px;">
+        <button onclick="setLang('es')" data-lang="es" class="lang-opt">ES</button>
+        <button onclick="setLang('en')" data-lang="en" class="lang-opt">EN</button>
+        <button onclick="setLang('it')" data-lang="it" class="lang-opt">IT</button>
+        <button onclick="setLang('fr')" data-lang="fr" class="lang-opt">FR</button>
+        <button onclick="setLang('de')" data-lang="de" class="lang-opt">DE</button>
+      </div>
+      <div style="display:flex;gap:20px;">
+        <a href="https://www.instagram.com/waykitattoostudio/" target="_blank" style="color:#555;transition:color 0.2s;" onmouseover="this.style.color='#be0000'" onmouseout="this.style.color='#555'"><svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:currentColor;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        <a href="https://www.facebook.com/waykitattoostudio" target="_blank" style="color:#555;transition:color 0.2s;" onmouseover="this.style.color='#be0000'" onmouseout="this.style.color='#555'"><svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:currentColor;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+        <a href="https://www.tiktok.com/@waykitattoostudio1" target="_blank" style="color:#555;transition:color 0.2s;" onmouseover="this.style.color='#be0000'" onmouseout="this.style.color='#555'"><svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:currentColor;"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.27 8.27 0 0 0 4.84 1.55V6.79a4.85 4.85 0 0 1-1.07-.1z"/></svg></a>
+        <a href="https://co.pinterest.com/waykitattoostudio/" target="_blank" style="color:#555;transition:color 0.2s;" onmouseover="this.style.color='#be0000'" onmouseout="this.style.color='#555'"><svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:currentColor;"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page content -->
+  <slot />
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- FOOTER                                  -->
+  <!-- ═══════════════════════════════════════ -->
+  <footer style="background:#0a0c0c;border-top:1px solid #1a1c1c;padding:48px 0 32px;">
+    <div class="max-w-[1280px] mx-auto px-6 md:px-10">
+      <div class="flex flex-col md:flex-row items-center md:items-start justify-between gap-10 mb-10">
+        <div class="flex flex-col items-center md:items-start gap-3">
+          <div class="flex items-center gap-3">
+            <img src="/logo.png" alt="Wayki Tattoo" class="w-9 h-9 rounded-full object-cover" />
+            <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;letter-spacing:-0.02em;color:#e2e2e2;">WAYKI <span style="color:#be0000;">TATTOO</span> STUDIO</span>
+          </div>
+          <p style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#555;text-transform:uppercase;" data-i18n="hero_eyebrow">Arequipa · Perú · Est. 2013</p>
+          <a href="mailto:waykitattoostudio@gmail.com" style="font-family:'Manrope',sans-serif;font-size:13px;color:#555;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#be0000'" onmouseout="this.style.color='#555'">waykitattoostudio@gmail.com</a>
+          <a href="https://wa.me/51993054099" target="_blank" style="font-family:'Manrope',sans-serif;font-size:13px;color:#555;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#be0000'" onmouseout="this.style.color='#555'">+51 993 054 099</a>
+        </div>
+        <div class="flex flex-col items-center md:items-end gap-4">
+          <span data-i18n="contact_follow" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#555;">Síguenos</span>
+          <div class="flex items-center gap-4">
+            <a href="https://www.instagram.com/waykitattoostudio/" target="_blank" aria-label="Instagram" style="width:44px;height:44px;border:1px solid #2a2d2d;background:#1a1c1c;display:flex;align-items:center;justify-content:center;color:#a0a0a0;text-decoration:none;transition:border-color 0.2s,color 0.2s,background 0.2s;" onmouseover="this.style.borderColor='#be0000';this.style.color='#fff';this.style.background='#be0000';" onmouseout="this.style.borderColor='#2a2d2d';this.style.color='#a0a0a0';this.style.background='#1a1c1c';"><svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:currentColor;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+            <a href="https://www.facebook.com/waykitattoostudio" target="_blank" aria-label="Facebook" style="width:44px;height:44px;border:1px solid #2a2d2d;background:#1a1c1c;display:flex;align-items:center;justify-content:center;color:#a0a0a0;text-decoration:none;transition:border-color 0.2s,color 0.2s,background 0.2s;" onmouseover="this.style.borderColor='#be0000';this.style.color='#fff';this.style.background='#be0000';" onmouseout="this.style.borderColor='#2a2d2d';this.style.color='#a0a0a0';this.style.background='#1a1c1c';"><svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:currentColor;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+            <a href="https://www.tiktok.com/@waykitattoostudio1" target="_blank" aria-label="TikTok" style="width:44px;height:44px;border:1px solid #2a2d2d;background:#1a1c1c;display:flex;align-items:center;justify-content:center;color:#a0a0a0;text-decoration:none;transition:border-color 0.2s,color 0.2s,background 0.2s;" onmouseover="this.style.borderColor='#be0000';this.style.color='#fff';this.style.background='#be0000';" onmouseout="this.style.borderColor='#2a2d2d';this.style.color='#a0a0a0';this.style.background='#1a1c1c';"><svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:currentColor;"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.27 8.27 0 0 0 4.84 1.55V6.79a4.85 4.85 0 0 1-1.07-.1z"/></svg></a>
+            <a href="https://co.pinterest.com/waykitattoostudio/" target="_blank" aria-label="Pinterest" style="width:44px;height:44px;border:1px solid #2a2d2d;background:#1a1c1c;display:flex;align-items:center;justify-content:center;color:#a0a0a0;text-decoration:none;transition:border-color 0.2s,color 0.2s,background 0.2s;" onmouseover="this.style.borderColor='#be0000';this.style.color='#fff';this.style.background='#be0000';" onmouseout="this.style.borderColor='#2a2d2d';this.style.color='#a0a0a0';this.style.background='#1a1c1c';"><svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:currentColor;"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <div style="height:1px;background:linear-gradient(to right,transparent,#2a2d2d,transparent);margin-bottom:24px;"></div>
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex flex-wrap gap-6 justify-center">
+          <a href="/portafolio" class="footer-link" data-i18n="nav_portfolio">Portafolio</a>
+          <a href="/artistas"   class="footer-link" data-i18n="nav_artistas">Artistas</a>
+          <a href="/nosotros"   class="footer-link" data-i18n="nav_nosotros">Nosotros</a>
+          <a href="/resenas"    class="footer-link" data-i18n="nav_resenas">Reseñas</a>
+          <a href="/tienda"     class="footer-link" data-i18n="nav_merch">Tienda</a>
+          <a href="/contacto"   class="footer-link" data-i18n="nav_contacto">Contacto</a>
+        </div>
+        <p data-i18n="footer_copy" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#333;text-align:center;">© 2026 Wayki Tattoo Studio · Arequipa, Perú</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to top -->
+  <button id="scroll-top" aria-label="Volver al inicio" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
+  </button>
+
+  <!-- WhatsApp FAB -->
+  <a href="https://wa.me/51993054099?text=Hola%20Wayki%20Tattoo!%20Quiero%20consultar%20sobre%20un%20tatuaje." target="_blank" class="wa-fab" aria-label="Contactar por WhatsApp" data-wa-msg="wa_fab">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.558 4.114 1.534 5.836L.057 23.786a.5.5 0 0 0 .606.63l6.101-1.601A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.813 9.813 0 0 1-4.966-1.347l-.356-.211-3.695.969.987-3.604-.232-.373A9.799 9.799 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+  </a>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- CLIENT-SIDE JAVASCRIPT                  -->
+  <!-- ═══════════════════════════════════════ -->
+  <script is:inline>
+    // ── Page transitions ──────────────────────
+    document.querySelectorAll('a[href]').forEach(a => {
+      const href = a.getAttribute('href');
+      if (href && !href.startsWith('http') && !href.startsWith('#')
+               && !href.startsWith('mailto') && !href.startsWith('tel')
+               && !a.classList.contains('glightbox')
+               && !a.classList.contains('glightbox-tienda')
+               && !a.classList.contains('glightbox-coverup')) {
+        a.addEventListener('click', e => {
+          e.preventDefault();
+          document.body.classList.add('page-leaving');
+          setTimeout(() => { window.location.href = href; }, 260);
+        });
+      }
+    });
+
+    // ── Active nav link ───────────────────────
+    const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
+    document.querySelectorAll('.nb-link').forEach(link => {
+      const href = (link.getAttribute('href') || '').replace(/\/$/, '') || '/';
+      if (href === currentPath) link.classList.add('active');
+    });
+
+    // hero slideshow handled in index.astro
+
+    // ── Navbar scroll ─────────────────────────
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // ── Scroll to top ─────────────────────────
+    const scrollTopBtn = document.getElementById('scroll-top');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+
+    // ── Mobile menu ───────────────────────────
+    const mobileMenu = document.getElementById('mob-menu');
+    function openMobileMenu()  { mobileMenu.classList.add('open');    document.body.style.overflow = 'hidden'; }
+    function closeMobileMenu() { mobileMenu.classList.remove('open'); document.body.style.overflow = ''; }
+
+    // ── Scroll reveal ─────────────────────────
+    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    // ── Form submit → WhatsApp ────────────────
+    function handleSubmit(e) {
+      e.preventDefault();
+      const data    = new FormData(e.target);
+      const nombre  = data.get('nombre') || '';
+      const idea    = data.get('idea')   || '';
+      const t       = (typeof i18n !== 'undefined' && i18n[currentLang]) ? i18n[currentLang] : i18n['es'];
+      const intro   = t.wa_form_intro   || 'Hola Wayki Tattoo! Soy';
+      const ideaKey = t.wa_form_idea    || 'Mi idea:';
+      const consult = t.wa_form_consult || 'Quiero consultar sobre una cita.';
+      const msg     = encodeURIComponent(
+        `${intro} ${nombre}. ${idea ? ideaKey + ' ' + idea : consult}`
+      );
+      window.open(`https://wa.me/51993054099?text=${msg}`, '_blank');
+      const success = document.getElementById('form-success');
+      if (success) success.style.display = 'block';
+      e.target.reset();
+    }
+
+    // ── i18n engine ───────────────────────────
+    let currentLang = localStorage.getItem('wayki-lang') || 'es';
+
+    function applyLang() {
+      const t = (typeof i18n !== 'undefined' && i18n[currentLang]) ? i18n[currentLang] : null;
+      if (!t) return;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (t[key] === undefined) return;
+        let val = t[key];
+        if (val.startsWith && val.startsWith('/')) val = val.slice(1);
+        el.innerHTML = val;
+      });
+      document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+        const key = el.dataset.i18nPh;
+        if (t[key] !== undefined) el.placeholder = t[key];
+      });
+      // WhatsApp links — mensajes estáticos
+      document.querySelectorAll('[data-wa-msg]').forEach(el => {
+        const key = el.dataset.waMsg;
+        if (t[key]) el.href = 'https://wa.me/51993054099?text=' + encodeURIComponent(t[key]);
+      });
+      // WhatsApp links — prefijo + nombre de producto/artista
+      document.querySelectorAll('[data-wa-prefix]').forEach(el => {
+        const key    = el.dataset.waPrefix;
+        const suffix = el.dataset.waSuffix || '';
+        if (t[key]) el.href = 'https://wa.me/51993054099?text=' + encodeURIComponent(t[key] + suffix);
+      });
+      document.documentElement.lang = currentLang;
+      document.querySelectorAll('.lang-opt').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === currentLang);
+      });
+      const label = document.getElementById('lang-current');
+      if (label) label.textContent = currentLang.toUpperCase();
+      const labelMobile = document.getElementById('lang-mobile-current');
+      if (labelMobile) labelMobile.textContent = currentLang.toUpperCase();
+    }
+
+    function setLang(lang) {
+      currentLang = lang;
+      localStorage.setItem('wayki-lang', lang);
+      applyLang();
+      const menu    = document.getElementById('lang-menu');
+      const mobMenu = document.getElementById('mob-lang-menu');
+      if (menu)    menu.style.display    = 'none';
+      if (mobMenu) mobMenu.style.display = 'none';
+    }
+
+    function toggleLangMenu() {
+      const menu = document.getElementById('lang-menu');
+      if (!menu) return;
+      menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function toggleMobLangMenu() {
+      const menu = document.getElementById('mob-lang-menu');
+      if (!menu) return;
+      menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+    }
+
+    // Close lang dropdowns on outside click
+    document.addEventListener('click', (e) => {
+      const wrap = document.getElementById('nb-lang-wrap');
+      const menu = document.getElementById('lang-menu');
+      if (menu && wrap && !wrap.contains(e.target)) menu.style.display = 'none';
+      const mobBtn  = document.getElementById('nb-lang-mob');
+      const mobMenu = document.getElementById('mob-lang-menu');
+      if (mobMenu && mobBtn && !mobBtn.closest('div').contains(e.target)) mobMenu.style.display = 'none';
+    });
+
+    const mobileLangLabel = document.getElementById('lang-mobile-current');
+    if (mobileLangLabel) mobileLangLabel.textContent = currentLang.toUpperCase();
+
+    applyLang();
+  </script>
+</body>
+</html>
