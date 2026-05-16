@@ -281,6 +281,7 @@ const {
     #nb-hamburger span { display: block; height: 2px; background: #e2e2e2; }
     .mob-link { font-family: 'Space Grotesk', sans-serif; font-size: clamp(24px, 7vw, 40px); font-weight: 700; color: #e2e2e2 !important; text-decoration: none; letter-spacing: -0.02em; padding: 7px 0; text-align: center; transition: color 0.2s; display: block; width: 100%; }
     .mob-link:hover { color: #be0000 !important; }
+    .mob-link.active { color: #be0000 !important; }
     .lang-opt { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; background: transparent; color: #555; border: 1px solid #2a2d2d; padding: 6px 12px; cursor: pointer; text-align: center; transition: color 0.2s, border-color 0.2s, background 0.2s; }
     .lang-opt:hover { color: #e2e2e2; border-color: #be0000; }
     .lang-opt.active { color: #fff; background: #be0000; border-color: #be0000; }
@@ -544,7 +545,7 @@ const {
 
     // ── Active nav link ───────────────────────
     const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
-    document.querySelectorAll('.nb-link').forEach(link => {
+    document.querySelectorAll('.nb-link, .mob-link').forEach(link => {
       const href = (link.getAttribute('href') || '').replace(/\/$/, '') || '/';
       if (href === currentPath) link.classList.add('active');
     });
