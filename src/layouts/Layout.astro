@@ -566,7 +566,14 @@ const {
 
     // ── Mobile menu ───────────────────────────
     const mobileMenu = document.getElementById('mob-menu');
-    function openMobileMenu()  { mobileMenu.classList.add('open');    document.body.style.overflow = 'hidden'; }
+    function applyMobActive() {
+      const path = window.location.pathname.replace(/\/$/, '') || '/';
+      document.querySelectorAll('.mob-link').forEach(function(link) {
+        const href = (link.getAttribute('href') || '').replace(/\/$/, '') || '/';
+        link.classList.toggle('active', href === path);
+      });
+    }
+    function openMobileMenu()  { mobileMenu.classList.add('open');    document.body.style.overflow = 'hidden'; applyMobActive(); }
     function closeMobileMenu() { mobileMenu.classList.remove('open'); document.body.style.overflow = ''; }
 
     // ── Scroll reveal ─────────────────────────
