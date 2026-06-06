@@ -42,18 +42,29 @@ import Layout from '../layouts/Layout.astro';
     <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(13,15,15,0.25) 0%,rgba(13,15,15,0.10) 30%,rgba(13,15,15,0.55) 70%,rgba(13,15,15,0.95) 100%);pointer-events:none;"></div>
 
     <!-- Red glow bottom -->
-    <div style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:600px;height:300px;border-radius:50%;pointer-events:none;z-index:2;background:radial-gradient(ellipse,rgba(200,176,128,0.18) 0%,transparent 70%);"></div>
+    <div style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:600px;height:300px;border-radius:50%;pointer-events:none;z-index:2;background:radial-gradient(ellipse,rgba(192,122,32,0.18) 0%,transparent 70%);"></div>
+
+    <!-- Vintage atmospheric overlay -->
+    <div style="position:absolute;inset:0;z-index:4;pointer-events:none;
+      background:
+        radial-gradient(ellipse at 50% 30%, rgba(200,176,120,0.07) 0%, transparent 55%),
+        radial-gradient(ellipse at 0% 50%,   rgba(40,30,15,0.30)   0%, transparent 50%),
+        radial-gradient(ellipse at 100% 50%, rgba(40,30,15,0.30)   0%, transparent 50%),
+        radial-gradient(ellipse at 50% 100%, rgba(20,15,8,0.45)    0%, transparent 55%),
+        linear-gradient(to bottom, rgba(160,130,70,0.06) 0%, rgba(30,22,10,0.22) 100%);
+      mix-blend-mode: multiply;">
+    </div>
 
     <!-- Content -->
     <div style="position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;text-align:center;padding:80px 24px 0;max-width:1000px;margin:0 auto;">
-      <div class="reveal" style="width:140px;height:140px;border-radius:50%;border:2px solid rgba(200,176,128,0.5);box-shadow:0 0 60px rgba(200,176,128,0.45);overflow:hidden;margin-bottom:40px;flex-shrink:0;">
+      <div class="reveal" style="width:140px;height:140px;border-radius:50%;border:2px solid rgba(192,122,32,0.5);box-shadow:0 0 60px rgba(192,122,32,0.45);overflow:hidden;margin-bottom:40px;flex-shrink:0;">
         <img src="/logo-icon.webp" alt="Wayki Tattoo Studio Logo"
              style="width:100%;height:100%;object-fit:cover;display:block;" />
       </div>
       <span class="section-label reveal delay-1" data-i18n="hero_eyebrow">Arequipa · Perú · Est. 2013</span>
       <h1 class="reveal delay-2" data-i18n="hero_title"
           style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(48px,8vw,96px);line-height:0.95;letter-spacing:-0.03em;color:#C8C0B0;margin-bottom:24px;">
-        EL ARTE SE<br /><span style="color:#C8B080;">LLEVA EN LA PIEL</span>
+        EL ARTE SE<br /><span style="color:#C07A20;">LLEVA EN LA PIEL</span>
       </h1>
       <p class="reveal delay-3 max-w-xl" data-i18n="hero_subtitle"
          style="font-family:'Manrope',sans-serif;font-size:17px;color:#9A9080;line-height:1.7;margin-bottom:48px;">
@@ -82,8 +93,8 @@ import Layout from '../layouts/Layout.astro';
       transition: background 0.4s, transform 0.3s, border-color 0.4s;
     }
     .hdot.active {
-      background: #C8B080;
-      border-color: #C8B080;
+      background: #C07A20;
+      border-color: #C07A20;
       transform: scale(1.5);
     }
   </style>
@@ -134,25 +145,25 @@ import Layout from '../layouts/Layout.astro';
           <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M20.71 5.63l-2.34-2.34a1 1 0 0 0-1.41 0l-3.12 3.12-1.41-1.42-1.42 1.42 1.41 1.41L3 17.25V21h3.75l9.88-9.88 1.41 1.41 1.42-1.42-1.42-1.41 3.12-3.12a1 1 0 0 0 .05-1.35zM6.92 19H5v-1.92l9.06-9.06 1.92 1.92z"/></svg></div>
           <h3 data-i18n="svc1_name" style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;color:#C8C0B0;margin-bottom:8px;">Tatuajes</h3>
           <p data-i18n="svc1_desc" style="font-family:'Manrope',sans-serif;font-size:14px;color:#9A9080;line-height:1.65;margin-bottom:14px;">Realismo, color, blackwork, fineline, tradicional y más. Cada pieza diseñada a medida para ti.</p>
-          <span data-i18n="svc1_tag" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#C8B080;">Servicio principal</span>
+          <span data-i18n="svc1_tag" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#C07A20;">Servicio principal</span>
         </div>
         <div class="svc-card reveal delay-2">
           <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm0-10a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/></svg></div>
           <h3 data-i18n="svc2_name" style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;color:#C8C0B0;margin-bottom:8px;">Piercings</h3>
           <p data-i18n="svc2_desc" style="font-family:'Manrope',sans-serif;font-size:14px;color:#9A9080;line-height:1.65;margin-bottom:14px;">Piercings profesionales con materiales de primera calidad. Asesoría completa antes y después.</p>
-          <span data-i18n="svc2_tag" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#C8B080;">Disponible</span>
+          <span data-i18n="svc2_tag" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#C07A20;">Disponible</span>
         </div>
         <div class="svc-card reveal delay-3">
           <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h3v8a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-8h3a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-7 15h-1v-8h1v8zm2 0h-1v-8h1v8zm4-10H6V5h12v3z"/></svg></div>
           <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;color:#C8C0B0;margin-bottom:8px;">SiVola Ink</h3>
           <p data-i18n="svc3_desc" style="font-family:'Manrope',sans-serif;font-size:14px;color:#9A9080;line-height:1.65;margin-bottom:14px;">Nuestra línea de tintas propias. Formuladas para resultados óptimos y longevidad en tu piel.</p>
-          <span data-i18n="svc3_tag" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#C8B080;">Marca propia</span>
+          <span data-i18n="svc3_tag" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#C07A20;">Marca propia</span>
         </div>
         <div class="svc-card reveal delay-4">
           <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm0 10c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg></div>
           <h3 data-i18n="svc4_name" style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;color:#C8C0B0;margin-bottom:8px;">Merch</h3>
           <p data-i18n="svc4_desc" style="font-family:'Manrope',sans-serif;font-size:14px;color:#9A9080;line-height:1.65;margin-bottom:14px;">Ropa y accesorios exclusivos con la esencia de Wayki. Lleva la cultura del tatuaje más allá de la piel.</p>
-          <span data-i18n="svc4_tag" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#C8B080;">Colección disponible</span>
+          <span data-i18n="svc4_tag" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#C07A20;">Colección disponible</span>
         </div>
       </div>
     </div>
@@ -166,7 +177,7 @@ import Layout from '../layouts/Layout.astro';
       <div class="reveal">
         <p style="font-family:'Space Grotesk',sans-serif;font-size:clamp(24px,3.5vw,40px);font-weight:700;letter-spacing:-0.02em;color:#C8C0B0;line-height:1.2;">
           <span data-i18n="port_cta_q">¿Tienes una idea?</span><br/>
-          <span style="color:#C8B080;" data-i18n="port_cta_s">Hagámosla realidad.</span>
+          <span style="color:#C07A20;" data-i18n="port_cta_s">Hagámosla realidad.</span>
         </p>
         <p style="font-family:'Manrope',sans-serif;font-size:15px;color:#555;margin-top:12px;">
           Arequipa, Perú · Est. 2013

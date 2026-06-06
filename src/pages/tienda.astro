@@ -140,7 +140,7 @@ const supplyProductos = readProductos('supply');
                 )}
                 <!-- Info -->
                 <div style="padding:16px 4px 4px;">
-                  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:#C8B080;" data-i18n="tienda_tab_merch">Merch</span>
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:#C07A20;" data-i18n="tienda_tab_merch">Merch</span>
                   <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:#C8C0B0;margin:6px 0 6px;line-height:1.3;">
                     {producto.nombre}
                   </h3>
@@ -153,15 +153,15 @@ const supplyProductos = readProductos('supply');
                         {producto.precio_anterior && (
                           <span style="font-family:'Space Grotesk',sans-serif;font-size:13px;color:#555;text-decoration:line-through;">{producto.precio_anterior}</span>
                         )}
-                        <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;color:#C8B080;">{producto.precio}</span>
+                        <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;color:#C07A20;">{producto.precio}</span>
                       </div>
                     )}
                     <a href={`https://wa.me/51993054099?text=Hola%20Wayki!%20Quiero%20consultar%20sobre%20${encodeURIComponent(producto.nombre)}`}
                        target="_blank"
                        data-wa-prefix="wa_tienda_prefix"
                        data-wa-suffix={producto.nombre}
-                       style="display:inline-flex;align-items:center;gap:8px;background:#C8B080;color:#fff;padding:10px 20px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;transition:background 0.2s;"
-                       onmouseover="this.style.background='#930000'" onmouseout="this.style.background='#C8B080'">
+                       style="display:inline-flex;align-items:center;gap:8px;background:#C07A20;color:#fff;padding:10px 20px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;transition:background 0.2s;"
+                       onmouseover="this.style.background='#930000'" onmouseout="this.style.background='#C07A20'">
                       <span data-i18n="tienda_consultar">Consultar ↗</span>
                     </a>
                   </div>
@@ -216,7 +216,7 @@ const supplyProductos = readProductos('supply');
                   </div>
                 )}
                 <div style="padding:16px 4px 4px;">
-                  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:#C8B080;" data-i18n="tienda_tab_sup">Supply</span>
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:#C07A20;" data-i18n="tienda_tab_sup">Supply</span>
                   <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:#C8C0B0;margin:6px 0 6px;line-height:1.3;">
                     {producto.nombre}
                   </h3>
@@ -229,15 +229,15 @@ const supplyProductos = readProductos('supply');
                         {producto.precio_anterior && (
                           <span style="font-family:'Space Grotesk',sans-serif;font-size:13px;color:#555;text-decoration:line-through;">{producto.precio_anterior}</span>
                         )}
-                        <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;color:#C8B080;">{producto.precio}</span>
+                        <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;color:#C07A20;">{producto.precio}</span>
                       </div>
                     )}
                     <a href={`https://wa.me/51993054099?text=Hola%20Wayki!%20Quiero%20consultar%20sobre%20${encodeURIComponent(producto.nombre)}`}
                        target="_blank"
                        data-wa-prefix="wa_tienda_prefix"
                        data-wa-suffix={producto.nombre}
-                       style="display:inline-flex;align-items:center;gap:8px;background:#C8B080;color:#fff;padding:10px 20px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;transition:background 0.2s;"
-                       onmouseover="this.style.background='#930000'" onmouseout="this.style.background='#C8B080'">
+                       style="display:inline-flex;align-items:center;gap:8px;background:#C07A20;color:#fff;padding:10px 20px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;transition:background 0.2s;"
+                       onmouseover="this.style.background='#930000'" onmouseout="this.style.background='#C07A20'">
                       <span data-i18n="tienda_consultar">Consultar ↗</span>
                     </a>
                   </div>
@@ -287,7 +287,7 @@ const supplyProductos = readProductos('supply');
     .tienda-tab.active { color: #C8C0B0 !important; }
     .tienda-tab.active::after {
       content: ''; position: absolute; bottom: -1px; left: 0; right: 0;
-      height: 2px; background: #C8B080;
+      height: 2px; background: #C07A20;
     }
     .tienda-tab { position: relative; }
     .tienda-card { transition: transform 0.3s; }
