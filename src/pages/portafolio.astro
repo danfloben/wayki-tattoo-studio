@@ -102,7 +102,7 @@ const totalAll       = totalGaleria + totalCoverImgs;
       <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(40px,6vw,72px);letter-spacing:-0.03em;color:#C8C0B0;">
         <span class="slash">/</span><span data-i18n="port_title">Portafolio</span>
       </h1>
-      <div style="width:60px;height:3px;background:#C07A20;margin-top:16px;"></div>
+      <div style="width:60px;height:3px;background:#DDD0B8;margin-top:16px;"></div>
       <p style="font-family:'Manrope',sans-serif;font-size:14px;color:#555;margin-top:16px;">
         <span id="port-count">{totalAll}</span> <span data-i18n="port_obras">obras</span>
       </p>
@@ -146,7 +146,7 @@ const totalAll       = totalGaleria + totalCoverImgs;
               <div style="position:absolute;bottom:0;left:0;right:0;padding:32px 12px 10px;background:linear-gradient(to top,rgba(13,15,15,0.88) 0%,transparent 100%);pointer-events:none;">
                 <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#fff;opacity:0.85;">{item.label}</span>
               </div>
-              <div class="port-hover-overlay" style="position:absolute;inset:0;background:rgba(192,122,32,0.12);opacity:0;transition:opacity 0.35s;pointer-events:none;"></div>
+              <div class="port-hover-overlay" style="position:absolute;inset:0;background:rgba(221,208,184,0.12);opacity:0;transition:opacity 0.35s;pointer-events:none;"></div>
             </a>
           </div>
         ))}
@@ -158,7 +158,7 @@ const totalAll       = totalGaleria + totalCoverImgs;
           <div style="margin-bottom:52px;">
             <!-- Cabecera proyecto -->
             <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid #1e2020;">
-              <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;background:#C07A20;color:#fff;padding:3px 8px;" data-i18n="port_coverup">Cover Up</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;background:#DDD0B8;color:#fff;padding:3px 8px;" data-i18n="port_coverup">Cover Up</span>
               <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;color:#C8C0B0;">{proyecto.titulo}</span>
               <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#555;">{proyecto.imagenes.length} <span data-i18n="port_imgs_proc">imágenes · proceso</span></span>
             </div>
@@ -172,7 +172,7 @@ const totalAll       = totalGaleria + totalCoverImgs;
                                : i === proyecto.imagenes.length - 1 ? 'port_despues'
                                : 'port_proceso';
                 const badgeBg  = i === 0 ? '#555'
-                               : i === proyecto.imagenes.length - 1 ? '#C07A20'
+                               : i === proyecto.imagenes.length - 1 ? '#DDD0B8'
                                : '#2a2d2d';
                 return (
                   <div style="position:relative;overflow:hidden;border:1px solid #1e2020;">
@@ -190,7 +190,7 @@ const totalAll       = totalGaleria + totalCoverImgs;
                       <div style="position:absolute;bottom:0;left:0;right:0;padding:28px 12px 10px;background:linear-gradient(to top,rgba(13,15,15,0.88) 0%,transparent 100%);pointer-events:none;">
                         <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#fff;opacity:0.85;" data-i18n="port_coverup">Cover Up</span>
                       </div>
-                      <div class="port-hover-overlay" style="position:absolute;inset:0;background:rgba(192,122,32,0.12);opacity:0;transition:opacity 0.35s;pointer-events:none;"></div>
+                      <div class="port-hover-overlay" style="position:absolute;inset:0;background:rgba(221,208,184,0.12);opacity:0;transition:opacity 0.35s;pointer-events:none;"></div>
                     </a>
                   </div>
                 );
@@ -207,7 +207,7 @@ const totalAll       = totalGaleria + totalCoverImgs;
       <div class="flex flex-col items-center text-center mt-16 gap-5">
         <p style="font-family:'Space Grotesk',sans-serif;font-size:clamp(20px,3vw,28px);font-weight:700;color:#C8C0B0;">
           <span data-i18n="port_cta_q">¿Tienes una idea?</span>
-          <span style="color:#C07A20;"> <span data-i18n="port_cta_s">Hagámosla realidad.</span></span>
+          <span style="color:#DDD0B8;"> <span data-i18n="port_cta_s">Hagámosla realidad.</span></span>
         </p>
         <a href="/contacto" class="btn-primary" data-i18n="port_cta_btn" style="padding:14px 40px;">Cotizar</a>
       </div>
@@ -289,7 +289,7 @@ const totalAll       = totalGaleria + totalCoverImgs;
       pag.innerHTML = '';
 
       var btnStyle = 'font-family:JetBrains Mono,monospace;font-size:11px;letter-spacing:0.1em;padding:8px 14px;border:1px solid #2a2d2d;background:transparent;color:#9A9080;cursor:pointer;transition:all 0.2s;';
-      var btnActiveStyle = 'font-family:JetBrains Mono,monospace;font-size:11px;letter-spacing:0.1em;padding:8px 14px;border:1px solid #C07A20;background:#C07A20;color:#fff;cursor:pointer;';
+      var btnActiveStyle = 'font-family:JetBrains Mono,monospace;font-size:11px;letter-spacing:0.1em;padding:8px 14px;border:1px solid #DDD0B8;background:#DDD0B8;color:#fff;cursor:pointer;';
 
       // Anterior
       var prev = document.createElement('button');
