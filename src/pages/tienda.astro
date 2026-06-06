@@ -66,7 +66,7 @@ const supplyProductos = readProductos('supply');
   <div style="background:#121414;padding:120px 0 60px;">
     <div class="max-w-[1280px] mx-auto px-6 md:px-10">
       <span class="section-label" data-i18n="tienda_label">Wayki Store</span>
-      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(40px,6vw,72px);letter-spacing:-0.03em;color:#e2e2e2;">
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(40px,6vw,72px);letter-spacing:-0.03em;color:#C8C0B0;">
         <span class="slash">/</span><span data-i18n="tienda_title">Tienda</span>
       </h1>
       <div class="red-line mt-4"></div>
@@ -81,7 +81,7 @@ const supplyProductos = readProductos('supply');
       <!-- Tabs Merch / Supply -->
       <div style="display:flex;gap:0;margin-bottom:48px;border-bottom:1px solid #1e2020;">
         <button class="tienda-tab active" data-tab="merch"
-                style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;padding:14px 32px;background:transparent;border:none;color:#e2e2e2;cursor:pointer;position:relative;transition:color 0.2s;">
+                style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;padding:14px 32px;background:transparent;border:none;color:#C8C0B0;cursor:pointer;position:relative;transition:color 0.2s;">
           <span data-i18n="tienda_tab_merch">Merch</span>
         </button>
         <button class="tienda-tab" data-tab="supply"
@@ -121,7 +121,7 @@ const supplyProductos = readProductos('supply');
                   ))}
                   <!-- Badge cantidad de imágenes -->
                   {producto.imagenes.length > 1 && (
-                    <span style="position:absolute;top:10px;right:10px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1em;background:rgba(13,15,15,0.85);color:#a0a0a0;padding:3px 8px;border:1px solid #2a2d2d;">
+                    <span style="position:absolute;top:10px;right:10px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1em;background:rgba(13,15,15,0.85);color:#9A9080;padding:3px 8px;border:1px solid #2a2d2d;">
                       {producto.imagenes.length} <span data-i18n="tienda_fotos">fotos</span>
                     </span>
                   )}
@@ -140,12 +140,12 @@ const supplyProductos = readProductos('supply');
                 )}
                 <!-- Info -->
                 <div style="padding:16px 4px 4px;">
-                  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:#C9A84C;" data-i18n="tienda_tab_merch">Merch</span>
-                  <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:#e2e2e2;margin:6px 0 6px;line-height:1.3;">
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:#C8B080;" data-i18n="tienda_tab_merch">Merch</span>
+                  <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:#C8C0B0;margin:6px 0 6px;line-height:1.3;">
                     {producto.nombre}
                   </h3>
                   {producto.descripcion && (
-                    <p style="font-family:'Manrope',sans-serif;font-size:13px;color:#a0a0a0;line-height:1.6;margin:0 0 12px;">{producto.descripcion}</p>
+                    <p style="font-family:'Manrope',sans-serif;font-size:13px;color:#9A9080;line-height:1.6;margin:0 0 12px;">{producto.descripcion}</p>
                   )}
                   <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:8px;">
                     {producto.precio && (
@@ -153,15 +153,15 @@ const supplyProductos = readProductos('supply');
                         {producto.precio_anterior && (
                           <span style="font-family:'Space Grotesk',sans-serif;font-size:13px;color:#555;text-decoration:line-through;">{producto.precio_anterior}</span>
                         )}
-                        <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;color:#C9A84C;">{producto.precio}</span>
+                        <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;color:#C8B080;">{producto.precio}</span>
                       </div>
                     )}
                     <a href={`https://wa.me/51993054099?text=Hola%20Wayki!%20Quiero%20consultar%20sobre%20${encodeURIComponent(producto.nombre)}`}
                        target="_blank"
                        data-wa-prefix="wa_tienda_prefix"
                        data-wa-suffix={producto.nombre}
-                       style="display:inline-flex;align-items:center;gap:8px;background:#C9A84C;color:#fff;padding:10px 20px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;transition:background 0.2s;"
-                       onmouseover="this.style.background='#930000'" onmouseout="this.style.background='#C9A84C'">
+                       style="display:inline-flex;align-items:center;gap:8px;background:#C8B080;color:#fff;padding:10px 20px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;transition:background 0.2s;"
+                       onmouseover="this.style.background='#930000'" onmouseout="this.style.background='#C8B080'">
                       <span data-i18n="tienda_consultar">Consultar ↗</span>
                     </a>
                   </div>
@@ -199,7 +199,7 @@ const supplyProductos = readProductos('supply');
                        style="display:none;" />
                   ))}
                   {producto.imagenes.length > 1 && (
-                    <span style="position:absolute;top:10px;right:10px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1em;background:rgba(13,15,15,0.85);color:#a0a0a0;padding:3px 8px;border:1px solid #2a2d2d;">
+                    <span style="position:absolute;top:10px;right:10px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1em;background:rgba(13,15,15,0.85);color:#9A9080;padding:3px 8px;border:1px solid #2a2d2d;">
                       {producto.imagenes.length} <span data-i18n="tienda_fotos">fotos</span>
                     </span>
                   )}
@@ -216,12 +216,12 @@ const supplyProductos = readProductos('supply');
                   </div>
                 )}
                 <div style="padding:16px 4px 4px;">
-                  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:#C9A84C;" data-i18n="tienda_tab_sup">Supply</span>
-                  <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:#e2e2e2;margin:6px 0 6px;line-height:1.3;">
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:#C8B080;" data-i18n="tienda_tab_sup">Supply</span>
+                  <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:#C8C0B0;margin:6px 0 6px;line-height:1.3;">
                     {producto.nombre}
                   </h3>
                   {producto.descripcion && (
-                    <p style="font-family:'Manrope',sans-serif;font-size:13px;color:#a0a0a0;line-height:1.6;margin:0 0 12px;">{producto.descripcion}</p>
+                    <p style="font-family:'Manrope',sans-serif;font-size:13px;color:#9A9080;line-height:1.6;margin:0 0 12px;">{producto.descripcion}</p>
                   )}
                   <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:8px;">
                     {producto.precio && (
@@ -229,15 +229,15 @@ const supplyProductos = readProductos('supply');
                         {producto.precio_anterior && (
                           <span style="font-family:'Space Grotesk',sans-serif;font-size:13px;color:#555;text-decoration:line-through;">{producto.precio_anterior}</span>
                         )}
-                        <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;color:#C9A84C;">{producto.precio}</span>
+                        <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;color:#C8B080;">{producto.precio}</span>
                       </div>
                     )}
                     <a href={`https://wa.me/51993054099?text=Hola%20Wayki!%20Quiero%20consultar%20sobre%20${encodeURIComponent(producto.nombre)}`}
                        target="_blank"
                        data-wa-prefix="wa_tienda_prefix"
                        data-wa-suffix={producto.nombre}
-                       style="display:inline-flex;align-items:center;gap:8px;background:#C9A84C;color:#fff;padding:10px 20px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;transition:background 0.2s;"
-                       onmouseover="this.style.background='#930000'" onmouseout="this.style.background='#C9A84C'">
+                       style="display:inline-flex;align-items:center;gap:8px;background:#C8B080;color:#fff;padding:10px 20px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;transition:background 0.2s;"
+                       onmouseover="this.style.background='#930000'" onmouseout="this.style.background='#C8B080'">
                       <span data-i18n="tienda_consultar">Consultar ↗</span>
                     </a>
                   </div>
@@ -261,7 +261,7 @@ const supplyProductos = readProductos('supply');
           b.classList.remove('active');
         });
         document.querySelectorAll('.tienda-panel').forEach(function(p) { p.style.display = 'none'; });
-        btn.style.color = '#e2e2e2';
+        btn.style.color = '#C8C0B0';
         btn.classList.add('active');
         document.getElementById('tab-' + btn.dataset.tab).style.display = 'block';
         initTiendaLightbox();
@@ -284,10 +284,10 @@ const supplyProductos = readProductos('supply');
   </script>
 
   <style is:global>
-    .tienda-tab.active { color: #e2e2e2 !important; }
+    .tienda-tab.active { color: #C8C0B0 !important; }
     .tienda-tab.active::after {
       content: ''; position: absolute; bottom: -1px; left: 0; right: 0;
-      height: 2px; background: #C9A84C;
+      height: 2px; background: #C8B080;
     }
     .tienda-tab { position: relative; }
     .tienda-card { transition: transform 0.3s; }

@@ -34,7 +34,17 @@
       "Bash(python -c ' *)",
       "Bash(npx astro *)",
       "Bash(find \"/mnt/c/Users/danfl/Desktop/wayki.tattoo.studio/public/images\" -type d | sort)",
-      "Bash(node -e ' *)"
+      "Bash(node -e ' *)",
+      "Bash(sed -i 's|url=\"https://waykitattoostudio.pe/nosotros\"|url=\"https://waykitattoostudio.pe/nosotros/\"|' src/pages/nosotros.astro)",
+      "Bash(sed -i 's|url=\"https://waykitattoostudio.pe/tienda\"|url=\"https://waykitattoostudio.pe/tienda/\"|' src/pages/tienda.astro)",
+      "Bash(sed -i 's|url=\"https://waykitattoostudio.pe/resenas\"|url=\"https://waykitattoostudio.pe/resenas/\"|' src/pages/resenas.astro)",
+      "Bash(sed -i 's|url=\"https://waykitattoostudio.pe/portafolio\"|url=\"https://waykitattoostudio.pe/portafolio/\"|' src/pages/portafolio.astro)",
+      "Bash(sed -i 's|url=\"https://waykitattoostudio.pe/contacto\"|url=\"https://waykitattoostudio.pe/contacto/\"|' src/pages/contacto.astro)",
+      "Bash(node -e \"const sharp = require\\('sharp'\\); console.log\\('sharp ok'\\);\")",
+      "Bash(magick --version)",
+      "Bash(ffmpeg -version)",
+      "Bash(node -e \"const sharp=require\\('sharp'\\);sharp\\('public/w.png'\\).metadata\\(\\).then\\(m=>console.log\\(m.width,m.height,m.format\\)\\);\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:4321/)"
     ]
   }
 }

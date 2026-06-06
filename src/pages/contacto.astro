@@ -12,7 +12,7 @@ import Layout from '../layouts/Layout.astro';
   <div style="background:#121414;padding:120px 0 60px;">
     <div class="max-w-[1280px] mx-auto px-6 md:px-10">
       <span class="section-label" data-i18n="contact_label">Hablemos</span>
-      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(40px,6vw,72px);letter-spacing:-0.03em;color:#e2e2e2;">
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(40px,6vw,72px);letter-spacing:-0.03em;color:#C8C0B0;">
         <span class="slash">/</span><span data-i18n="contact_title">Reserva tu Cita</span>
       </h1>
       <div class="red-line mt-4"></div>
@@ -28,7 +28,7 @@ import Layout from '../layouts/Layout.astro';
 
         <!-- Form -->
         <div class="reveal-left">
-          <p data-i18n="contact_intro" style="font-family:'Manrope',sans-serif;font-size:15px;color:#a0a0a0;line-height:1.7;margin-bottom:40px;">
+          <p data-i18n="contact_intro" style="font-family:'Manrope',sans-serif;font-size:15px;color:#9A9080;line-height:1.7;margin-bottom:40px;">
             Cuéntanos tu idea y te ayudamos a transformarla en una obra de arte. También puedes escribirnos directamente por WhatsApp.
           </p>
           <form id="contact-form" onsubmit="handleSubmit(event)" novalidate style="display:flex;flex-direction:column;gap:32px;">
@@ -70,7 +70,7 @@ import Layout from '../layouts/Layout.astro';
                 <span data-i18n="form_email_btn">Email</span>
               </a>
             </div>
-            <div id="form-success" data-i18n="form_success" style="display:none;font-family:'JetBrains Mono',monospace;font-size:13px;color:#C9A84C;padding:16px;border:1px solid #C9A84C;letter-spacing:0.05em;">
+            <div id="form-success" data-i18n="form_success" style="display:none;font-family:'JetBrains Mono',monospace;font-size:13px;color:#C8B080;padding:16px;border:1px solid #C8B080;letter-spacing:0.05em;">
               ✓ Abriendo WhatsApp... Te contactamos pronto.
             </div>
           </form>
@@ -84,29 +84,29 @@ import Layout from '../layouts/Layout.astro';
                  onmouseover="this.style.filter='grayscale(0)';this.style.transform='scale(1.03)';"
                  onmouseout="this.style.filter='grayscale(20%)';this.style.transform='scale(1)';" />
             <div style="position:absolute;bottom:0;left:0;right:0;padding:14px 18px;background:linear-gradient(to top,rgba(13,15,15,0.9),transparent);">
-              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#C9A84C;">Wayki Tattoo Studio</span><br/>
-              <span style="font-family:'Manrope',sans-serif;font-size:12px;color:#a0a0a0;">Arequipa, Perú · Est. 2013</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#C8B080;">Wayki Tattoo Studio</span><br/>
+              <span style="font-family:'Manrope',sans-serif;font-size:12px;color:#9A9080;">Arequipa, Perú · Est. 2013</span>
             </div>
           </div>
 
           <div style="border:1px solid #2a2d2d;padding:28px;background:#1a1c1c;">
-            <h2 data-i18n="contact_find" style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;color:#e2e2e2;margin-bottom:20px;">Encuéntranos</h2>
+            <h2 data-i18n="contact_find" style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;color:#C8C0B0;margin-bottom:20px;">Encuéntranos</h2>
             <div class="flex flex-col gap-4">
               <div class="flex items-start gap-3">
-                <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:#C9A84C;flex-shrink:0;margin-top:2px;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                <span style="font-family:'Manrope',sans-serif;font-size:14px;color:#a0a0a0;line-height:1.6;">Calle Campo Redondo 100, Cercado<br/>Arequipa — Perú</span>
+                <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:#C8B080;flex-shrink:0;margin-top:2px;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                <span style="font-family:'Manrope',sans-serif;font-size:14px;color:#9A9080;line-height:1.6;">Calle Campo Redondo 100, Cercado<br/>Arequipa — Perú</span>
               </div>
               <div class="flex items-center gap-3">
-                <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:#C9A84C;flex-shrink:0;"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                <a href="https://wa.me/51993054099" target="_blank" style="font-family:'Manrope',sans-serif;font-size:14px;color:#a0a0a0;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#C9A84C'" onmouseout="this.style.color='#a0a0a0'">+51 993 054 099</a>
+                <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:#C8B080;flex-shrink:0;"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                <a href="https://wa.me/51993054099" target="_blank" style="font-family:'Manrope',sans-serif;font-size:14px;color:#9A9080;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#C8B080'" onmouseout="this.style.color='#9A9080'">+51 993 054 099</a>
               </div>
               <div class="flex items-center gap-3">
-                <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:#C9A84C;flex-shrink:0;"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                <a href="mailto:waykitattoostudio@gmail.com" style="font-family:'Manrope',sans-serif;font-size:14px;color:#a0a0a0;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#C9A84C'" onmouseout="this.style.color='#a0a0a0'">waykitattoostudio@gmail.com</a>
+                <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:#C8B080;flex-shrink:0;"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                <a href="mailto:waykitattoostudio@gmail.com" style="font-family:'Manrope',sans-serif;font-size:14px;color:#9A9080;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#C8B080'" onmouseout="this.style.color='#9A9080'">waykitattoostudio@gmail.com</a>
               </div>
               <div class="flex items-center gap-3">
-                <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:#C9A84C;flex-shrink:0;"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
-                <span data-i18n="contact_hours" style="font-family:'Manrope',sans-serif;font-size:14px;color:#a0a0a0;">Lun – Sáb: 10:00 am – 8:00 pm</span>
+                <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:#C8B080;flex-shrink:0;"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+                <span data-i18n="contact_hours" style="font-family:'Manrope',sans-serif;font-size:14px;color:#9A9080;">Lun – Sáb: 10:00 am – 8:00 pm</span>
               </div>
             </div>
           </div>
@@ -130,9 +130,9 @@ import Layout from '../layouts/Layout.astro';
                 { href: 'https://co.pinterest.com/waykitattoostudio/', label: 'Pinterest', path: 'M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z' },
               ].map(s => (
                 <a href={s.href} target="_blank"
-                   style="display:flex;align-items:center;gap:10px;padding:14px 16px;border:1px solid #2a2d2d;background:#1a1c1c;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#a0a0a0;text-decoration:none;text-transform:uppercase;transition:border-color 0.2s,color 0.2s,background 0.2s;"
-                   onmouseover="this.style.borderColor='#C9A84C';this.style.color='#e2e2e2';this.style.background='#230000';"
-                   onmouseout="this.style.borderColor='#2a2d2d';this.style.color='#a0a0a0';this.style.background='#1a1c1c';">
+                   style="display:flex;align-items:center;gap:10px;padding:14px 16px;border:1px solid #2a2d2d;background:#1a1c1c;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#9A9080;text-decoration:none;text-transform:uppercase;transition:border-color 0.2s,color 0.2s,background 0.2s;"
+                   onmouseover="this.style.borderColor='#C8B080';this.style.color='#C8C0B0';this.style.background='#230000';"
+                   onmouseout="this.style.borderColor='#2a2d2d';this.style.color='#9A9080';this.style.background='#1a1c1c';">
                   <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:currentColor;flex-shrink:0;"><path d={s.path}/></svg>
                   {s.label}
                 </a>
